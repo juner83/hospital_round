@@ -1,0 +1,29 @@
+<template name="main">
+{{#if currentUser}}
+
+	{{>Template.dynamic template=content}}
+
+	<!--<div id="wrapper">-->
+    <!--{{> header temp=null}}-->
+    <!--{{> leftNavbar temp=null}}-->
+
+    <!--<div id="page-wrapper">-->
+      <!--{{#if CheckPath}}-->
+        <!--{{>Template.dynamic template=content}}-->
+      <!--{{/if}}-->
+    <!--</div>-->
+
+    <!--{{#if isLayerPopupOpen}}-->
+      <!--{{> layerPopup temp=null}}-->
+    <!--{{/if}}-->
+
+    <!--</div>-->
+
+{{else}}
+
+  <div id="wrapper">
+    {{> login}}
+  </div>
+
+{{/if}}
+</template>
