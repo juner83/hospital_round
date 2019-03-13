@@ -1,3 +1,102 @@
 <template name="patientList">
-	<h1>환자리스트</h1>
+	<div id="patientList">
+		<div class="contents p_pt">
+			<!-- 의사정보 시작 -->
+			<div class="doctor_info_box">
+				<div class="doctor_photo">
+					<img src="/images/round/sample_doctor_photo.jpg" alert="의사사진" />
+				</div>
+				<div class="doctor_info">
+					<ul class="info_list">
+						<li>회진일 : 2019-02-01 금요일</li>
+						<li>진료과 : 관절센터 (정형외과)</li>
+						<li>주치의 : 나정형</li>
+					</ul>
+				</div>
+				<div class="doctor_list">
+					<table>
+						<caption>환자리스트</caption>
+						<col style="width:140px" />
+						<col style="width:140px" />
+						<thead>
+						<tr class="name t_title">
+							<th scope="col" class="b_left">총환자</th>
+							<th scope="col" class="b_left">회진</th>
+						</tr>
+						</thead>
+						<tbody>
+						<tr class="name">
+							<td class="b_left">4명</td>
+							<td class="b_left">2명</td>
+						</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+			<!-- 의사정보 끝 -->
+			<!-- 회진환자 리스트 시작 -->
+			<div class="round_p_list_box">
+				<h2>회진환자 리스트</h2>
+				<table class="patient_table">
+					<thead>
+					<tr>
+						<th width="70px">선택</th>
+						<th width="60px">번호</th>
+						<th width="75px">병실</th>
+						<th width="100px">성명</th>
+						<th width="105px">등록번호</th>
+						<th width="203px">진단명</th>
+						<th width="203px">수술명</th>
+						<th width="100px">HOD</th>
+						<th width="10px">POD</th>
+					</tr>
+					</thead>
+					<tbody>
+					<tr>
+						<td><input type="radio" name="radio_patientList" /></td>
+						<td>1</td>
+						<td>501</td>
+						<td>박소민</td>
+						<td>1386190</td>
+						<td class="t_left_10">TFCC injury, wrist</td>
+						<td>신경박리술</td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td><input type="radio" name="radio_patientList" /></td>
+						<td>1</td>
+						<td>501</td>
+						<td>박소민</td>
+						<td>1386190</td>
+						<td class="t_left_10">TFCC injury, wrist</td>
+						<td>신경박리술</td>
+						<td></td>
+						<td></td>
+					</tr>
+					</tbody>
+				</table>
+
+
+			</div>
+			<!-- 회진환자 리스트 끝 -->
+			<!-- 회진환자 리스트 버튼시작 -->
+			<div class="wrap_checkup_button">
+				<ul>
+					<li>
+						<a href="/moveToBad">
+							<div class="r_btn r_start">회진시작</div>
+						</a>
+					</li>
+					<li>
+						<a href="">
+							<div class="r_btn r_end">회진종료</div>
+						</a>
+					</li>
+				</ul>
+			</div>
+			<!-- 회진환자 리스트 버튼끝 -->
+		</div>
+		<!-- contents 끝 -->
+	</div>
 </template>

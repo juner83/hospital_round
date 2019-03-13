@@ -1,8 +1,15 @@
 FlowRouter.route '/', action: (params, queryParams) ->
-  BlazeLayout.render 'main', content: 'patientList'
+  FlowRouter.go '/patientList'
+#  BlazeLayout.render 'main',
+#    content: 'patientList',
+#    hasHeader: true
+#    hasFooter: true
   return
 
 Template.main.onRendered ->
+
+Template.main.helpers
+#  hasHeader: (bool) -> return bool
 
 Template.main.events
   # 인풋 타입 넘버일 경우 값 유효성 체크(테그 프로퍼티 min, max가 적용되지 않는 IE를 위한 이벤트 컨트롤)
