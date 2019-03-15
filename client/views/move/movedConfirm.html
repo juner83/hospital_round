@@ -1,8 +1,44 @@
 <template name="movedConfirm">
 	<div id="movedConfirm">
-		<h1>박소민님의 회진 장소에 도착하였습니다.</h1>
-		<h1>회진을 진행하시겠습니까?</h1>
-		<button name="btnCancle">취소</button>
-		<button name="btnGo">확인</button>
+		<div class="wrap">
+
+			<!--    텍스트 라인-->
+
+			<div class="m_txt_title">
+				<p class="m_txt01">박소민님의 회진장소에 도착하였습니다</p>
+				<p class="m_txt02">회진을 진행하시겠습니까?</p>
+			</div>
+
+			<!--    회진모션-->
+
+			<div class="loading-container">
+				<div class="loading"></div>
+				<div id="loading-text">도 착</div>
+			</div>
+
+
+			<!--    회진 버튼-->
+
+			<ul class="button_box">
+				<li>
+					<a href="" name="btnGo">
+						<div class="r_btn r_start">회진시작</div>
+					</a>
+
+				</li>
+				<li>
+					<a href="" name="btnCancle">
+						<div class="r_btn r_end">회진종료</div>
+					</a>
+
+				</li>
+			</ul>
+		</div>
+
+
+		<!--<h1>박소민님의 회진 장소에 도착하였습니다.</h1>-->
+		<!--<h1>회진을 진행하시겠습니까?</h1>-->
+		<!--<button name="btnCancle">취소</button>-->
+		<!--<button name="btnGo">확인</button>-->
 	</div>
 </template>

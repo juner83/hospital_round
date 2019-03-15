@@ -1,3 +1,6 @@
+@CollectionCustomers = new Mongo.Collection 'customers'
+@CollectionPacs = new Mongo.Collection 'pacs'
+@CollectionResults = new Mongo.Collection 'results'
 #@CollectionAllowPageByAuthority = new Mongo.Collection 'talk_allowPageByAuthority'
 #@CollectionGroups  = new Mongo.Collection 'talk_groups'
 #@CollectionCompanies = new Mongo.Collection 'talk_company'

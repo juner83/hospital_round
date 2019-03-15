@@ -1,0 +1,137 @@
+#movedConfirm {
+  /* layout */
+  .wrap {
+    width:1080px;
+    height:1920px;
+    background-color: #e5e6ef;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  /*택스트 라인*/
+
+  .m_txt_title {
+
+    position: absolute;
+    top: 120px;
+    width: 1080px;
+    padding:164px/*194px*/ 0 70px/*100px*/ 0; box-sizing:border-box;
+    text-align: center;
+  }
+
+
+  .m_txt01 {
+    font-size:50px;
+    color:#191919;
+    font-weight:bold;
+    text-shadow:3px 3px rgb(0,0,0,0.1);
+    line-height:0;
+  }
+  .m_txt02 {
+    margin-top: 80px;
+    font-size:50px;
+    color:#191919;
+    font-weight:bold;
+    text-shadow:3px 3px rgb(0,0,0,0.1);
+    line-height:0;
+  }
+
+
+
+
+  .outline{
+    width: 100%;
+    text-align: center;
+    position: absolute;
+    top: 590px;
+
+  }
+
+  /*회진 모션*/
+
+  @keyframes rotate-loading {
+    0%  {transform: rotate(0deg);
+    }
+    100% {transform: rotate(360deg);}
+  }
+
+
+
+  @keyframes loading-text-opacity {
+    0%  {opacity: 0}
+    20% {opacity: 0}
+    50% {opacity: 1}
+    100%{opacity: 0}
+  }
+
+
+
+  .loading-container,
+  .loading {
+    margin-top: 25%;
+    height: 500px;
+    position: relative;
+    width: 500px;
+    border-radius: 100%;
+  }
+
+
+  .loading-container {
+    text-align: center;
+    width: 100%;
+
+  }
+
+  .loading {
+    border: 30px solid transparent;
+    border-color: transparent #1f4bb4 transparent #1f4bb4;
+
+    display: inline-block;
+  }
+
+
+  #loading-text {
+    animation: loading-text-opacity 2s linear 0s infinite normal;
+    color: #1f4bb4;
+    font-family: "Helvetica Neue, "Helvetica", ""arial";
+    font-size: 60px;
+    font-weight: bold;
+    margin-top: 48%;
+    opacity: 0;
+    position: absolute;
+    text-align: center;
+    text-transform: uppercase;
+    top: 0;
+    width: 100%;
+  }
+  /*회진 버튼*/
+
+
+  .button_box {
+    margin-right: 40px;
+    margin-top: 400px;
+    text-align: center;
+
+  }
+  .button_box li {
+
+    display: inline-block;
+  }
+  .button_box .r_btn {
+    display:block;
+    width:340px;
+    height:110px;
+    border-radius:100px;
+    text-align:center;
+    font-size:40px;
+    color:#fff;
+    padding-top:30px;
+    box-sizing:border-box;}
+
+  .button_box .r_start {background-color:#204bb4;}
+  .button_box .r_end {background-color:#b1b1b9;}
+  .button_box li + li {margin-left:20px;}
+
+
+}

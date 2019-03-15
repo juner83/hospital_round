@@ -1,5 +1,6 @@
 @mDefine =
 #  server_id: Meteor.uuid()
+  bridgeUrl: "https://IP:PORT"
   gateWayUrl: process.env.GATEWAY_URL
   monstroUrl: process.env.MONSTRO_URL
   passPhrase: '36365dc82aa463782466'

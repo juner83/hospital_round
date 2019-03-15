@@ -8,7 +8,7 @@
 				</div>
 				<div class="doctor_info">
 					<ul class="info_list">
-						<li>회진일 : 2019-02-01 금요일</li>
+						<li>회진일 : 2019-03-18 월요일</li>
 						<li>진료과 : 관절센터 (정형외과)</li>
 						<li>주치의 : 나정형</li>
 					</ul>
@@ -52,28 +52,19 @@
 					</tr>
 					</thead>
 					<tbody>
+					{{#each lists}}
 					<tr>
 						<td><input type="radio" name="radio_patientList" /></td>
-						<td>1</td>
-						<td>501</td>
-						<td>박소민</td>
-						<td>1386190</td>
-						<td class="t_left_10">TFCC injury, wrist</td>
-						<td>신경박리술</td>
-						<td></td>
-						<td></td>
+						<td>{{번호}}</td>
+						<td>{{병실}}</td>
+						<td>{{성명}}</td>
+						<td>{{등록번호}}</td>
+						<td class="t_left_10">{{진단명}}</td>
+						<td>{{수술명}}</td>
+						<td>{{HOD}}</td>
+						<td>{{POD}}</td>
 					</tr>
-					<tr>
-						<td><input type="radio" name="radio_patientList" /></td>
-						<td>1</td>
-						<td>501</td>
-						<td>박소민</td>
-						<td>1386190</td>
-						<td class="t_left_10">TFCC injury, wrist</td>
-						<td>신경박리술</td>
-						<td></td>
-						<td></td>
-					</tr>
+					{{/each}}
 					</tbody>
 				</table>
 
@@ -89,7 +80,7 @@
 						</a>
 					</li>
 					<li>
-						<a href="">
+						<a href="/roundEnd">
 							<div class="r_btn r_end">회진종료</div>
 						</a>
 					</li>

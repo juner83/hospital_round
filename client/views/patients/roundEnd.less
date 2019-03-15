@@ -1,0 +1,154 @@
+#roundEnd {
+  /*=== [contents] ===*/
+  /* 회진 메인 */
+  //.contents .round_m_photo {height:700px; background:url('../../Image/round_main_bg.jpg') no-repeat;}
+  .round_m_photo .m_txt_title {padding:164px/*194px*/ 0 70px/*100px*/ 0; box-sizing:border-box;}
+  .round_m_photo .m_txt01 {font-size:67px; color:#fff; font-weight:700; /*line-height:0;*/}
+  .round_m_photo .m_txt02 {font-size:44px; color:#fff; font-weight:700; /*line-height:10px;*/}
+  .round_m_photo .m_shadow {
+    text-shadow:3px 3px rgba(0,0,0,0.5);
+    -webkit-text-shadow:3px 3px rgba(0,0,0,0.5);
+    -moz-text-shadow:3px 3px rgba(0,0,0,0.5);
+    -ms-text-shadow:3px 3px rgba(0,0,0,0.5);
+    /*filter:dropshadow(color=#000000,offX=3,offY=3);zoom:1;*/ /* ie */
+  }
+  .round_m_photo .btn_round_w {
+    width:460px;
+    height:70px;
+    border-radius:50px;
+    background-color:#fff;
+    box-sizing:border-box;
+    padding-top:20px;
+    /*line-height:0;*/
+    margin-bottom:35px /*35px*/;
+    display:inline-block;
+  }
+  .round_m_photo .m_txt03 {font-size:29px;}
+  .round_m_photo .f_black {color:#1a2d53;}
+  .round_m_photo .f_white {color:#fff;}
+
+
+
+  .contents .round_m_data {height:880px; padding-top:100px /*115px*/; box-sizing:border-box;}
+
+  /* 회진 메인 아이콘 */
+  .round_m_data .round_m_box {width:810px; height:250px; display:inline-block; overflow:hidden; margin-bottom:130px/*150px*/;}
+  .round_m_data .round_m_box li {float:left; background-color:#fff; border-radius:10px;}
+  .round_m_data .round_m_box li + li {margin-left:30px;}
+  .round_m_data .round_m_box li > a {display:block; width:250px; height:250px; padding-top:58px; box-sizing:border-box;}
+  .round_m_data .round_m_box li > a > * {display:block;}
+  .round_m_data .round_m_box .m_data_txt {font-size:30px; color:#44437f; font-weight:700; margin-top:20px;}
+
+
+  .contents .round_m_data .m_data_txt02 {font-size:29px; color:#1a2d53; font-weight:700;}
+  .contents .round_m_data .m_data_txt03 {font-size:29px; color:#0099cc; font-weight:700;}
+
+  /*=== [layout] ===*/
+  .wrap {width:1080px; height:1920px;}
+  .header {width:1080px; height:160px; background-color:#204bb4; position:relative;}
+  .contents {width:1080px;  height:1580px; background-color:#e7e7f1; box-sizing:border-box;/*font-size:0;*/}
+  .footer {width:1080px; height:180px;  background-color:#696e82;}
+  /*.contents div {text-align:center; margin:0 auto;}*/
+  .contents > * {text-align:center; margin:0 auto;}
+
+
+  /*=== [header] ===*/
+  .h_camera {position:absolute; top:35px; left:30px; width:80px; height:80px;}
+  .h_patient {position:absolute; top:35px; left:30px; width:80px; height:80px;}
+  .h_voice {position:absolute; top:35px; left:120px; width:80px; height:80px;}
+  .h_doctor {position:absolute; top:35px; left:210px; width:80px; height:80px;}
+  .h_mic {position:absolute; top:0; left:50%; margin-left:-123px; width:246px; height:220px; z-index:100;}
+  .h_home {position:absolute; top:35px; right:30px; width:80px; height:80px;}
+
+
+
+  /* 안내 스퀘어 아이콘 */
+  .guide_m_data .round_m_box {width:840px; display:inline-block; overflow:hidden;}
+
+  .guide_m_data .round_m_box li {float:left; background-color:#fff; border-radius:10px; margin:15px;}
+  /*.guide_m_data .round_m_box li:nth-child(4) {margin-left:0;}
+  .guide_m_data .round_m_box li:nth-child(even) {margin-top:0;}*/
+  /*.guide_m_data .round_m_box li + li {margin-left:30px; margin-top:30px;}*/
+  .guide_m_data .round_m_box li > a {display:block; width:250px; height:250px; padding-top:58px; box-sizing:border-box;}
+  .guide_m_data .round_m_box li > a > * {display:block;}
+  .guide_m_data .round_m_box .m_data_txt {font-size:30px; color:#44437f; font-weight:700; margin-top:20px;}
+
+
+
+  /* 컨텐츠 상단 패딩값 */
+  .p_pt {padding-top:100px; position:relative;}  /* 회진 */
+  .guide_t {padding-top:200px;}  /* 안내 */
+
+
+
+  /*=== [타이틀폰트] ===*/
+
+  /* 회진페이지 타이틀 폰트 */
+  .contents .round_p_txt_box {width:965px; text-align:left; margin-bottom:25px;}
+  .round_p_list_box h2 {font-size:40px;}
+
+  /* 안내 타이틀 폰트 */
+  .contents .guide_tit {width:965px; margin-bottom:120px; /*145px;*/}
+  .guide_tit h2 {font-size:62px;}
+
+
+  /*안내 내용*/
+
+  .round_p_list_txt_h1 {
+    font-size:40px;
+    line-height: 200%;
+
+  }
+
+
+  /*=== [페이징] ===*/
+  /* 페이징 */
+  .contents .page_wrap {width:965px; font-size:0;}
+  .contents .page_box {overflow:hidden; display:inline-block; padding-top:20px;}
+  .contents .page_box li {float:left;}
+  .contents .page_box li + li {margin-left:10px;}
+  .contents .page_box li .page_num {display:block; width:40px; height:40px; border-radius:100%; background-color:#fff; font-size:20px; font-weight:700; padding-top:12px; box-sizing:border-box;}
+  .contents .page_box li .selected {background-color:#204bb4; color:#fff;}
+
+  /*=== [footer] ===*/
+  .footer .f_logo {text-align:center; padding-top:50px;}
+
+  /*=== [contents] ===*/
+
+  /* 회진 환자리스트 */
+
+  .contents .doctor_info_box {
+    position:relative;
+    background-color:#fff;
+    width:965px;
+    height:245px;
+    margin-bottom:105px;
+    box-shadow:1px 5px 5px rgba(0,0,0,0.2);
+  }
+  .doctor_info_box .doctor_photo {position:absolute; top:50%; margin-top:-87.5px; left:40px; width:150px; height:175px;}
+  .doctor_info_box .doctor_info {position:absolute; top:50px; left:220px; text-align:left;}
+  .doctor_info_box .info_list {font-size:27px;}
+  .doctor_info_box .info_list li+li {margin-top:20px;}
+  .doctor_info_box .doctor_list {position:absolute; top:50px; right:40px;}
+  .doctor_info_box .doctor_list table {border:1px solid #c7c7c7;}
+  .doctor_list .name {height:70px; text-align:center; font-size:27px;}
+  .doctor_list .t_title {background-color:#1b88e5; font-size:30px; color:#fff;}
+  .doctor_list .b_left {border-left:1px solid #c7c7c7;}
+
+
+  .contents .button_box {
+    position:absolute;
+    left:50%;
+    margin-left:-345px;
+    width:690px;
+    margin-top: 80px;
+  }
+  .button_box li {float:left;}
+  .button_box .r_btn {display:block; width:340px; height:110px; border-radius:100px; text-align:center; font-size:40px; color:#fff; padding-top:30px; box-sizing:border-box;}
+  .button_box .r_start {background-color:#204bb4;}
+  .button_box .r_end {background-color:#b1b1b9;}
+  .button_box li + li {margin-left:10px;}
+
+
+
+}

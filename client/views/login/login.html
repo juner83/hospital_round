@@ -1,64 +1,108 @@
 <template name="login">
 	<div id="login">
-		<div class="bg-card-tagging">
-			<p>ID 카드를 로봇하단에 인식시켜주세요</p>
+		<div class="wrap">
+
+			<!-- header 시작 -->
+			<div class="header">
+				<div class="h_camera">
+					<a href=""><img src="/images/common/h_photo.png" alt="카메라" /></a>
+				</div>
+				<!--        마이크 모션-->
+				<div class="h_mic">
+
+					<div class="loader loader-2 loader-3">
+						<div class="mic">
+						</div>
+					</div>
+
+					<a href=""></a>
+				</div>
+				<div class="h_home">
+					<a href=""><img src="/images/common/h_home.png" alt="홈" /></a>
+				</div>
+			</div>
+			<!-- header 끝 -->
+
+			<!-- contents 시작 -->
+			<div class="contents">
+				<div class="round_m_photo">
+					<div class="m_txt_title">
+						<p class="m_txt01">회진을 하시려면 의사선생님</p>
+						<p class="m_txt02">본인확인이 필요합니다.</p>
+					</div>
+					<!--            음성 모션-->
+					<div class="outline">
+						<div class="tag_img"></div>
+					</div>
+				</div>
+			</div>
+			<!-- contents 끝 -->
 		</div>
 	</div>
 </template>
 
+
 <!--<template name="login">-->
-	<!--&lt;!&ndash;<h1>로그인 페이지</h1>&ndash;&gt;-->
-	<!--<div id="login">-->
+<!--<div id="login">-->
+<!--<div class="bg-card-tagging">-->
+<!--<p>ID 카드를 로봇하단에 인식시켜주세요</p>-->
+<!--</div>-->
+<!--</div>-->
+<!--</template>-->
 
-		<!--<div id="header">-->
-			<!--<div class="login_box">-->
-				<!--<p><img src="/images/login/login_s_tmp.png" width="100%"  alt="" /></p>-->
-				<!--<p>&nbsp;</p>-->
-				<!--<table width="100%" border="0"  aling="center">-->
-					<!--<tr>-->
-						<!--<td width="100%"><select id="select" name="select"  class="selectbox_login"  style="width:80%;;max-width:550px;">-->
-							<!--<option value="" selected="selected"> * 병원선택</option>-->
-							<!--<option>은평성모병원</option>-->
-							<!--&lt;!&ndash;<option>22222병원</option>&ndash;&gt;-->
-						<!--</select></td>-->
-					<!--</tr>-->
-					<!--<tr>-->
-						<!--<td><select id="select2" name="select2"  class="selectbox_login"  style="width:80%;;max-width:550px;">-->
-							<!--<option value="" selected="selected"> * 의사선택</option>-->
-							<!--<option>한찬구</option>-->
-							<!--&lt;!&ndash;<option>이영희</option>&ndash;&gt;-->
-						<!--</select></td>-->
-					<!--</tr>-->
-					<!--<tr>-->
-						<!--<td><form id="form1" name="form1" method="post" action="">-->
-							<!--<label for="textfield"></label>-->
-							<!--<input name="Passwd" type="password" id="textfield"  placeholder=" Password"-->
-										 <!--class="password" >-->
-						<!--</form></td>-->
-					<!--</tr>-->
-					<!--<tr>-->
-						<!--<td>&nbsp;</td>-->
-					<!--</tr>-->
-					<!--<tr>-->
-						<!--<td>-->
-							<!--<input name="btnLogin" type="button" class="bt-btn white"-->
-										 <!--style="font-size: 24px; font-weight: bold;width:80%;max-width:550px; height:55px;" value="로그인"/>-->
-						<!--</td>-->
-					<!--</tr>-->
-				<!--</table>-->
-				<!--<p>&nbsp;</p>-->
-				<!--<p><br />-->
-				<!--</p>-->
-			<!--</div>-->
-		<!--</div>-->
+<!--<template name="login">-->
+<!--&lt;!&ndash;<h1>로그인 페이지</h1>&ndash;&gt;-->
+<!--<div id="login">-->
+
+<!--<div id="header">-->
+<!--<div class="login_box">-->
+<!--<p><img src="/images/login/login_s_tmp.png" width="100%"  alt="" /></p>-->
+<!--<p>&nbsp;</p>-->
+<!--<table width="100%" border="0"  aling="center">-->
+<!--<tr>-->
+<!--<td width="100%"><select id="select" name="select"  class="selectbox_login"  style="width:80%;;max-width:550px;">-->
+<!--<option value="" selected="selected"> * 병원선택</option>-->
+<!--<option>은평성모병원</option>-->
+<!--&lt;!&ndash;<option>22222병원</option>&ndash;&gt;-->
+<!--</select></td>-->
+<!--</tr>-->
+<!--<tr>-->
+<!--<td><select id="select2" name="select2"  class="selectbox_login"  style="width:80%;;max-width:550px;">-->
+<!--<option value="" selected="selected"> * 의사선택</option>-->
+<!--<option>한찬구</option>-->
+<!--&lt;!&ndash;<option>이영희</option>&ndash;&gt;-->
+<!--</select></td>-->
+<!--</tr>-->
+<!--<tr>-->
+<!--<td><form id="form1" name="form1" method="post" action="">-->
+<!--<label for="textfield"></label>-->
+<!--<input name="Passwd" type="password" id="textfield"  placeholder=" Password"-->
+<!--class="password" >-->
+<!--</form></td>-->
+<!--</tr>-->
+<!--<tr>-->
+<!--<td>&nbsp;</td>-->
+<!--</tr>-->
+<!--<tr>-->
+<!--<td>-->
+<!--<input name="btnLogin" type="button" class="bt-btn white"-->
+<!--style="font-size: 24px; font-weight: bold;width:80%;max-width:550px; height:55px;" value="로그인"/>-->
+<!--</td>-->
+<!--</tr>-->
+<!--</table>-->
+<!--<p>&nbsp;</p>-->
+<!--<p><br />-->
+<!--</p>-->
+<!--</div>-->
+<!--</div>-->
 
 
-		<!--<div  class="copyright">-->
+<!--<div  class="copyright">-->
 
-			<!--<p><span style="font-size:15px;">Copyright(c) 2012 WISECARE All. Rights Reserved.</span> </p>-->
-		<!--</div>-->
+<!--<p><span style="font-size:15px;">Copyright(c) 2012 WISECARE All. Rights Reserved.</span> </p>-->
+<!--</div>-->
 
 
-	<!--</div>-->
+<!--</div>-->
 
 <!--</template>-->

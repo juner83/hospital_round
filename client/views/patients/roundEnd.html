@@ -1,0 +1,62 @@
+<template name="roundEnd">
+	<div id="roundEnd">
+		<!-- contents 시작 -->
+		<div class="contents p_pt">
+			<!-- 의사정보 시작 -->
+			<div class="doctor_info_box">
+				<div class="doctor_photo">
+					<img src="/images/round/sample_doctor_photo.jpg" alert="의사사진" />
+				</div>
+				<div class="doctor_info">
+					<ul class="info_list">
+						<li>회진일 : 2019-02-01 금요일</li>
+						<li>진료과 : 관절센터 (정형외과)</li>
+						<li>주치의 : 나정형</li>
+					</ul>
+				</div>
+				<div class="doctor_list">
+					<table>
+						<caption>환자리스트</caption>
+						<col style="width:140px" />
+						<col style="width:140px" />
+						<thead>
+						<tr class="name t_title">
+							<th scope="col" class="b_left">총환자</th>
+							<th scope="col" class="b_left">회진</th>
+						</tr>
+						</thead>
+						<tbody>
+						<tr class="name">
+							<td class="b_left">4명</td>
+							<td class="b_left">2명</td>
+						</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+			<!-- 의사정보 끝 -->
+			<!-- 회진환자 리스트 시작 -->
+			<div class="round_p_list_txt_h1">
+				<p>나정형 선생님의 총 환자는 4명,회진환자는 2명입니다.</p>
+
+				<p>회진을 완료하시려면 회진 종료를 선택해 주세요.</p>
+			</div>
+			<!-- 회진환자 리스트 끝 -->
+			<!-- 회진환자 리스트 버튼시작 -->
+			<ul class="button_box">
+				<li>
+					<a href="" name="btnRoundEnd">
+						<div class="r_btn r_start">회진종료</div>
+					</a>
+				</li>
+				<li>
+					<a href="/patientList">
+						<div class="r_btn r_end">취 소</div>
+					</a>
+				</li>
+			</ul>
+			<!-- 회진환자 리스트 버튼끝 -->
+		</div>
+
+	</div>
+</template>
