@@ -8,7 +8,7 @@ Template.login.helpers
 Template.login.events
 #  'click [name=btnLogin]': (evt, inst) ->
 #    Meteor.loginWithPassword('admin', 'admin123@')
-  'click #login': (evt, inst) ->
+  'click .round_m_photo': (evt, inst) ->
     person = prompt('Please enter your password', '*********')
     if person != null
       Meteor.loginWithPassword('admin', 'admin123@')
