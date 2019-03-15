@@ -9,5 +9,6 @@ Template.moveToBad.onRendered ->
     FlowRouter.go '/movedConfirm'
   , 1000 * 3
 Template.moveToBad.helpers
+  고객명: -> return mDefine.cstInfo.get()?.이름
 Template.moveToBad.events
 

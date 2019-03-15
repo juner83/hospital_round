@@ -10,7 +10,7 @@
 		<div class="patient_list">
 			<table>
 				<caption>환자정보</caption>
-				<col style="width:64px" />
+				<!--<col style="width:64px" />-->
 				<col style="width:74px" />
 				<col style="width:94px" />
 				<col style="width:104px" />
@@ -20,7 +20,7 @@
 				<col style="width:100px" />
 				<thead>
 				<tr class="pname p_title">
-					<th scope="col" class="b_left">번호</th>
+					<!--<th scope="col" class="b_left">번호</th>-->
 					<th scope="col" class="b_left">병실</th>
 					<th scope="col" class="b_left">성명</th>
 					<th scope="col" class="b_left">등록번호</th>
@@ -31,16 +31,18 @@
 				</tr>
 				</thead>
 				<tbody>
+				{{#with cstInfo}}
 				<tr class="pname">
-					<td class="b_left">1</td>
-					<td class="b_left">501</td>
-					<td class="b_left">박소민</td>
-					<td class="b_left">1386190</td>
-					<td class="b_left">TFCC injury, wrist</td>
-					<td class="b_left">신경박리술</td>
-					<td class="b_left"></td>
-					<td class="b_left"></td>
+					<!--<td class="b_left">1</td>-->
+					<td class="b_left">{{병실}}</td>
+					<td class="b_left">{{이름}}</td>
+					<td class="b_left">{{등록번호}}</td>
+					<td class="b_left">{{진단명}}</td>
+					<td class="b_left">{{수술명}}</td>
+					<td class="b_left">{{HOD}}</td>
+					<td class="b_left">{{POD}}</td>
 				</tr>
+				{{/with}}
 				</tbody>
 			</table>
 		</div>
@@ -68,65 +70,93 @@
 					<!-- 검사정보 리스트 넣어주세요. -->
 					<table>
 						<caption>검사정보</caption>
-						<col style="width:140px" />
-						<col style="width:325px" />
+						<col style="width:180px" />
 						<col style="" />
+						<col style="width:130px" />
+						<col style="width:80px" />
+						<col style="width:130px" />
+						<col style="width:150px" />
+						<thead>
+						<tr class="pname p_title">
+							<th scope="col" class="b_left">진단일</th>
+							<th scope="col" class="b_left">검사명</th>
+							<th scope="col" class="b_left">결과</th>
+							<th scope="col" class="b_left">판정</th>
+							<th scope="col" class="b_left">단위</th>
+							<th scope="col" class="b_left">참고치</th>
+						</tr>
+						</thead>
+						<tbody>
+						{{#each 검사 '혈액검사'}}
+						<tr class="pname">
+							<td class="b_left">{{진단일}}</td>
+							<td class="b_left">{{검사명}}</td>
+							<td class="b_left">{{결과}}</td>
+							<td class="b_left">{{판정}}</td>
+							<td class="b_left">{{단위}}</td>
+							<td class="b_left">{{참고치}}</td>
+						</tr>
+						{{/each}}
+						</tbody>
+					</table>
+
+				</div>
+
+				<div id="tab2" class="patient_list tab_contents">
+					<table>
+						<caption>검사정보</caption>
+						<col style="width:180px" />
+						<col style="" />
+						<col style="width:325px" />
+						<col style="width:180px" />
+						<thead>
+						<tr class="pname p_title">
+							<th scope="col" class="b_left">진단일</th>
+							<th scope="col" class="b_left">검사명</th>
+							<th scope="col" class="b_left">결과</th>
+							<th scope="col" class="b_left">보고일</th>
+						</tr>
+						</thead>
+						<tbody>
+						{{#each 검사 '세균배양검사'}}
+							<tr class="pname">
+								<td class="b_left">{{진단일}}</td>
+								<td class="b_left">{{검사명}}</td>
+								<td class="b_left">{{결과}}</td>
+								<td class="b_left">{{보고일}}</td>
+							</tr>
+						{{/each}}
+						</tbody>
+					</table>
+				</div>
+				<div id="tab3" class="patient_list tab_contents">
+					<table>
+						<caption>검사정보</caption>
+						<col style="width:180px" />
+						<col style="" />
+						<col style="width:250px" />
 						<col style="width:130px" />
 						<thead>
 						<tr class="pname p_title">
 							<th scope="col" class="b_left">진단일</th>
 							<th scope="col" class="b_left">검사명</th>
-							<th scope="col" class="b_left">세부검사</th>
+							<th scope="col" class="b_left">세부검체</th>
 							<th scope="col" class="b_left">결과</th>
 						</tr>
 						</thead>
 						<tbody>
-						<tr class="pname">
-							<td>2019-02-29</td>
-							<td class="b_left">조직병리검사[1장기당]-Level A</td>
-							<td class="b_left">Rt.elbow-intective bursutis</td>
-							<td><img src="/images/round/patient/btn_checkup_detail_info.gif"></td>
-						</tr>
+						{{#each 검사 '조직검사'}}
+							<tr class="pname">
+								<td class="b_left">{{진단일}}</td>
+								<td class="b_left">{{검사명}}</td>
+								<td class="b_left">{{세부검체}}</td>
+								<td class="b_left">
+									<img src="/images/round/patient/btn_detail.png" alt="자세히보기">
+								</td>
+							</tr>
+						{{/each}}
 						</tbody>
 					</table>
-
-					<!-- 페이지 시작 -->
-					<div class="page_wrap">
-						<ul class="page_box">
-							<li>
-								<a href="" class="page_num selected">
-									<span>1</span>
-								</a>
-							</li>
-							<li>
-								<a href="" class="page_num">
-									<span>2</span>
-								</a>
-							</li>
-							<li>
-								<a href="" class="page_num">
-									<span>3</span>
-								</a>
-							</li>
-							<li>
-								<a href="" class="page_num">
-									<span>4</span>
-								</a>
-							</li>
-							<li>
-								<a href="" class="page_num">
-									<span>5</span>
-								</a>
-							</li>
-						</ul>
-					</div>
-				</div>
-
-				<div id="tab2" class="patient_list tab_contents">
-					2222222222222222
-				</div>
-				<div id="tab3" class="patient_list tab_contents">
-					3333333333333333
 				</div>
 				<!-- 페이지 끝 -->
 			</div>

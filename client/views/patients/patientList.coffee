@@ -6,45 +6,25 @@ FlowRouter.route '/patientList', action: ->
   return
 
 Template.patientList.onCreated ->
+  mDefine.cstInfo.set null
+  inst = @
+  inst.subscribe 'pub_customers'
+
 Template.patientList.onRendered ->
 Template.patientList.helpers
-  lists: ->
-    [
-      {
-      선택: "선택1"
-      번호: "1"
-      병실: "501"
-      성명: "박소민"
-      등록번호: "1301245"
-      진단명: "TFCC injury, wrist"
-      수술명: "신경박리술"
-      HOD: "HOD1"
-      POD: "POD1"
-      }
-      {
-      선택: "선택2"
-      번호: "2"
-      병실: "502"
-      성명: "주소현"
-      등록번호: "1242535"
-      진단명: "Pan-peritonitis"
-      수술명: "고주파 수핵성형술"
-      HOD: "HOD2"
-      POD: "POD2"
-      }
-      {
-      선택: "선택3"
-      번호: "3"
-      병실: "503"
-      성명: "배성진"
-      등록번호: "1403459"
-      진단명: "Herniation of intervertevral disc"
-      수술명: "인공디스크치환술"
-      HOD: "HOD3"
-      POD: "POD3"
-      }
-    ]
+  lists: -> CollectionCustomers.find()
+  번호: (index) -> return index+1
+
 
 Template.patientList.events
-  'click [name=goDetail]': (evt, inst) ->
-    FlowRouter.go '/patientDetail'
+  'click [name=move]': (evt, inst) ->
+    evt.preventDefault()
+    cst_id = $('input[name=radio_patientList]:checked').attr("data-id")
+    if cst_id then mDefine.cstInfo.set CollectionCustomers.findOne(_id: cst_id)
+    else
+      mDefine.cstInfo.set CollectionCustomers.findOne(_id: '1')
+    FlowRouter.go "/moveToBad"
+  'click [name=end]': (evt, inst) ->
+    evt.preventDefault()
+    mDefine.cstInfo.set null
+    FlowRouter.go "/roundEnd"

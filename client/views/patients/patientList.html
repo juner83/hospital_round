@@ -4,7 +4,7 @@
 			<!-- 의사정보 시작 -->
 			<div class="doctor_info_box">
 				<div class="doctor_photo">
-					<img src="/images/round/sample_doctor_photo.jpg" alert="의사사진" />
+					<img src="/images/round/sample_doctor_photo.svg" alert="의사사진" />
 				</div>
 				<div class="doctor_info">
 					<ul class="info_list">
@@ -27,7 +27,7 @@
 						<tbody>
 						<tr class="name">
 							<td class="b_left">4명</td>
-							<td class="b_left">2명</td>
+							<td class="b_left">0명</td>
 						</tr>
 						</tbody>
 					</table>
@@ -45,19 +45,20 @@
 						<th width="75px">병실</th>
 						<th width="100px">성명</th>
 						<th width="105px">등록번호</th>
-						<th width="203px">진단명</th>
+						<!--<th width="203px">진단명</th>-->
+						<th>진단명</th>
 						<th width="203px">수술명</th>
-						<th width="100px">HOD</th>
-						<th width="10px">POD</th>
+						<th width="50px">HOD</th>
+						<th width="50px">POD</th>
 					</tr>
 					</thead>
 					<tbody>
 					{{#each lists}}
 					<tr>
-						<td><input type="radio" name="radio_patientList" /></td>
-						<td>{{번호}}</td>
+						<td><input type="radio" name="radio_patientList" data-id="{{_id}}"/></td>
+						<td>{{번호 @index}}</td>
 						<td>{{병실}}</td>
-						<td>{{성명}}</td>
+						<td>{{이름}}</td>
 						<td>{{등록번호}}</td>
 						<td class="t_left_10">{{진단명}}</td>
 						<td>{{수술명}}</td>
@@ -75,12 +76,12 @@
 			<div class="wrap_checkup_button">
 				<ul>
 					<li>
-						<a href="/moveToBad">
+						<a href="" name="move">
 							<div class="r_btn r_start">회진시작</div>
 						</a>
 					</li>
 					<li>
-						<a href="/roundEnd">
+						<a href="" name="end">
 							<div class="r_btn r_end">회진종료</div>
 						</a>
 					</li>

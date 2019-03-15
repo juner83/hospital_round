@@ -6,6 +6,9 @@ FlowRouter.route '/patientDetail', action: ->
   return
 
 Template.patientDetail.onCreated ->
+  inst = @
+  inst.subscribe 'pub_results'
+
 Template.patientDetail.onRendered ->
   ##tab control
   $(document).ready ->
@@ -23,4 +26,6 @@ Template.patientDetail.onRendered ->
 
 
 Template.patientDetail.helpers
+  cstInfo: -> if (info=mDefine.cstInfo.get())? then return info
+  검사: (param) -> CollectionResults.find({검사종류: param},{limit: 4})
 Template.patientDetail.events

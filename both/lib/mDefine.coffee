@@ -16,3 +16,4 @@
   timeFormatM: 'mm'
   timeFormatHM: 'HH:mm'
   timeFormatYMDHMS2: 'YYYYMMDDHHmmss'
+  cstInfo: new ReactiveVar()
