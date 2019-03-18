@@ -436,14 +436,14 @@ Meteor.startup ->
       보고일: ""
       검사명: "조직병리검사[1장기당]-Level A"
       결과: "병리번호 : S40-000488
-채취일 : 2019-03-08 11:30:49 윤유정
-대표검체 : Soft tissue[RT]
-세부검체 : Rt. elbow infective bursitis
-[GROSS DESCRIPTION]
+<br>채취일 : 2019-03-08 11:30:49 윤유정
+<br>대표검체 : Soft tissue[RT]
+<br>세부검체 : Rt. elbow infective bursitis
+<br>[GROSS DESCRIPTION]
 Three pale brown, irregularly shaped, soft fragments, up to 2.3×1.8×0.5 cm, are totally embedded
 (Block 1개)
 
-[DIAGNOSIS]
+<br>[DIAGNOSIS]
 Elbow, right, excision ;
 Chronic inflammation with fibrosis."
       판정: ""
@@ -454,13 +454,13 @@ Chronic inflammation with fibrosis."
     {
       customer_id: "2"
       검사종류: "조직검사"
-      진단일: "019-03-14"
+      진단일: "2019-03-14"
       보고일: ""
       검사명: "조직병리검사[1장기당]-Level A"
       결과: "병리번호 : S30-000072
-채취일 : 2019-03-08 15:20:19 김승찬
-대표검체 : Soft tissue[RT]
-세부검체 : R/O Foreign body granuloma of skin/R/O Flexor tenosynovitis
+<br>채취일 : 2019-03-08 15:20:19 김승찬
+<br>대표검체 : Soft tissue[RT]
+<br>세부검체 : R/O Foreign body granuloma of skin/R/O Flexor tenosynovitis
  * 현재 진단 진행중(예비결과)입니다."
       판정: ""
       단위: ""

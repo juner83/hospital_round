@@ -1,0 +1,18 @@
+@charset "utf-8";
+
+
+
+
+/*=== [contents] ===*/
+
+/* 음성검색 타이틀 폰트 */
+.contents .voice_answer {width:965px; margin-bottom:135px;}
+.voice_answer  p {font-size:50px; line-height:1.3;}
+
+
+
+
+/* 길안내 이미지 */
+.contents .img_answer_box {background-color:#fff; height:100%; padding-top:150px;}
+.img_answer_box img {vertical-align:middle;}
+
