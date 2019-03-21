@@ -1,3 +1,5 @@
 @CollectionCustomers = new Mongo.Collection 'customers'
 @CollectionPacs = new Mongo.Collection 'pacs'
 @CollectionResults = new Mongo.Collection 'results'
+@CollectionDeparts = new Mongo.Collection 'departs'
+@CollectionDoctors = new Mongo.Collection 'doctors'
