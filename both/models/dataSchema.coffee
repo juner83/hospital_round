@@ -45,6 +45,15 @@
         단위: ''
         참고치: ''
         세부검체: ''
+    when 'bed_coordination' #참조없이 변경되면 변경하는 코드성 데이터
+      rslt =
+        createdAt: createdAt
+        updatedAt: createdAt
+        병원명: ''
+        부서명: ''
+        진료과명: ''
+        병실번호: ''
+        좌표: ''
     when 'connection'
       rslt =
         createdAt: createdAt
