@@ -28,3 +28,6 @@ Template.patientList.events
     evt.preventDefault()
     mDefine.cstInfo.set null
     FlowRouter.go "/roundEnd"
+
+#  'click [name=robot_move]': (evt, inst) ->
+#    Meteor.call 'robot_move',
