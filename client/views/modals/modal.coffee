@@ -21,6 +21,3 @@ Template.modal.onRendered ->
 #    modal.style.display = 'none'
 #    return
 
-Template.modal.helpers
-  팝업결과: -> if tempRv.get() then tempRv.get()
-Template.modal.events

@@ -1,9 +1,9 @@
 @tempRv = new ReactiveVar()
 
-Template.popup.helpers
+Template.briefPopup.helpers
   팝업결과: ->
     if tempRv.get()? then tempRv.get()
-Template.popup.events
+Template.briefPopup.events
   'click .close > img': (evt, inst) ->
     evt.preventDefault()
-    $('#popup').css('display', 'none')
+    $('#briefPopup').css('display', 'none')

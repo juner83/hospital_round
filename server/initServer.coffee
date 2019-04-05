@@ -475,3 +475,32 @@ Chronic inflammation with fibrosis."
       obj = dataSchema 'result', _obj
       CollectionResults.insert obj
 
+  voiceEMR = {
+      yymmdd: '19-04-05'
+      so: 'Lt leg weakness Gr IV
+B-CT/CTA : low density on inferior frotal Rt ACA flow는 유지됨.
+CLZ 100 BID 추가'
+      a: 'Unruptured aneurysm, A-com.'
+      p: 'conservative care'
+      약처방: 'Aricept tab.23mg (Donepezil)
+1T ＃1 x 1days 취침전 [급]
+'
+      주사: ''
+  }
+  unless CollectionVoiceEMRs.findOne()
+    for i in [1..4]
+      for j in [5..9]
+        data = dataSchema 'voiceEMR', {
+          customer_id: "#{i}"
+          yymmdd: "19-04-0#{j}"
+          so: 'Lt leg weakness Gr IV
+B-CT/CTA : low density on inferior frotal Rt ACA flow는 유지됨.
+CLZ 100 BID 추가'
+          a: 'Unruptured aneurysm, A-com.'
+          p: 'conservative care'
+          주사: 'Aricept tab.23mg (Donepezil)
+1T ＃1 x 1days 취침전 [급]'
+          약처방: 'Tylenol 8hr ER Extended Relief 650mg (Acetaminophen)
+3T ＃3 x 1days 아,점,저 식후30분 [급]'
+        }
+        CollectionVoiceEMRs.insert data

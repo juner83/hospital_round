@@ -52,31 +52,13 @@
 			<!-- Voice EMR 기록 버튼 -->
 			<div class="button_box">
 				<ul class="button_con02">
+					{{#each emrs}}
 					<li>
-						<a href="" class="btn_area02">
-							<span class="btn_txt02">19-02-24</span>
+						<a href="" class="btn_area02" data-id="{{_id}}" name="btnPastEMR">
+							<span class="btn_txt02" data-id="{{_id}}">{{yymmdd}}</span>
 						</a>
 					</li>
-					<li>
-						<a href="" class="btn_area02">
-							<span class="btn_txt02">19-02-25</span>
-						</a>
-					</li>
-					<li>
-						<a href="" class="btn_area02">
-							<span class="btn_txt02">19-02-25</span>
-						</a>
-					</li>
-					<li>
-						<a href="" class="btn_area02">
-							<span class="btn_txt02">19-02-26</span>
-						</a>
-					</li>
-					<li>
-						<a href="" class="btn_area02">
-							<span class="btn_txt02">19-02-27</span>
-						</a>
-					</li>
+					{{/each}}
 				</ul>
 			</div>
 			<!-- //Voice EMR 기록 버튼 -->
@@ -88,30 +70,29 @@
 					<col style="width:715px" />
 					<thead>
 					<tr class="vt_title">
-						<th scope="colgroup" colspan="2" class="emr_top">TODAY&nbsp;&nbsp;&nbsp;&nbsp;19-03-13</th>
+						<th scope="colgroup" colspan="2" class="emr_top">TODAY&nbsp;&nbsp;&nbsp;&nbsp;19-04-09</th>
 					</tr>
 					</thead>
 					<tbody>
 					<tr class="vall">
 						<th scope="row" class="b_top vname">S&O</th>
-						<td class="b_ltop vtxt">RT, wrist pain 발생일 : 1년 이상<br /> 그림 및 악기를 많이 써서 그런지 손목이 아파요  </td>
+						<td class="b_ltop vtxt"></td>
 					</tr>
 					<tr class="vall">
 						<th scope="row" class="b_top vname">A</th>
-						<td class="b_ltop vtxt">R&#47;O Tear, TFCC, wrist, Rt,<br /> R&#47;O CTS, RT   </td>
+						<td class="b_ltop vtxt"></td>
 					</tr>
 					<tr class="vall">
 						<th scope="row" class="b_top vname">P</th>
-						<td class="b_ltop vtxt">수술적 치료는 관절경수술 할 수 있습니다. A&#47;S TFCC repair &#43; CTR 같이 하겠습니다.
-							<br /> 입원해서 MRI 1&#47;16  입원 1&#47;17 수술  </td>
+						<td class="b_ltop vtxt"></td>
 					</tr>
 					<tr class="vall">
 						<th scope="row" class="b_top vname">약처방</th>
-						<td class="b_ltop vtxt">R&#47;O Tear, TFCC, wrist, Rt,<br /> R&#47;O CTS, RT   </td>
+						<td class="b_ltop vtxt"></td>
 					</tr>
 					<tr class="vall">
 						<th scope="row" class="b_top vname">주사</th>
-						<td class="b_ltop vtxt">R&#47;O Tear, TFCC, wrist, Rt,<br /> R&#47;O CTS, RT   </td>
+						<td class="b_ltop vtxt"></td>
 					</tr>
 					</tbody>
 				</table>
@@ -139,50 +120,51 @@
 			<div class="pop03">
 				<!-- Voice EMR 테이블 -->
 				<div class="get_record">
+					{{#with selData}}
 					<table>
 						<caption>Voice EMR정보</caption>
 						<col style="width:249px" />
 						<col style="width:720px" />
 						<thead>
 						<tr class="vt_title">
-							<th scope="colgroup" colspan="2" class="emr_top">19-12-24  Voice EMR 기록</th>
+							<th scope="colgroup" colspan="2" class="emr_top">{{yymmdd}}  Voice EMR 기록</th>
 						</tr>
 						</thead>
 						<tbody>
 						<tr class="vall">
 							<th scope="row" class="b_top vname">S&O</th>
-							<td class="b_ltop vtxt">RT, wrist pain 발생일 : 1년 이상<br /> 그림 및 악기를 많이 써서 그런지 손목이 아파요   &#62; S&O 입니다.</td>
+							<td class="b_ltop vtxt">{{so}}</td>
 						</tr>
 						<tr class="vall">
 							<th scope="row" class="b_top vname">A</th>
-							<td class="b_ltop vtxt">R&#47;O Tear, TFCC, wrist, Rt,<br /> R&#47;O CTS, RT   &#62;  A 입니다.</td>
+							<td class="b_ltop vtxt">{{a}}</td>
 						</tr>
 						<tr class="vall">
 							<th scope="row" class="b_top vname">P</th>
-							<td class="b_ltop vtxt">수술적 치료는 관절경수술 할 수 있습니다. A&#47;S TFCC repair &#43; CTR 같이 하겠습니다.
-								<br /> 입원해서 MRI 1&#47;16  입원 1&#47;17 수술    &#62; p 입니다</td>
+							<td class="b_ltop vtxt">{{p}}</td>
 						</tr>
 						<tr class="vall">
 							<th scope="row" class="b_top vname">약처방</th>
-							<td class="b_ltop vtxt">R&#47;O Tear, TFCC, wrist, Rt,<br /> R&#47;O CTS, RT   &#62;  A 입니다.</td>
+							<td class="b_ltop vtxt">{{약처방}}</td>
 						</tr>
 						<tr class="vall">
 							<th scope="row" class="b_top vname">주사</th>
-							<td class="b_ltop vtxt">R&#47;O Tear, TFCC, wrist, Rt,<br /> R&#47;O CTS, RT   &#62;  A 입니다.</td>
+							<td class="b_ltop vtxt">{{주사}}</td>
 						</tr>
 						</tbody>
 					</table>
+					{{/with}}
 				</div>
 				<!-- //Voice EMR 테이블 -->
 				<ul class="pop_btn">
 					<li>
-						<a href="">
-							<img src="Image/btn_bclose.png" alt="닫기" />
+						<a href="" name="btnClosePastPopup">
+							<img src="/images/round/voice/btn_bclose.png" alt="닫기" />
 						</a>
 					</li>
 					<li>
-						<a href="">
-							<img src="Image/btn_getrec.png" alt="기록자져오기" />
+						<a href="" name="btnGetPastPopup">
+							<img src="/images/round/voice/btn_getrec.png" alt="기록가져오기" />
 						</a>
 					</li>
 				</ul>
@@ -227,7 +209,7 @@
 									<input type="radio" name="pop_emr" id="a" /><label for="a"><span class="va_m">A</span></label>
 								</li>
 								<li>
-									<input type="radio" name="pop_emr" id="so" /><label for="so"><span class="va_m">P</span></label>
+									<input type="radio" name="pop_emr" id="p" /><label for="p"><span class="va_m">P</span></label>
 								</li>
 							</ul>
 						</li>

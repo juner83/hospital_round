@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>puzzleai online asr</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!--link rel="stylesheet" type="text/css" href=/uploadvoice/static/css/demo.css-->
+<link rel="stylesheet" type="text/css" href="./css/bootstrap.css">
+<link rel="stylesheet" type="text/css" href="./css/style.css">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+</head>
+<body>
+
+<div class="container ">
+	<span id="serverStatusBar" title="Number of available workers"></span>
+	<div> </div>
+	<!--<textarea rows="8" cols="71" id="trans">-->
+
+	<textarea class = "form-control" readonly="yes" rows="4" id="trans">Welcome to Puzzle-AI ASR online demo</textarea>
+
+	<div class="controls row" id="controls">
+	<button
+			id="buttonStarts"
+			class="btn btn-success col"
+			onclick="startListening();"
+			title="Starts listening for speech, i.e. starts recording and transcribing.">Start</button>
+	<button
+			id="buttonStop"
+			class="btn btn-secondary col"
+			onclick="stopListening();"
+			title="Stops listening for speech. Speech captured so far will be recognized as if the user had stopped speaking at this point. Note that in the default case, this does not need to be called, as the speech endpointer will automatically stop the recognizer listening when it determines speech has completed.">Stop</button>
+	<button
+			id="buttonCancel"
+			class="btn btn-secondary col"
+			onclick="cancel();"
+			title="Cancels the speech recognition.">Cancel</button>
+	</div>
+	<!--<pre id="log" class="log">
+	</pre>-->
+
+	<div id="log" class="log"></div>
+	<div id="statusBar"></div>
+
+	<div class="controls row" id="controls">
+		<button
+				class="btn btn-outline-secondary col"
+				onclick="init();"
+				title="Request access to the microphone">Init</button>
+
+		<button
+				class="btn btn-outline-secondary col"
+				onclick="showConfig();"
+				title="Show the configuration of the Dictate object">Config</button>
+
+		<button
+				class="btn btn-outline-secondary col"
+				onclick="clearLog();"
+				title="Clear the log">Clear log</button>
+	</div>
+
+</div>
+<script src="./js/asr_general/dictate.js"></script>
+<script src="/js/asr_general/recorder.js"></script>
+<!-- script src="./js/jquery-1.10.2.min.js"></script -->
+<!-- script src="/js/libs/jquery.min.3.1.0.js"></script -->
+<script src="./js/libs/jquery-1.10.2.min.js"></script>
+<script src="./js/asr_general/demo.js"></script>
+</body>
+</html>

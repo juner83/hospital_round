@@ -1,4 +1,3 @@
-
 FlowRouter.route '/patientDetail', action: ->
   BlazeLayout.render 'main',
     content: 'patientDetail'
@@ -40,7 +39,7 @@ Template.patientDetail.events
     $(".pop02").css('display', "none")
   'click [name=pop]': (evt, inst) ->
     evt.preventDefault()
-    tempRv.set $(evt.target).attr('data-content')
+    tempRv.set $(evt.target).attr('data-content') ##결과만 팝업에 넘기는 임시 변수
     $(".modal-content").css('display', 'none')
     $('#popup').css('display', 'block')
     $(".pop01").css('display', "none")
