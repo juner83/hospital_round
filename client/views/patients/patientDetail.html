@@ -1,7 +1,6 @@
 <template name="patientDetail">
 <div id="patientDetail">
 
-	{{> modal }}
 	<div class="contents p_pt">
 		<!-- 환자정보 시작 -->
 		<div class="round_p_list_box">
@@ -151,7 +150,7 @@
 								<td class="b_left">{{검사명}}</td>
 								<td class="b_left">{{세부검체}}</td>
 								<td class="b_left" name="pop" data-content="{{결과}}">
-									<img src="/images/round/patient/btn_detail.png" alt="자세히보기">
+									<img src="/images/round/patient/btn_detail.png" alt="자세히보기" data-content="{{결과}}">
 								</td>
 							</tr>
 						{{/each}}

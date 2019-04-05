@@ -45,6 +45,17 @@
         단위: ''
         참고치: ''
         세부검체: ''
+    when 'voiceEMR'
+      rslt =
+        createdAt: createdAt
+        updatedAt: createdAt
+        customer_id: ''
+        yymmdd: ''
+        so: ''
+        a: ''
+        p: ''
+        주사: ''
+        약처방: ''
     when 'bed_coordination' #참조없이 변경되면 변경하는 코드성 데이터
       rslt =
         createdAt: createdAt

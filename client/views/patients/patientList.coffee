@@ -23,7 +23,10 @@ Template.patientList.events
     if cst_id then mDefine.cstInfo.set CollectionCustomers.findOne(_id: cst_id)
     else
       mDefine.cstInfo.set CollectionCustomers.findOne(_id: '1')
-    FlowRouter.go "/moveToBad"
+    Meteor.call 'robot_move', "101", "1", (err, rslt) ->
+      if err then alert "로봇서버와 연결이 끊겨 기동이 불가합니다. 관리자에게 연락바랍니다. 오류코드: #1001"
+      else
+        FlowRouter.go "/moveToBad"
   'click [name=end]': (evt, inst) ->
     evt.preventDefault()
     mDefine.cstInfo.set null

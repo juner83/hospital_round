@@ -1,18 +1,89 @@
 <template name="moveToBad">
 	<div id="moveToBad">
 
-		<div class="wrap">
-			<div class="m_txt_title">
-				<p class="m_txt01">{{고객명}}님의 회진을 위해 이동합니다</p>
-				<p class="m_txt02"></p>
-			</div>
+		<div class="warp">
+			<div class="follow_bg">
+				<!-- 이동 H1300 -->
+				<div class="move_wrap">
+					<ul class="fo_move">
+						<li class="left">
+							<a  class="imgswap">
+								<img src="/images/round/move/btn_slow.png"  alt="천천히" />
+								<img src="/images/round/move/btn_slow_h.png"  alt="천천히" />
+							</a>
+						</li>
+						<li class="right">
+							<a class="imgswap">
+								<img src="/images/round/move/btn_quick.png"  alt="빨리" />
+								<img src="/images/round/move/btn_quick_h.png"  alt="빨리" />
+							</a>
+						</li>
+					</ul>
+					<p class="fo_move_txt01">{{고객명}}님의 회진을 위해<br />이동합니다.</p>
+					<!-- 모션 이동중 -->
+					<div class="fo_move_ani">
+						<div class="loading"></div>
+						<div id="loading-text">이 동 중</div>
+					</div>
 
-			<div class="loading-container">
-				<div class="loading"></div>
-				<div id="loading-text">이 동 중</div>
+					<div class="fo_move_er">
+						<a class="imgswap">
+							<img src="/images/round/move/btn_er.png"  alt="응급상황" />
+							<img src="/images/round/move/btn_er_h.png"  alt="응급상황" />
+						</a>
+					</div>
+					<p class="fo_move_txt02">긴급상황 시 누르면 로봇이<br />벽으로 이동합니다.</p>
+				</div>
+				<!-- //이동 H1300 -->
+
+				<!-- 도착 H1310 -->
+				<div class="arrival_wrap" style="display:none;">
+					<p class="fo_move_txt01">{{고객명}}님의 회진 장소에 도착했습니다.<br />회진을 진행하시겠습니까?</p>
+
+					<div class="fo_arrival_ani">
+						<div class="loading"></div>
+						<div id="loading-text">도 착</div>
+					</div>
+
+					<ul class="fo_move">
+						<li class="left">
+							<a class="imgswap">
+								<img src="/images/round/move/btn_confirm.png"  alt="확인" />
+								<img src="/images/round/move/btn_confirm_h.png"  alt="확인" />
+							</a>
+						</li>
+						<li class="right">
+							<a class="imgswap">
+								<img src="/images/round/move/btn_cancel.png"  alt="취소" />
+								<img src="/images/round/move/btn_cancel_h.png"  alt="취소" />
+							</a>
+						</li>
+					</ul>
+				</div>
+				<!-- //도착 H1310 -->
+
+				<!-- 회피 H1320 -->
+				<div class="avoid_wrap" style="display:none;">
+
+					<div class="fo_avoid_ani">
+						<div class="loader1"></div>
+						<div class="loader2"></div>
+						<div class="emergencies-text">로봇이 응급상황 회피 중입니다.</div>
+					</div>
+
+					<p class="fo_move_txt01">응급상황 종료 시 까지<br />기다려주세요.</p>
+					<div class="btn_reround">
+						<a class="imgswap">
+							<img src="/images/round/move/btn_reround.png"  alt="회진재개" />
+							<img src="/images/round/move/btn_reround_h.png"  alt="회진재개" />
+						</a>
+					</div>
+					<p class="fo_move_txt02">회진재개 시 위치안내를 다시 시작합니다.</p>
+				</div>
+				<!-- //회피 H1320 -->
 			</div>
 		</div>
-		<!--<h1>박소민님의 회진을 위해 이동중입니다.</h1>-->
-		<!--<img src="/images/round/loading.gif" style="width: 1080px; height: 1920px;">-->
+
+
 	</div>
 </template>

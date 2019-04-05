@@ -1,4 +1,3 @@
-@tempRv = new ReactiveVar()
 
 FlowRouter.route '/patientDetail', action: ->
   BlazeLayout.render 'main',
@@ -32,16 +31,18 @@ Template.patientDetail.helpers
   검사: (param) -> CollectionResults.find({검사종류: param},{limit: 4})
 Template.patientDetail.events
   'click [name=imgModal]': (evt, inst) ->
+    evt.preventDefault()
     src = $(evt.target).attr('src')
     $("#img01").attr("src", src)
     $(".modal-content").css('display', 'block')
-    $(".popzoom").css("display", "none")
-    $("#myModal").css('display', "block")
-  'click .close, click .btn_close': (evt, inst) ->
-    $("#myModal").css('display', "none")
+    $("#popup").css('display', "block")
+    $(".pop01").css('display', "block")
+    $(".pop02").css('display', "none")
   'click [name=pop]': (evt, inst) ->
-    tempRv.set @결과
+    evt.preventDefault()
+    tempRv.set $(evt.target).attr('data-content')
     $(".modal-content").css('display', 'none')
-    $(".popzoom").css("display", "block")
-    $("#myModal").css('display', "block")
+    $('#popup').css('display', 'block')
+    $(".pop01").css('display', "none")
+    $(".pop02").css('display', "block")
 
