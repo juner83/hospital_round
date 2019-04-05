@@ -1,20 +1,20 @@
 
-FlowRouter.route '/moveToBad', action: ->
+FlowRouter.route '/moveToBed', action: ->
   BlazeLayout.render 'main',
-    content: 'moveToBad'
+    content: 'moveToBed'
   return
 
-Template.moveToBad.onCreated ->
+Template.moveToBed.onCreated ->
 #  inst = @
 #  datacontext = inst.data
 #  datacontext.moveEnd = new ReactiveVar()
-Template.moveToBad.onRendered ->
+Template.moveToBed.onRendered ->
   Meteor.setTimeout ->
     FlowRouter.go '/movedConfirm'
   , 1000 * 3
-Template.moveToBad.helpers
+Template.moveToBed.helpers
   고객명: -> return mDefine.cstInfo.get()?.이름
-Template.moveToBad.events
+Template.moveToBed.events
   'click .fo_move_er': (evt, inst) ->
     $('.move_wrap').css('display', 'none')
     $('.avoid_wrap').css('display', 'block')

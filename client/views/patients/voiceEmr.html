@@ -64,6 +64,7 @@
 			<!-- //Voice EMR 기록 버튼 -->
 			<!-- Voice EMR 테이블 -->
 			<div class="voiceemr_list">
+				{{#with curData}}
 				<table>
 					<caption>Voice EMR정보</caption>
 					<col style="width:249px" />
@@ -76,35 +77,36 @@
 					<tbody>
 					<tr class="vall">
 						<th scope="row" class="b_top vname">S&O</th>
-						<td class="b_ltop vtxt"></td>
+						<td class="b_ltop vtxt">{{so}}</td>
 					</tr>
 					<tr class="vall">
 						<th scope="row" class="b_top vname">A</th>
-						<td class="b_ltop vtxt"></td>
+						<td class="b_ltop vtxt">{{a}}</td>
 					</tr>
 					<tr class="vall">
 						<th scope="row" class="b_top vname">P</th>
-						<td class="b_ltop vtxt"></td>
+						<td class="b_ltop vtxt">{{p}}</td>
 					</tr>
 					<tr class="vall">
 						<th scope="row" class="b_top vname">약처방</th>
-						<td class="b_ltop vtxt"></td>
+						<td class="b_ltop vtxt">{{약처방}}</td>
 					</tr>
 					<tr class="vall">
 						<th scope="row" class="b_top vname">주사</th>
-						<td class="b_ltop vtxt"></td>
+						<td class="b_ltop vtxt">{{주사}}</td>
 					</tr>
 					</tbody>
 				</table>
+				{{/with}}
 				<!-- Voice EMR 테이블 기록 버튼 -->
 				<ul class="button_con03">
 					<li>
-						<a href="Index02.htm" class="btn_area03">
+						<a href="" class="btn_area03" name="btnInsertPopup">
 							<span class="btn_txt03">입력하기</span>
 						</a>
 					</li>
 					<li>
-						<a href="index03.htm" class="btn_area03">
+						<a href="" class="btn_area03" name="btnSaveCurData">
 							<span class="btn_txt03">저장하기</span>
 						</a>
 					</li>
@@ -117,7 +119,7 @@
 		<!-- 팝업 -->
 		<div id="popup" style="display:none;">
 			<!-- 기록가져오기 팝업 H1510 -->
-			<div class="pop03">
+			<div class="pop03" id="emr_pop_1" style="display: none;">
 				<!-- Voice EMR 테이블 -->
 				<div class="get_record">
 					{{#with selData}}
@@ -172,30 +174,30 @@
 			<!-- //기록가져오기 팝업 H1510 -->
 
 			<!-- 입력 팝업 H1520 -->
-			<div class="pop03" style="display:none;">
+			<div class="pop03" style="display:none;" id="emr_pop_2">
 				<div class="input_record" >
 					<ul  class="pop_btn">
 						<li class="imgswap">
-							<a>
-								<img src="Image/btn_write.png" alt="글쓰기" />
-								<img src="Image/btn_write_h.png" alt="글쓰기" />
+							<a name="insert_write">
+								<img src="/images/round/voice/btn_write.png" alt="글쓰기" />
+								<img src="/images/round/voice/btn_write_h.png" alt="글쓰기" />
 							</a>
 						</li>
 						<li class="imgswap">
-							<a>
-								<img src="Image/bnt_voice.png" alt="음성입력" />
-								<img src="Image/bnt_voice_h.png" alt="음성입력" />
+							<a name="insert_mic">
+								<img src="/images/round/voice/bnt_voice.png" alt="음성입력" />
+								<img src="/images/round/voice/bnt_voice_h.png" alt="음성입력" />
 							</a>
 						</li>
 						<li class="selected" style="display:none;"><!-- 음성녹음시 활성화 -->
 							<a>
-								<img src="Image/bnt_voice_s.png" alt="음성입력" />
+								<img src="/images/round/voice/bnt_voice_s.png" alt="음성입력" />
 							</a>
 						</li>
 						<li class="imgswap">
-							<a>
-								<img src="Image/btn_save.png" alt="저장하기" />
-								<img src="Image/btn_save_h.png" alt="저장하기" />
+							<a name="insert_save">
+								<img src="/images/round/voice/btn_save.png" alt="저장하기" />
+								<img src="/images/round/voice/btn_save_h.png" alt="저장하기" />
 							</a>
 						</li>
 					</ul>
@@ -216,16 +218,16 @@
 						<li>
 							<ul class="radio_s">
 								<li>
-									<input type="radio" name="pop_emr" id="medicine" /><label for="medicine"><span class="va_m">약처방</span></label>
+									<input type="radio" name="pop_emr" id="약처방" /><label for="약처방"><span class="va_m">약처방</span></label>
 								</li>
 								<li>
-									<input type="radio" name="pop_emr" id="injection" /><label for="injection"><span class="va_m">주사</span></label>
+									<input type="radio" name="pop_emr" id="주사" /><label for="주사"><span class="va_m">주사</span></label>
 								</li>
 							</ul>
 						</li>
 					</ul>
 					<div>
-						<textarea class="noresize">글을 입력해 주세요.</textarea>
+						<textarea class="noresize" placeholder="내용을 작성해주세요." name="insert_textarea"></textarea>
 					</div>
 				</div>
 			</div>
@@ -242,13 +244,13 @@
 				</div>
 				<ul class="pop_btn">
 					<li>
-						<a>
-							<img src="Image/btn_bno.png" alt="아니오" />
+						<a name="goToCstList">
+							<img src="/images/round/voice/btn_bno.png" alt="아니오" />
 						</a>
 					</li>
 					<li>
-						<a>
-							<img src="Image/btn_nextp_b.png" alt="다음환자" />
+						<a name="goToNextCst">
+							<img src="/images/round/voice/btn_nextp_b.png" alt="다음환자" />
 						</a>
 					</li>
 				</ul>

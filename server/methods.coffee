@@ -5,3 +5,5 @@ Meteor.methods
         'services.resume.loginTokens': []
   setDefaultCstInfo: ->
     CollectionCustomers.findOne _id: '1'
+  moveToNextCst: ->
+    CollectionCustomers.findOne _id: '2'

@@ -34,14 +34,14 @@ Template.patientDetail.events
     src = $(evt.target).attr('src')
     $("#img01").attr("src", src)
     $(".modal-content").css('display', 'block')
-    $("#popup").css('display', "block")
+    $("#briefPopup").css('display', "block")
     $(".pop01").css('display', "block")
     $(".pop02").css('display', "none")
   'click [name=pop]': (evt, inst) ->
     evt.preventDefault()
     tempRv.set $(evt.target).attr('data-content') ##결과만 팝업에 넘기는 임시 변수
     $(".modal-content").css('display', 'none')
-    $('#popup').css('display', 'block')
+    $('#briefPopup').css('display', 'block')
     $(".pop01").css('display', "none")
     $(".pop02").css('display', "block")
 
