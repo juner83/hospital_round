@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="utf-8">
+	<title>성모병원</title>
+	<link rel="stylesheet" href="../Common/Style/Css/Layout.css" />
+	<link rel="stylesheet" href="../Common/Style/Css/Font.css" />
+	<link rel="stylesheet" href="Style/Css/myschedule.css" />
+</head>
+<body>
+<div class="warp">
+	<!-- header -->
+	<div class="header">
+		<div class="h_prev imgswap"> <!-- 이전페이지 버튼 -->
+			<a href="" onclick="history.back(-1); return false;">
+				<img src="../Common/Image/h_prev.png" alt="이전페이지" />
+				<img src="../Common/Image/h_prev_h.png" alt="이전페이지" />
+			</a>
+		</div>
+		<div class="h_mic_n" style="display:none;"> <!-- 기본마이크 클릭시 애니메이션 -->
+			<a href=""><img src="../Common/Image/h_mic.png" alt="마이크" /></a>
+		</div>
+		<div class="h_mic"><!-- 마이크애니메이션 -->
+			<div class="loader loader-2 loader-3">
+				<div class="mic">
+					<a href="../2_Voice/Index.htm"><img src="../Common/Image/img_mic.png" alt="마이크" /></a>
+				</div>
+			</div>
+		</div>
+		<div class="h_camera imgswap">
+			<a href="../3_Photo/index.htm">
+				<img src="../Common/Image/h_photo.png" alt="카메라" />
+				<img src="../Common/Image/h_photo_h.png" alt="카메라" />
+			</a>
+		</div>
+		<div class="h_home imgswap">
+			<a href="../1_Main/Index.htm">
+				<img src="../Common/Image/h_home.png"  alt="홈" />
+				<img src="../Common/Image/h_home_h.png"  alt="홈" />
+			</a>
+		</div>
+	</div>
+	<!-- //header -->
+	<!-- contents  -->
+	<div class="contents guide_t">
+		<!-- 나의 스케줄 -->
+		<div class="guide_tit">
+			<h2>나의 스케줄</h2>
+		</div>
+		<div class="my_data_con">
+			<div class="data_start"> <!-- 환자 번호 입력 후 존재하지 않거나 오류시 하기 재입력 화면 노출 -->
+				<p>환자분의 스케줄 확인을 위한 본인 확인이 필요합니다. </p>
+				<b>환자번호를 입력해 주세요.</b>
+				<span>(바코드 인식 가능)</span>
+			</div>
+			<div class="data_restart" style="display:none;"> <!-- 환자 번호 재입력 -->
+				<b>환자번호가 존재하지 않습니다.</b>
+				<span>다시 시도해 주세요.</span>
+			</div>
+			<div class="my_cir"><!-- 환자번호 입력박스 -->
+				<input type="text" id="my_num" placeholder="........" />
+			</div>
+			<!-- 확인 버튼 -->
+			<div class="button_box">
+				<ul class="button_con">
+					<li>
+						<a href="../6_Guide_2_myschedule_1_result/index.htm" class="btn_area bblue b_width">
+							<span class="btn_txt">확인</span>
+						</a>
+					</li>
+				</ul>
+			</div>
+			<!-- //확인 버튼 -->
+		</div>
+		<!-- //나의 스케줄 -->
+	</div>
+	<!-- //contents -->
+	<!-- footer -->
+	<div class="footer">
+	    <div class="f_logo" >
+			<img src="../Common/Image/footer_logo.png" alt="카톨릭대학교 은평 성모병원" />
+		</div>
+	</div>
+	<!-- //footer -->
+</div>
+
+</body>
+</html>

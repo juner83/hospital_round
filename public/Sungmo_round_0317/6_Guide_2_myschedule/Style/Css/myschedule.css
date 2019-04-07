@@ -1,0 +1,44 @@
+@charset "utf-8";
+
+
+
+
+/*=== [contents] ===*/
+
+ /* 환자번호 입력창 */
+.contents .guide_tit {width:965px; margin-bottom:90px;}
+
+
+.my_data_con {
+	border-top:10px solid #00b2fc; 
+	border-left:1px solid #aab4be; 
+	border-right:1px solid #aab4be; 
+	border-bottom:1px solid #aab4be; 
+	width:900px; 
+	height:651px; 
+	background-color:#fff;
+	box-sizing:border-box;
+}
+
+/*환자 번호 입력*/
+.data_start {margin-top:90px;}
+.data_start > p {font-size:32px; margin-bottom:20px; display:block;}
+.data_start > b {font-size:45px; color:#0d44b4; margin-bottom:20px; display:block;}
+.data_start > span {font-size:34px; margin-bottom:50px; display:block;}
+
+/*환자 번호 재입력*/
+.data_restart {margin-top:133px;}
+.data_restart > b {font-size:45px; color:#0d44b4; margin-bottom:20px; display:block;}
+.data_restart > span {font-size:45px; margin-bottom:50px; display:block;}
+
+.my_data_con .my_cir {width:670px; height:105px; border-radius:50px; background-color:#e7e7e7; text-align:center; display:inline-block; box-sizing:border-box; overflow:hidden;}
+.my_data_con .my_cir input {width:80%; height:80%; text-align:center; font-size:55px; color:#ff8124; background-color:#e7e7e7;}
+.my_data_con .my_cir input::-webkit-input-placeholder {font-size:130px; color:#ff8124;}
+
+
+
+/*버튼*/
+.button_box .b_width {width:240px; height:105px;}
+
+
+

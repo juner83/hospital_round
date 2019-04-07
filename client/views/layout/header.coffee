@@ -5,3 +5,5 @@ Template.header.events
     FlowRouter.go '/Sungmo_round_0317/1_Main/round_main.html'
     location.reload()
     Meteor.call 'serverLogout', Meteor.user()._id, (err, rslt) ->
+
+#    mUtils.GoMain()

@@ -125,7 +125,27 @@ Date.prototype.clone = -> return new Date @getTime()
 @throwError = (err) ->
   Meteor.call 'throwError', err #err object or string for message
 
+
+BtnClickedEvent = (type, parameter) ->
+  obj =
+    'type': type
+    'parameter': parameter
+  str = JSON.stringify(obj)
+  msg = 'BtnClickedEvent' + '$' + str
+  window.parent.postMessage msg, '*'
+  return
+
 @mUtils =
+  GoMain: ->
+    BtnClickedEvent 'home_btn', ''
+    return
+
+  CallTTS: (ChatAnswer) ->
+    parameterObj = 'vrReply': ''
+    parameterObj.vrReply = ChatAnswer
+    BtnClickedEvent 'roundTTS_btn', JSON.stringify(parameterObj)
+    return
+
   getGroup_ids: (userInfo) ->
     #admin / company / center 의 userInfo를 넘기면 하위의 gruop_ids를 찾아서 [] return
     unless userInfo then userInfo = Meteor.user() #파람 없으면 현재 로그인 정보로 치환

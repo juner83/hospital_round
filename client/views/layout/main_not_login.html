@@ -1,0 +1,21 @@
+<template name="main_not_login">
+	<div id="wrapper">
+		{{#if hasHeader}}
+			{{> header}}
+		{{/if}}
+
+		<div id="page-wrapper">
+			{{>Template.dynamic template=content}}
+		</div>
+
+		<!--{{#if isLayerPopupOpen}}-->
+		<!--{{> layerPopup temp=null}}-->
+		<!--{{/if}}-->
+
+		{{#if hasFooter}}
+			{{> footer}}
+		{{/if}}
+		{{> briefPopup }}
+	</div>
+
+</template>
