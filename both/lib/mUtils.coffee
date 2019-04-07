@@ -139,7 +139,8 @@ BtnClickedEvent = (type, parameter) ->
   GoMain: ->
     str = '{"type":"' + '1_Main?init","parameter":""}'
     BtnClickedEvent 'home_btn', ''
-    OnSetUI str
+    location.href = str
+#    OnSetUI str
     return
 
   CallTTS: (ChatAnswer) ->
