@@ -24,3 +24,15 @@ Meteor.methods
     catch e
       cl e
     return
+
+  reqVideo: ->
+    try
+      HTTP.get 'http://127.0.0.1:1111/Conference/Start', (resp) ->
+        cl resp
+        if resp.code? and (resp.code is 'ECONNREFUSED')
+          throw new Meteor.Error '비디오 서버연결 이상으로 협진 진행이 불가합니다. #4001'
+        else
+          cl 'video request complete'
+    catch e
+      throw new Meteor.Error '비디오 서버연결 이상으로 협진 진행이 불가합니다. #4001'
+    return
