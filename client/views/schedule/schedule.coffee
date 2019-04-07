@@ -4,3 +4,7 @@ FlowRouter.route '/schedule', action: ->
     hasHeader: true
     hasFooter: true
   return
+
+Template.schedule.events
+  'click [name=goToHome]': (evt, inst) ->
+    mUtils.GoMain()
