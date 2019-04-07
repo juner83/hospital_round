@@ -19,6 +19,7 @@ Template.patientList.helpers
 Template.patientList.events
   'click [name=move]': (evt, inst) ->
     evt.preventDefault()
+    mUtils.CallTTS("환자위치로 기동을 시작합니다.")
     cst_id = $('input[name=radio_patientList]:checked').attr("data-id")
     if cst_id then mDefine.cstInfo.set CollectionCustomers.findOne(_id: cst_id)
     else
