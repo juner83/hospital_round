@@ -137,9 +137,10 @@ BtnClickedEvent = (type, parameter) ->
 
 @mUtils =
   GoMain: ->
-    str = '{"type":"' + '1_Main?init","parameter":""}'
+#    str = '{"type":"' + '1_Main?init","parameter":""}'
     BtnClickedEvent 'home_btn', ''
-    location.href = str
+    location.reload()
+#    location.href = str
 #    OnSetUI str
     return
 
