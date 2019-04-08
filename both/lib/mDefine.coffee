@@ -1,6 +1,7 @@
 @mDefine =
 #  server_id: Meteor.uuid()
   robot_socket: false  #로봇소켓연결시 true, 해제시 false
+  tts_socket: true #tts_socket 연결시 true, 해제시 false
   bridgeUrl: "https://IP:PORT"
   gateWayUrl: process.env.GATEWAY_URL
   monstroUrl: process.env.MONSTRO_URL

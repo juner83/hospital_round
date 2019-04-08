@@ -143,8 +143,31 @@ Template.voiceEmr.onCreated ->
   datacontext.selData = new ReactiveVar()
   datacontext.curData = new ReactiveVar({})
 
+clickedFlag = false
 Template.voiceEmr.onRendered ->
   init()  #STT init
+
+  addEvent = (element, eventName, callback) ->
+    if element.addEventListener
+      element.addEventListener eventName, callback, false
+    # else if element.attachEvent
+    #   element.attachEvent 'on' + eventName, callback
+    # else
+    #   element['on' + eventName] = callback
+    return
+
+  addEvent document, 'keypress', (e) ->
+    e = e or window.event
+    # use e.keyCode
+    if e.keyCode is 43
+      if clickedFlag
+        clickedFlag = false
+        $("[name=insert_write]").click()
+      else
+        clickedFlag = true
+        $("[name=insert_mic]").click()
+
+    return
 
 Template.voiceEmr.helpers
   cstInfo: -> if (info=mDefine.cstInfo.get())? then return info
@@ -183,10 +206,12 @@ Template.voiceEmr.events
         FlowRouter.go '/moveToBed'
 
   'click [name=insert_write]': (evt, inst) ->
+    clickedFlag = false
     $('[name=insert_textarea]').focus()
     stopListening();
   'click [name=insert_mic]': (evt, inst) ->
     #버튼은 비활성화, 마이크 버튼 누르면 변경
+    clickedFlag = true
     custom_cancel(); #cancle()은 함수 충돌인지 호출시 오류가나서 이름을 변경함, 이걸 넣어줘야 멈췄다 재실행 할때 되더라(이유모름 내부적으로 그렇게 하길래)
     startListening();
   'click [name=insert_save]': (evt, inst) ->
@@ -206,3 +231,4 @@ Template.voiceEmr.events
     curData = datacontext.curData.get()
 #    cl curData[field]
     $('[name=insert_textarea]').val(curData[field])
+  

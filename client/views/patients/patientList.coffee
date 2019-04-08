@@ -19,7 +19,6 @@ Template.patientList.helpers
 Template.patientList.events
   'click [name=move]': (evt, inst) ->
     evt.preventDefault()
-    mUtils.CallTTS("환자위치로 기동을 시작합니다.")
     cst_id = $('input[name=radio_patientList]:checked').attr("data-id")
     if cst_id then mDefine.cstInfo.set CollectionCustomers.findOne(_id: cst_id)
     else
@@ -32,6 +31,11 @@ Template.patientList.events
     evt.preventDefault()
     mDefine.cstInfo.set null
     FlowRouter.go "/roundEnd"
-
+  'click [name=tts_test_btn]': (evt, inst) ->
+    cl msg = $("[name=tts_test_inp]").val()
+    Meteor.call 'tts_call', msg, (err, rslt) ->
+      if err then alert err
+      else
+        cl 'TTS전송 완료'
 #  'click [name=robot_move]': (evt, inst) ->
 #    Meteor.call 'robot_move',

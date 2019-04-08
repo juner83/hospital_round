@@ -136,6 +136,19 @@ BtnClickedEvent = (type, parameter) ->
   return
 
 @mUtils =
+  convertStringToUnicode: (str) ->
+    if !str
+      return false
+    # Escaping if not exist
+    unicode = ''
+    i = 0
+    l = str.length
+    while i < l
+      unicode += '\\u' + str[i].charCodeAt(0).toString(16)
+      i++
+    return unicode
+
+
   GoMain: ->
 #    str = '{"type":"' + '1_Main?init","parameter":""}'
     BtnClickedEvent 'home_btn', ''
