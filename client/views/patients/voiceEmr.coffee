@@ -85,7 +85,7 @@ __updateTranscript = (text) ->
   text = text.replace(/미리 그람/gi, 'mg').replace(/증상 에/gi, '증상에').replace(/전처치 로/gi, '전처치로').replace(/식 도/gi, '식도').replace(/오십/gi, '50').replace(/십\ /gi, '10 ').replace(/오/gi, '5').replace(/퍼센트/gi, '%')
   text = text
   console.log text
-  $('#trans').val text
+  $('#round_trans_area').val text
   return
 
 # Public methods (called from the GUI)
@@ -104,6 +104,7 @@ clearTranscription = ->
   return
 
 startListening = ->
+  cl 'startListening'
   dictate.startListening()
   return
 
@@ -185,8 +186,10 @@ Template.voiceEmr.events
 
   'click [name=insert_write]': (evt, inst) ->
     $('[name=insert_textarea]').focus()
+    stopListening();
   'click [name=insert_mic]': (evt, inst) ->
     #버튼은 비활성화, 마이크 버튼 누르면 변경
+    startListening();
   'click [name=insert_save]': (evt, inst) ->
     field = $('[name=pop_emr]:checked').attr('id')
     value = $('[name=insert_textarea]').val()
