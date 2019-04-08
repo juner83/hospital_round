@@ -189,6 +189,7 @@ Template.voiceEmr.events
     $('.pop03').css('display', 'none')
     datacontext = inst.data
     datacontext.curData.set datacontext.selData.get()
+    datacontext.selData.set({})
   'click [name=btnInsertPopup]': (evt, inst) ->
     $('#popup').css('display', 'block')
     $('#emr_pop_2').css('display', 'block')

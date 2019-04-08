@@ -156,7 +156,8 @@ BtnClickedEvent = (type, parameter) ->
 #    location.href = str
 #    OnSetUI str
     return
-
+#  CallKeyboard: ->
+#    OnScreenKeyboard(false, "ko-kr")
   CallTTS: (ChatAnswer) ->
     parameterObj = 'vrReply': ''
     parameterObj.vrReply = ChatAnswer
