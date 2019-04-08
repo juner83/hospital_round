@@ -14,7 +14,10 @@ var tt = new Transcription();
 var dictate = new Dictate({
 		server : "wss://puzzle-ai.com:8021/client/ws/speech",
 		serverStatus : "wss://puzzle-ai.com:8021/client/ws/status",
-		recorderWorkerPath : '../lib/recorderWorker.js',
+//		server : "wss://106.245.241.74:62001/client/ws/speech",
+//		serverStatus : "wss://106.245.241.74:62001/client/ws/status",
+		
+		recorderWorkerPath : '_recorderWorker.js',
 		onReadyForSpeech : function() {
 			__message("READY FOR SPEECH");
 			__status("녹취중입니다");
@@ -135,6 +138,6 @@ function showConfig() {
 	$(log).show();
 }
 
-window.onload = function() {
-	init();
-};
+// window.onload = function() {
+// 	init();
+// };

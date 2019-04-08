@@ -112,12 +112,11 @@ stopListening = ->
   dictate.stopListening()
   return
 
-cancel = ->
+custom_cancel = ->
   dictate.cancel()
   return
 
 init = ->
-  cl 'init'
   dictate.init()
   return
 
@@ -145,8 +144,7 @@ Template.voiceEmr.onCreated ->
   datacontext.curData = new ReactiveVar({})
 
 Template.voiceEmr.onRendered ->
-  cl 'onload'
-  init()
+  init()  #STT init
 
 Template.voiceEmr.helpers
   cstInfo: -> if (info=mDefine.cstInfo.get())? then return info
@@ -189,6 +187,7 @@ Template.voiceEmr.events
     stopListening();
   'click [name=insert_mic]': (evt, inst) ->
     #버튼은 비활성화, 마이크 버튼 누르면 변경
+    custom_cancel(); #cancle()은 함수 충돌인지 호출시 오류가나서 이름을 변경함, 이걸 넣어줘야 멈췄다 재실행 할때 되더라(이유모름 내부적으로 그렇게 하길래)
     startListening();
   'click [name=insert_save]': (evt, inst) ->
     field = $('[name=pop_emr]:checked').attr('id')
