@@ -160,12 +160,7 @@ Template.voiceEmr.onRendered ->
     e = e or window.event
     # use e.keyCode
     if e.keyCode is 43
-      if clickedFlag
-        clickedFlag = false
-        $("[name=insert_write]").click()
-      else
-        clickedFlag = true
-        $("[name=insert_mic]").click()
+      $("[name=insert_mic]").click()
 
     return
 
@@ -213,7 +208,8 @@ Template.voiceEmr.events
   'click [name=insert_mic]': (evt, inst) ->
     #버튼은 비활성화, 마이크 버튼 누르면 변경
     if clickedFlag
-      $('#myAudio').play()
+      x = document.getElementById("myAudio")
+      x.play()
       clickedFlag = false
       $('[name=insert_textarea]').focus()
       stopListening();
