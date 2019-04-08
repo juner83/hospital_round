@@ -207,17 +207,22 @@ Template.voiceEmr.events
     stopListening();
   'click [name=insert_mic]': (evt, inst) ->
     #버튼은 비활성화, 마이크 버튼 누르면 변경
+    cl clickedFlag
     if clickedFlag
-      x = document.getElementById("myAudio")
-      x.play()
       clickedFlag = false
       $('[name=insert_textarea]').focus()
       stopListening();
     else
+      x = document.getElementById("myAudio")
+      x.play()
       clickedFlag = true
       custom_cancel(); #cancle()은 함수 충돌인지 호출시 오류가나서 이름을 변경함, 이걸 넣어줘야 멈췄다 재실행 할때 되더라(이유모름 내부적으로 그렇게 하길래)
       startListening();
   'click [name=insert_save]': (evt, inst) ->
+    clickedFlag = false
+    $('[name=insert_textarea]').focus()
+    stopListening();
+
     field = $('[name=pop_emr]:checked').attr('id')
     value = $('[name=insert_textarea]').val()
     unless field?.length > 0 then return alert("입력항목을 선택해주세요.")
