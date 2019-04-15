@@ -1,3 +1,5 @@
+import {Meteor} from "meteor/meteor";
+
 var net = require('net');
 var robot_client = new net.Socket();
 var tts_client = new net.Socket();
@@ -8,7 +10,7 @@ Meteor.startup(() => {
     robot_client.connect(5019, '127.0.0.1', function () {
       console.log('Connected');
       var obj = {command: "SPEED", speed: "50"};
-      client.write(JSON.stringify(obj));
+      robot_client.write(JSON.stringify(obj));
     });
     robot_client.on('data', function (data) {
       console.log('Received: ' + data);
@@ -82,9 +84,10 @@ Meteor.methods({
   tts_call: function (_msg) {
     try {
       //todo 1. 현재 로그인 의사의 속도를 알아내고, 2. up/down에 따라 10씩 올리거나 내림
-      var unicode = mUtils.convertStringToUnicode(_msg)
-      console.log(unicode)
-      console.log(_msg)
+      var utf8 = encodeURI(_msg); //%aa%bb
+      var param = utf8.replace(/\%/gi, '-');  //-aa-bb
+      param = param.substring(1, param.length)
+      cl("tts_call:"+ _msg + " -> " + param);   //aa-bb
       if(mDefine.tts_socket) {
         tts_client.write(unicode);
       }
