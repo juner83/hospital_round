@@ -89,7 +89,7 @@ Meteor.methods({
       param = param.substring(1, param.length)
       cl("tts_call:"+ _msg + " -> " + param);   //aa-bb
       if(mDefine.tts_socket) {
-        tts_client.write(unicode);
+        tts_client.write(param);
       }
       return "done"
     } catch (e) {
