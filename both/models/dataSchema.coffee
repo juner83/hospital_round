@@ -65,6 +65,24 @@
         진료과명: ''
         병실번호: ''
         좌표: ''
+    when 'schedule'
+      rslt =
+        createdAt: createdAt
+        updatedAt: createdAt
+        customer_id: '' #고객명, 환자번호 등 참조
+        병원기관기호: '012'  #012(서울성모)
+        진료과코드: ''   #2050000000
+        진료과명: ''    #[본관2층]정형외과
+        doctor_id: '' # _id
+        의사명: ''
+        진료일자: ''    #20190310 yyyymmdd
+        진료시간: ''    #1150     hhmm
+        일정종류: ''    #진료, 수납, 검사예약, 주사, 약, 검사
+        상태메시지: ''   #접수, 대기, 완료, 보류
+        가셔야할곳: ''   #poiNM 사용
+        수납여부: ''    #수납/미수납
+
+
     when 'connection'
       rslt =
         createdAt: createdAt

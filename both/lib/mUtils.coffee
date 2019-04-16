@@ -136,19 +136,16 @@ BtnClickedEvent = (type, parameter) ->
   return
 
 @mUtils =
-  convertStringToUnicode: (str) ->
-    if !str
-      return false
-    # Escaping if not exist
-    unicode = ''
-    i = 0
-    l = str.length
-    while i < l
-      unicode += '\\u' + str[i].charCodeAt(0).toString(16)
-      i++
-    return unicode
-
-
+  getWeekday: (_yyyymmdd) ->
+    date = new Date("#{_yyyymmdd.substring(0,4)}-#{_yyyymmdd.substring(4,6)}-#{_yyyymmdd.substring(6,8)}")
+    switch date.getDay()
+      when 1 then "월요일"
+      when 2 then "화요일"
+      when 3 then "수요일"
+      when 4 then "목요일"
+      when 5 then "금요일"
+      when 6 then "토요일"
+      when 0 then "일요일"
   GoMain: ->
 #    str = '{"type":"' + '1_Main?init","parameter":""}'
     BtnClickedEvent 'home_btn', ''

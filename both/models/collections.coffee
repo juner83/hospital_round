@@ -4,3 +4,4 @@
 @CollectionDeparts = new Mongo.Collection 'departs'
 @CollectionDoctors = new Mongo.Collection 'doctors'
 @CollectionVoiceEMRs = new Mongo.Collection 'voiceEMR'
+@CollectionSchedules = new Mongo.Collection 'schedule'

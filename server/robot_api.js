@@ -84,12 +84,13 @@ Meteor.methods({
   tts_call: function (_msg) {
     try {
       //todo 1. 현재 로그인 의사의 속도를 알아내고, 2. up/down에 따라 10씩 올리거나 내림
-      var utf8 = encodeURI(_msg); //%aa%bb
-      var param = utf8.replace(/\%/gi, '-');  //-aa-bb
-      param = param.substring(1, param.length)
-      cl("tts_call:"+ _msg + " -> " + param);   //aa-bb
+      // var utf8 = encodeURI(_msg); //%aa%bb
+      // var param = utf8.replace(/\%/gi, '-');  //-aa-bb
+      // param = param.substring(1, param.length)
+      // cl("tts_call:"+ _msg + " -> " + param);   //aa-bb
+      cl("tts_call: " + _msg);   //aa-bb
       if(mDefine.tts_socket) {
-        tts_client.write(param);
+        tts_client.write(_msg);
       }
       return "done"
     } catch (e) {

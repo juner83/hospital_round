@@ -6,6 +6,8 @@ Meteor.startup ->
       else
         mDefine.cstInfo.set(rslt)
 
+  #오늘날짜 초기세팅 todo 시연용은 시연날짜로 하드코딩, 실제 today 로 변경 필요
+  mDefine.todayYYMMDD = "20190423"
 
 #  @CollectionMessagesTmp = new Mongo.Collection null
 #  @streamer = new Meteor.Streamer('chat')

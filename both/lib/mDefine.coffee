@@ -1,7 +1,9 @@
+# 오늘 년원일
 @mDefine =
+  schedule_psize: 2 #나의스케쥴 페이자당 카드갯수
 #  server_id: Meteor.uuid()
   robot_socket: false  #로봇소켓연결시 true, 해제시 false
-  tts_socket: true #tts_socket 연결시 true, 해제시 false
+  tts_socket: false #tts_socket 연결시 true, 해제시 false
   bridgeUrl: "https://IP:PORT"
   gateWayUrl: process.env.GATEWAY_URL
   monstroUrl: process.env.MONSTRO_URL
@@ -18,4 +20,5 @@
   timeFormatM: 'mm'
   timeFormatHM: 'HH:mm'
   timeFormatYMDHMS2: 'YYYYMMDDHHmmss'
-  cstInfo: new ReactiveVar()
+  cstInfo: new ReactiveVar()  #환자정보 CollectionCustomers.findOne()
+  todayYYMMDD: ""   #오늘날짜 세팅
