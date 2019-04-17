@@ -135,6 +135,12 @@ BtnClickedEvent = (type, parameter) ->
   window.parent.postMessage msg, '*'
   return
 
+OnScreenKeyboard = (isEnable, languageCode) ->
+  msg = 'OnScreenKeyboard' + '$' + isEnable + '^' + languageCode
+  window.parent.postMessage msg, '*'
+  return
+
+
 @mUtils =
   getWeekday: (_yyyymmdd) ->
     date = new Date("#{_yyyymmdd.substring(0,4)}-#{_yyyymmdd.substring(4,6)}-#{_yyyymmdd.substring(6,8)}")
@@ -149,12 +155,14 @@ BtnClickedEvent = (type, parameter) ->
   GoMain: ->
 #    str = '{"type":"' + '1_Main?init","parameter":""}'
     BtnClickedEvent 'home_btn', ''
-    location.reload()
+#    location.reload()
 #    location.href = str
 #    OnSetUI str
     return
-#  CallKeyboard: ->
-#    OnScreenKeyboard(false, "ko-kr")
+  keyboardOn: ->
+    OnScreenKeyboard(true, "ko-kr")
+  keyboardOff: ->
+    OnScreenKeyboard(false, "ko-kr")
   CallTTS: (ChatAnswer) ->
     parameterObj = 'vrReply': ''
     parameterObj.vrReply = ChatAnswer
