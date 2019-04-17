@@ -13,6 +13,7 @@
         진료과: ''
         부서: ''
         병원명: ''
+        로봇속도: 50
     when 'customer'
       rslt =
         createdAt: createdAt

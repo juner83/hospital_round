@@ -6,7 +6,7 @@ Meteor.startup ->
     options.password = 'admin123@'
     options.profile = dataSchema 'profile',
       authority: 'master'
-      scName: 'master'
+      이름: 'master'
     Accounts.createUser options
 
 
