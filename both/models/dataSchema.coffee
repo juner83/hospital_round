@@ -20,12 +20,14 @@
         updatedAt: createdAt
         doctor_id: ''
         병실: ''
+        침대번호: ''
         이름: ''
         등록번호: ''
         진단명: ''
         수술명: ''
         HOD: ''
         POD: ''
+
     when 'pacs'
       rslt =
         createdAt: createdAt

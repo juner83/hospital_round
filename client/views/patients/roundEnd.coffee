@@ -17,6 +17,7 @@ Template.roundEnd.events
     Meteor.call 'tts_call', '정상적으로 처리되었습니다. 감사합니다.', (err, rslt) -> if err then alert err
 
   'click [name=confirmRoundEnd]': (evt, inst) ->
+    Meteor.call 'robot_move', '0', '0', (err, rslt) -> if err then alert err
     FlowRouter.go '/Sungmo_round_0317/1_Main/round_main.html'
     location.reload()
     Meteor.call 'serverLogout', Meteor.user()._id, (err, rslt) ->

@@ -58,7 +58,7 @@ Template.schedule.helpers
   hasNext: -> #다음페이지 있으면 true
     datacontext = Template.instance().data
     condition = datacontext.condition.get()
-    cl count = datacontext.CollectionNull.find(condition.where).count()
+    count = datacontext.CollectionNull.find(condition.where).count()
     if count > (condition.options.skip / mDefine.schedule_psize + 1) * mDefine.schedule_psize then return true
   hasPrev: -> #이전페이지 있으면 true
     datacontext = Template.instance().data
@@ -68,8 +68,6 @@ Template.schedule.helpers
 Template.schedule.events
   'click [name=goToHome]': (evt, inst) ->
     mUtils.GoMain()
-    Meteor.call 'tts_call', 'TTS 테스트 완료', (err, rslt) -> if err then alert err
-
 
   'click [name=today_tab]': (evt, inst) ->
     $('[name=today_tab]').children().attr('src', '/images/schedule/stab_today_h.png')
@@ -115,4 +113,3 @@ Template.schedule.events
     condition = datacontext.condition.get()
     condition.options.skip = condition.options.skip - mDefine.schedule_psize
     datacontext.condition.set condition
-

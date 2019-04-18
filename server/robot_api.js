@@ -3,17 +3,26 @@ import {Meteor} from "meteor/meteor";
 var net = require('net');
 var robot_client = new net.Socket();
 var tts_client = new net.Socket();
+const streamer = new Meteor.Streamer('ep_sungmo');
+// if (Meteor.isServer) {
+streamer.allowRead('all');
+streamer.allowWrite('all');
+
+sendStreamMessage = function(message) {
+  streamer.emit('message', message);
+  console.log('me: ' + message);
+};
 
 // function that reconnect the client to the server
 function reconnect_robot () {
-  Meteor.setTimeout(() => {
+  setTimeout(() => {
     robot_client.removeAllListeners() // the important line that enables you to reopen a connection
     connect_robot()
   }, 1000)
 }
 
 function reconnect_tts () {
-  Meteor.setTimeout(() => {
+  setTimeout(() => {
     tts_client.removeAllListeners() // the important line that enables you to reopen a connection
     connect_tts()
   }, 1000)
@@ -21,7 +30,7 @@ function reconnect_tts () {
 
 
 function connect_robot() {
-  console.log("new client")
+  // console.log("new client")
   robot_client.connect(
     5019,
     "127.0.0.1",
@@ -38,6 +47,10 @@ function connect_robot() {
 
     var rcvObject = JSON.parse(data);
     console.log(rcvObject.command);
+    //로봇베드도착 -> 완료알림수신(회진서버) -> client 에 전달
+    if(rcvObject.command === 'STATE' && rcvObject.result === 'success') {
+      sendStreamMessage('robot_arrival_to_customer_bed');
+    }
   })
 
   robot_client.on("close", () => {
@@ -54,7 +67,7 @@ function connect_robot() {
 }
 
 function connect_tts() {
-  console.log("new client")
+  // console.log("new client")
   tts_client.connect(
     23564,
     "127.0.0.1",
@@ -158,7 +171,7 @@ Meteor.methods({
         _speed = _speed - 10;
         if (_speed <= 10) {_speed = 10}
       }
-      var obj = { command: "SPEED", linearSpeed: _speed, angularSpeed: _speed  };
+      var obj = { command: "SPEED", linearSpeed: _speed.toString(), angularSpeed: _speed.toString()  };
       cl(JSON.stringify(obj));
       if(mDefine.robot_socket) {
         robot_client.write(JSON.stringify(obj));

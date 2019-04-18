@@ -2,7 +2,7 @@
 @mDefine =
   schedule_psize: 2 #나의스케쥴 페이자당 카드갯수
 #  server_id: Meteor.uuid()
-  robot_socket: false  #로봇소켓연결시 true, 해제시 false
+  robot_socket: true  #로봇소켓연결시 true, 해제시 false
   tts_socket: false #tts_socket 연결시 true, 해제시 false
   bridgeUrl: "https://IP:PORT"
   gateWayUrl: process.env.GATEWAY_URL
