@@ -23,6 +23,7 @@ Template.patientList.events
     if cst_id then mDefine.cstInfo.set CollectionCustomers.findOne(_id: cst_id)
     else
       mDefine.cstInfo.set CollectionCustomers.findOne(_id: '1')
+    FlowRouter.go "/moveToBed"
   'click [name=end]': (evt, inst) ->
     evt.preventDefault()
     mDefine.cstInfo.set null
