@@ -113,6 +113,7 @@ Meteor.methods({
       var obj = { command: "MOVE", roomNumber: _room, bedNumber: _bed };
       cl(JSON.stringify(obj));
       if(mDefine.robot_socket) {
+        cl('in block')
         robot_client.write(JSON.stringify(obj));
       }
       return "done"
@@ -126,6 +127,7 @@ Meteor.methods({
       var obj = { command: "PAUSE" };
       cl(JSON.stringify(obj));
       if(mDefine.robot_socket) {
+        cl('in block')
         robot_client.write(JSON.stringify(obj));
       }
       return "done"
@@ -139,6 +141,7 @@ Meteor.methods({
       var obj = { command: "RESUME" };
       cl(JSON.stringify(obj));
       if(mDefine.robot_socket) {
+        cl('in block')
         robot_client.write(JSON.stringify(obj));
       }
       return "done"
@@ -152,6 +155,7 @@ Meteor.methods({
       var obj = { command: "SHUNT", direction: _direction };
       cl(JSON.stringify(obj));
       if(mDefine.robot_socket) {
+        cl('in block')
         robot_client.write(JSON.stringify(obj));
       }
       return "done"
@@ -174,6 +178,7 @@ Meteor.methods({
       var obj = { command: "SPEED", linearSpeed: _speed.toString(), angularSpeed: _speed.toString()  };
       cl(JSON.stringify(obj));
       if(mDefine.robot_socket) {
+        cl('in block')
         robot_client.write(JSON.stringify(obj));
       }
       Meteor.users.update({_id: Meteor.userId()}, {$set: {'profile.로봇속도': _speed}})
