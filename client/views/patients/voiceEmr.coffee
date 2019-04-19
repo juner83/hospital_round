@@ -205,9 +205,10 @@ Template.voiceEmr.events
     clickedFlag = false
     $('[name=insert_textarea]').focus()
     stopListening();
+    mUtils.fr_keyOn();
   'click [name=insert_mic]': (evt, inst) ->
     #버튼은 비활성화, 마이크 버튼 누르면 변경
-    cl clickedFlag
+#    cl clickedFlag
     if clickedFlag
       clickedFlag = false
       $('[name=insert_textarea]').focus()
@@ -232,6 +233,7 @@ Template.voiceEmr.events
     datacontext.curData.set curData
     $('#popup').css('display', 'none')
     $('.pop03').css('display', 'none')
+    mUtils.fr_keyOff();
   'click [name=pop_emr]': (evt, inst) ->
     field = $('[name=pop_emr]:checked').attr('id')
     value = $('[name=insert_textarea]').val()
