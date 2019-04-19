@@ -4,6 +4,8 @@
 #  server_id: Meteor.uuid()
   robot_socket: true  #로봇소켓연결시 true, 해제시 false
   tts_socket: false #tts_socket 연결시 true, 해제시 false
+  stt_uri: 'puzzle-ai.com:9223'
+  # stt_uri: '121.135.148.170:9223'
   bridgeUrl: "https://IP:PORT"
   gateWayUrl: process.env.GATEWAY_URL
   monstroUrl: process.env.MONSTRO_URL

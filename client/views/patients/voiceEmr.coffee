@@ -1,7 +1,7 @@
 tt = new Transcription
 dictate = new Dictate(
-  server: 'wss://puzzle-ai.com:8021/client/ws/speech'
-  serverStatus: 'wss://puzzle-ai.com:8021/client/ws/status'
+  server: "wss://#{mDefine.stt_uri}/client/ws/speech"
+  serverStatus: "wss://#{mDefine.stt_uri}/client/ws/status"
   recorderWorkerPath: '/js/stt/recorderWorker.js'
   onReadyForSpeech: ->
     __message 'READY FOR SPEECH'
@@ -204,7 +204,7 @@ Template.voiceEmr.events
   'click [name=insert_write]': (evt, inst) ->
     clickedFlag = false
     $('[name=insert_textarea]').focus()
-    stopListening();
+    # stopListening();
     mUtils.fr_keyOn();
   'click [name=insert_mic]': (evt, inst) ->
     #버튼은 비활성화, 마이크 버튼 누르면 변경
@@ -223,7 +223,7 @@ Template.voiceEmr.events
     clickedFlag = false
     $('[name=insert_textarea]').focus()
     stopListening();
-
+    init();
     field = $('[name=pop_emr]:checked').attr('id')
     value = $('[name=insert_textarea]').val()
     unless field?.length > 0 then return alert("입력항목을 선택해주세요.")

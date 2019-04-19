@@ -12,8 +12,8 @@
 var tt = new Transcription();
 
 var dictate = new Dictate({
-		server : "wss://puzzle-ai.com:8021/client/ws/speech",
-		serverStatus : "wss://puzzle-ai.com:8021/client/ws/status",
+		server : "wss://puzzle-ai.com:9223/client/ws/speech",
+		serverStatus : "wss://puzzle-ai.com:9223/client/ws/status",
 //		server : "wss://106.245.241.74:62001/client/ws/speech",
 //		serverStatus : "wss://106.245.241.74:62001/client/ws/status",
 		

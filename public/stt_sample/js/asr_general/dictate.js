@@ -1,8 +1,8 @@
 (function(window){
 
 	// Defaults
-	var SERVER = "wss://puzzle-ai.com:8021/worker/ws/speech";
-	var SERVER_STATUS = "wss://puzzle-ai.com:8021/worker/ws/status";
+	var SERVER = "wss://puzzle-ai.com:9223/worker/ws/speech";
+	var SERVER_STATUS = "wss://puzzle-ai.com:9223/worker/ws/status";
 	var REFERENCE_HANDLER = "https://puzzle-ai.com/dynamic/reference";
 	var CONTENT_TYPE = "content-type=audio/x-raw,+layout=(string)interleaved,+rate=(int)16000,+format=(string)S16LE,+channels=(int)1";
 	// Send blocks 4 x per second as recommended in the server doc.
