@@ -30,9 +30,10 @@ Template.patientList.events
     FlowRouter.go "/roundEnd"
   'click [name=tts_test_btn]': (evt, inst) ->
     cl msg = $("[name=tts_test_inp]").val()
-    Meteor.call 'tts_call', msg, (err, rslt) ->
-      if err then alert err
-      else
-        cl 'TTS전송 완료'
-#  'click [name=robot_move]': (evt, inst) ->
-#    Meteor.call 'robot_move',
+    mUtils.fr_tts msg
+  'click [name=keyon_test_btn]': (evt, inst) ->
+    cl 'keyOn'
+    mUtils.fr_tts msg
+  'click [name=keyoff_test_btn]': (evt, inst) ->
+    cl 'keyOff'
+    mUtils.fr_tts msg

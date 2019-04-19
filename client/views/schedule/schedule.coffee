@@ -79,8 +79,6 @@ Template.schedule.events
     condition.options.skip = 0
     datacontext.condition.set condition
 
-    mUtils.keyboardOn()
-
   'click [name=nextday_tab]': (evt, inst) ->
     $('[name=today_tab]').children().attr('src', '/images/schedule/stab_today.png')
     $('[name=nextday_tab]').children().attr('src', '/images/schedule/stab_nextday_h.png')
@@ -89,8 +87,6 @@ Template.schedule.events
     Meteor.setTimeout ->
       $("[name=dateTab]")[1].click()
     , 100
-
-    mUtils.keyboardOff()
 
   'click [name=dateTab]': (evt, inst) ->
     selDate = $(evt.target).attr('data-day')

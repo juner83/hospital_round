@@ -125,14 +125,17 @@ Date.prototype.clone = -> return new Date @getTime()
 @throwError = (err) ->
   Meteor.call 'throwError', err #err object or string for message
 
+testHome = ->
+  window.parent.postMessage 'goHome', '*'
+  # 버튼 클릭 하셨을 때 이부분 호출
+  return
 
-BtnClickedEvent = (type, parameter) ->
-  obj =
-    'type': type
-    'parameter': parameter
-  str = JSON.stringify(obj)
-  msg = 'BtnClickedEvent' + '$' + str
-  window.parent.postMessage msg, '*'
+testTTS = (_msg) ->
+  parameterObj =
+    'type': 'TTS'
+    'parameter': _msg
+  ttsStrtoSend = JSON.stringify(parameterObj)
+  window.parent.postMessage ttsStrtoSend, '*'
   return
 
 OnScreenKeyboard = (isEnable, languageCode) ->
@@ -140,8 +143,11 @@ OnScreenKeyboard = (isEnable, languageCode) ->
   window.parent.postMessage msg, '*'
   return
 
-
 @mUtils =
+  fr_home: -> testHome()
+  fr_tts: (_msg) -> testTTS(_msg)
+  fr_keyOn: -> OnScreenKeyboard(true, "ko-kr")
+  fr_keyOff: -> OnScreenKeyboard(false, "ko-kr")
   getWeekday: (_yyyymmdd) ->
     date = new Date("#{_yyyymmdd.substring(0,4)}-#{_yyyymmdd.substring(4,6)}-#{_yyyymmdd.substring(6,8)}")
     switch date.getDay()
@@ -152,22 +158,6 @@ OnScreenKeyboard = (isEnable, languageCode) ->
       when 5 then "금요일"
       when 6 then "토요일"
       when 0 then "일요일"
-  GoMain: ->
-#    str = '{"type":"' + '1_Main?init","parameter":""}'
-    BtnClickedEvent 'home_btn', ''
-#    location.reload()
-#    location.href = str
-#    OnSetUI str
-    return
-  keyboardOn: ->
-    OnScreenKeyboard(true, "ko-kr")
-  keyboardOff: ->
-    OnScreenKeyboard(false, "ko-kr")
-  CallTTS: (ChatAnswer) ->
-    parameterObj = 'vrReply': ''
-    parameterObj.vrReply = ChatAnswer
-    BtnClickedEvent 'roundTTS_btn', JSON.stringify(parameterObj)
-    return
 
   getGroup_ids: (userInfo) ->
     #admin / company / center 의 userInfo를 넘기면 하위의 gruop_ids를 찾아서 [] return

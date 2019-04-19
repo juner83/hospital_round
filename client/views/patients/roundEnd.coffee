@@ -14,10 +14,11 @@ Template.roundEnd.events
   'click [name=btnRoundEnd]': (evt, inst) ->
     evt.preventDefault()
     $("[name=roundEndPopup]").css('display', 'block')
-    Meteor.call 'tts_call', '정상적으로 처리되었습니다. 감사합니다.', (err, rslt) -> if err then alert err
+    mUtils.fr_tts '정상적으로 처리되었습니다. 감사합니다.'
 
   'click [name=confirmRoundEnd]': (evt, inst) ->
     Meteor.call 'robot_move', '0', '0', (err, rslt) -> if err then alert err
     FlowRouter.go '/Sungmo_round_0317/1_Main/round_main.html'
     location.reload()
     Meteor.call 'serverLogout', Meteor.user()._id, (err, rslt) ->
+    mUtils.fr_home()

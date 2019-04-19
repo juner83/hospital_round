@@ -5,6 +5,7 @@ Template.header.events
     FlowRouter.go '/Sungmo_round_0317/1_Main/round_main.html'
     location.reload()
     Meteor.call 'serverLogout', Meteor.user()._id, (err, rslt) ->
+    mUtils.fr_home()
 
   'click [name=reqVideo]': (evt, inst) ->
 #    mUtils.CallTTS '협진을 요청하겠습니다. 잠시만 기다리십시오.'

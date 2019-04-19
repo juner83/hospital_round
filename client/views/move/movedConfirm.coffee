@@ -5,7 +5,7 @@ FlowRouter.route '/movedConfirm', action: ->
 
 Template.movedConfirm.onCreated ->
 Template.movedConfirm.onRendered ->
-  Meteor.call 'tts_call', mDefine.cstInfo.get()?.이름+'님의 회진 장소에 도착했습니다. 회진을 진행하시겠습니까?', (err, rslt) -> if err then alert err
+  mUtils.fr_tts mDefine.cstInfo.get()?.이름+'님의 회진 장소에 도착했습니다. 회진을 진행하시겠습니까?'
 
 Template.movedConfirm.helpers
   고객명: -> return mDefine.cstInfo.get()?.이름
