@@ -33,7 +33,7 @@ Template.patientList.events
     mUtils.fr_tts msg
   'click [name=keyon_test_btn]': (evt, inst) ->
     cl 'keyOn'
-    mUtils.fr_tts msg
+    mUtils.fr_keyOn()
   'click [name=keyoff_test_btn]': (evt, inst) ->
     cl 'keyOff'
-    mUtils.fr_tts msg
+    mUtils.fr_keyOff()

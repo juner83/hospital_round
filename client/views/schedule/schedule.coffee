@@ -67,7 +67,7 @@ Template.schedule.helpers
 
 Template.schedule.events
   'click [name=goToHome]': (evt, inst) ->
-    mUtils.GoMain()
+    mUtils.fr_home()
 
   'click [name=today_tab]': (evt, inst) ->
     $('[name=today_tab]').children().attr('src', '/images/schedule/stab_today_h.png')

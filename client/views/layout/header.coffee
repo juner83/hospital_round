@@ -1,7 +1,6 @@
 Template.header.events
   'click [name=btnRoundEnd]': (evt, inst) ->
     evt.preventDefault()
-#    mUtils.GoMain()
     FlowRouter.go '/Sungmo_round_0317/1_Main/round_main.html'
     location.reload()
     Meteor.call 'serverLogout', Meteor.user()._id, (err, rslt) ->
