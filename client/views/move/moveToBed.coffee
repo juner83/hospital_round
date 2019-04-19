@@ -27,11 +27,11 @@ Template.moveToBed.events
     mUtils.fr_tts '응급상황 발생으로 기동중지 합니다. 좌우 화살표를 선택하여 회피방향을 설정해주십시오.'
 
   'click [name=avoidLeft]': (evt, inst) ->
-    Meteor.call 'robot_shunt', 'left', (err, rslt) -> if err then alert err
+    Meteor.call 'robot_shunt', 'right', (err, rslt) -> if err then alert err
     mUtils.fr_tts '로봇이 응급상황 회피중입니다. 응급상황 종료시까지 기다려주세요.'
 
   'click [name=avoidRight]': (evt, inst) ->
-    Meteor.call 'robot_shunt', 'right', (err, rslt) -> if err then alert err
+    Meteor.call 'robot_shunt', 'left', (err, rslt) -> if err then alert err
     mUtils.fr_tts '로봇이 응급상황 회피중입니다. 응급상황 종료시까지 기다려주세요.'
 
   'click [name=avoidEnd]': (evt, inst) ->
