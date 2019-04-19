@@ -100,7 +100,7 @@ clearLog = ->
 
 clearTranscription = ->
   tt = new Transcription
-  $('#trans').val ''
+  $('#round_trans_area').val ''
   return
 
 startListening = ->
@@ -223,7 +223,6 @@ Template.voiceEmr.events
     clickedFlag = false
     $('[name=insert_textarea]').focus()
     stopListening();
-    init();
     field = $('[name=pop_emr]:checked').attr('id')
     value = $('[name=insert_textarea]').val()
     unless field?.length > 0 then return alert("입력항목을 선택해주세요.")
@@ -233,6 +232,7 @@ Template.voiceEmr.events
     datacontext.curData.set curData
     $('#popup').css('display', 'none')
     $('.pop03').css('display', 'none')
+    clearTranscription()  #음성저장내용삭
     mUtils.fr_keyOff();
   'click [name=pop_emr]': (evt, inst) ->
     field = $('[name=pop_emr]:checked').attr('id')
