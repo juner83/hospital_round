@@ -202,6 +202,8 @@ Template.voiceEmr.events
         FlowRouter.go '/moveToBed'
 
   'click [name=insert_write]': (evt, inst) ->
+    field = $('[name=pop_emr]:checked').attr('id')
+    unless field?.length > 0 then return alert("입력항목을 선택해주세요.")
     clickedFlag = false
     $('[name=insert_textarea]').focus()
     # stopListening();
