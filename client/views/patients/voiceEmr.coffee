@@ -194,7 +194,7 @@ Template.voiceEmr.events
   'click [name=goToCstList]': ->
     FlowRouter.go '/patientList'
   'click [name=goToNextCst]': (evt, inst) ->
-    Meteor.call 'moveToNextCst', (err, rslt) ->
+    Meteor.call 'moveToNextCst', mDefine.cstInfo.get()._id, (err, rslt) ->
       if err then alert err
       else
         cl rslt

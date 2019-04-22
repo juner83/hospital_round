@@ -5,17 +5,19 @@ Meteor.methods
         'services.resume.loginTokens': []
   setDefaultCstInfo: ->
     CollectionCustomers.findOne _id: '1'
-  moveToNextCst: ->
-    CollectionCustomers.findOne _id: '2'
+  moveToNextCst: (_curId) ->
+    _id = parseInt(_curId)
+    cl _id = do -> if _id is "4" then return "1" else return (_id + 1).toString()
+    CollectionCustomers.findOne _id: _id
   reqVideoSync: ->
     syncCall = Meteor.wrapAsync(Meteor.call, Meteor)
 
     try
       result = syncCall 'reqVideo'
-      if result.code? and (result.code is 'ECONNREFUSED')
-        throw new Meteor.Error '비디오 서버연결 이상으로 협진 진행이 불가합니다. #4001'
-      else
-        cl 'video request complete'
+#      if result.code? and (result.code is 'ECONNREFUSED')
+#        throw new Meteor.Error '비디오 서버연결 이상으로 협진 진행이 불가합니다. #4001'
+#      else
+#        cl 'video request complete'
     catch e
       throw new Meteor.Error '비디오 서버연결 이상으로 협진 진행이 불가합니다. #4001'
 

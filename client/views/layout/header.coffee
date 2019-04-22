@@ -12,3 +12,10 @@ Template.header.events
       if err then alert err
       else
         cl '협진요청 완료'
+
+  'click [name=voiceEmr]': (evt, inst) ->
+    cl cstInfo = mDefine.cstInfo.get()
+    unless cstInfo then Meteor.call 'setDefaultCstInfo', (err, rslt) ->
+      mDefine.cstInfo.set rslt
+      FlowRouter.go '/voiceEmr'
+    else FlowRouter.go '/voiceEmr'
