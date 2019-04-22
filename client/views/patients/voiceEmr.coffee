@@ -161,14 +161,14 @@ Template.voiceEmr.onRendered ->
 
     return
 
-  $(document.ready) ->
-    cl "document ready"
-    #stt 내용 수신
-    window.addEventListener('message', messagesHandler, false);
-    messagesHandler = (evt) ->
-      cl 'message is comming from parent'
-      console.log(evt.data)
-      $('#round_trans_area').val evt.data
+  messagesHandler = (evt) ->
+    cl 'message is comming from parent'
+    #{type: "stt_text", value: "음성변환text"}
+    if evt.data?.type is "stt_text"
+      console.log(evt.data.value)
+      $('#round_trans_area').val evt.data.value
+
+  addEvent window, 'message', messagesHandler, false
 
 Template.voiceEmr.helpers
   cstInfo: -> if (info=mDefine.cstInfo.get())? then return info
