@@ -1,6 +1,3 @@
-isNowRecording = new ReactiveVar(false)
-Template.header.helpers
-  nowRecording: -> isNowRecording.get()
 Template.header.events
   'click [name=btnRoundEnd]': (evt, inst) ->
     evt.preventDefault()
