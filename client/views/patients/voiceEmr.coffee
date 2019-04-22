@@ -161,11 +161,15 @@ Template.voiceEmr.onRendered ->
 
     return
 
-  #stt 내용 수신
-  window.addEventListener('message', messagesHandler);
-  messagesHandler = (evt) ->
-    console.log(evt.data)
-    $('#round_trans_area').val evt.data
+  $(document.ready) ->
+    cl "document ready"
+    #stt 내용 수신
+    window.addEventListener('message', messagesHandler, false);
+    messagesHandler = (evt) ->
+      cl 'message is comming from parent'
+      console.log(evt.data)
+      $('#round_trans_area').val evt.data
+
 Template.voiceEmr.helpers
   cstInfo: -> if (info=mDefine.cstInfo.get())? then return info
   emrs: -> CollectionVoiceEMRs.find({}, {sort: yymmdd: 1})
@@ -217,6 +221,7 @@ Template.voiceEmr.events
       clickedFlag = false
       $('[name=insert_textarea]').focus()
 #      stopListening();
+      $("#mic_image_tag").attr('src', '/images/common/h_voice.png')
       window.parent.postMessage 'stt_stop', '*'
     else
       x = document.getElementById("myAudio")
@@ -224,7 +229,8 @@ Template.voiceEmr.events
       clickedFlag = true
 #      custom_cancel(); #cancle()은 함수 충돌인지 호출시 오류가나서 이름을 변경함, 이걸 넣어줘야 멈췄다 재실행 할때 되더라(이유모름 내부적으로 그렇게 하길래)
 #      startListening();
-    window.parent.postMessage 'stt_start', '*'
+      $("#mic_image_tag").attr('src', '/images/common/video.webm')
+      window.parent.postMessage 'stt_start', '*'
 
   'click [name=insert_save]': (evt, inst) ->
     clickedFlag = false
