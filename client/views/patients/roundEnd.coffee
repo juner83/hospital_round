@@ -20,5 +20,5 @@ Template.roundEnd.events
     Meteor.call 'robot_move', '0', '0', (err, rslt) -> if err then alert err
     FlowRouter.go '/Sungmo_round_0317/1_Main/round_main.html'
     location.reload()
-    Meteor.call 'serverLogout', Meteor.user()._id, (err, rslt) ->
+#    Meteor.call 'serverLogout', Meteor.user()._id, (err, rslt) ->
     mUtils.fr_home()

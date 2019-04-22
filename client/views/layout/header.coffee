@@ -1,9 +1,12 @@
+isNowRecording = new ReactiveVar(false)
+Template.header.helpers
+  nowRecording: -> isNowRecording.get()
 Template.header.events
   'click [name=btnRoundEnd]': (evt, inst) ->
     evt.preventDefault()
     FlowRouter.go '/Sungmo_round_0317/1_Main/round_main.html'
     location.reload()
-    Meteor.call 'serverLogout', Meteor.user()._id, (err, rslt) ->
+#    Meteor.call 'serverLogout', Meteor.user()._id, (err, rslt) ->
     mUtils.fr_home()
 
   'click [name=reqVideo]': (evt, inst) ->

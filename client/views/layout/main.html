@@ -1,5 +1,5 @@
 <template name="main">
-	{{#if currentUser}}
+	<!--{{#if currentUser}}-->
 
 		<div id="wrapper">
 
@@ -11,10 +11,6 @@
 				{{>Template.dynamic template=content}}
 			</div>
 
-			<!--{{#if isLayerPopupOpen}}-->
-				<!--{{> layerPopup temp=null}}-->
-			<!--{{/if}}-->
-
 			{{#if hasFooter}}
 				{{> footer}}
 			{{/if}}
@@ -23,12 +19,12 @@
 
 		</div>
 
-	{{else}}
+	<!--{{else}}-->
 
-		<div id="wrapper">
-			{{> login}}
-			{{> footer}}
-		</div>
+		<!--<div id="wrapper">-->
+			<!--{{> login}}-->
+			<!--{{> footer}}-->
+		<!--</div>-->
 
-	{{/if}}
+	<!--{{/if}}-->
 </template>
