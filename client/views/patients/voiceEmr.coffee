@@ -145,15 +145,12 @@ Template.voiceEmr.onCreated ->
 
 clickedFlag = false
 Template.voiceEmr.onRendered ->
-  init()  #STT init
+#  init()  #STT init
+  window.parent.postMessage 'stt_init', '*'
 
   addEvent = (element, eventName, callback) ->
     if element.addEventListener
       element.addEventListener eventName, callback, false
-    # else if element.attachEvent
-    #   element.attachEvent 'on' + eventName, callback
-    # else
-    #   element['on' + eventName] = callback
     return
 
   addEvent document, 'keypress', (e) ->
@@ -164,6 +161,11 @@ Template.voiceEmr.onRendered ->
 
     return
 
+  #stt 내용 수신
+  window.addEventListener('message', messagesHandler);
+  messagesHandler = (evt) ->
+    console.log(evt.data)
+    $('#round_trans_area').val evt.data
 Template.voiceEmr.helpers
   cstInfo: -> if (info=mDefine.cstInfo.get())? then return info
   emrs: -> CollectionVoiceEMRs.find({}, {sort: yymmdd: 1})
@@ -214,27 +216,31 @@ Template.voiceEmr.events
     if clickedFlag
       clickedFlag = false
       $('[name=insert_textarea]').focus()
-      stopListening();
+#      stopListening();
+      window.parent.postMessage 'stt_stop', '*'
     else
       x = document.getElementById("myAudio")
       x.play()
       clickedFlag = true
-      custom_cancel(); #cancle()은 함수 충돌인지 호출시 오류가나서 이름을 변경함, 이걸 넣어줘야 멈췄다 재실행 할때 되더라(이유모름 내부적으로 그렇게 하길래)
-      startListening();
+#      custom_cancel(); #cancle()은 함수 충돌인지 호출시 오류가나서 이름을 변경함, 이걸 넣어줘야 멈췄다 재실행 할때 되더라(이유모름 내부적으로 그렇게 하길래)
+#      startListening();
+    window.parent.postMessage 'stt_start', '*'
+
   'click [name=insert_save]': (evt, inst) ->
     clickedFlag = false
     $('[name=insert_textarea]').focus()
-    stopListening();
     field = $('[name=pop_emr]:checked').attr('id')
     value = $('[name=insert_textarea]').val()
     unless field?.length > 0 then return alert("입력항목을 선택해주세요.")
+#    stopListening();
+#    clearTranscription()  #음성저장내용삭
+    window.parent.postMessage 'stt_save', '*'
     datacontext = inst.data
     curData = datacontext.curData.get()
     curData[field] = value
     datacontext.curData.set curData
     $('#popup').css('display', 'none')
     $('.pop03').css('display', 'none')
-    clearTranscription()  #음성저장내용삭
     mUtils.fr_keyOff();
   'click [name=pop_emr]': (evt, inst) ->
     field = $('[name=pop_emr]:checked').attr('id')
