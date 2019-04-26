@@ -2,161 +2,18 @@
 <div id="patientDetail">
 
 	<div class="contents p_pt">
-		<!-- 환자정보 시작 -->
-		<div class="round_p_list_box">
-			<h2>환자정보</h2>
-		</div>
-		<div class="patient_list">
-			<table>
-				<caption>환자정보</caption>
-				<!--<col style="width:64px" />-->
-				<col style="width:74px" />
-				<col style="width:94px" />
-				<col style="width:104px" />
-				<col style="" />
-				<col style="width:170px" />
-				<col style="width:100px" />
-				<col style="width:100px" />
-				<thead>
-				<tr class="pname p_title">
-					<!--<th scope="col" class="b_left">번호</th>-->
-					<th scope="col" class="b_left">병실</th>
-					<th scope="col" class="b_left">성명</th>
-					<th scope="col" class="b_left">등록번호</th>
-					<th scope="col" class="b_left">진단명</th>
-					<th scope="col" class="b_left">수술명</th>
-					<th scope="col" class="b_left">HOD</th>
-					<th scope="col" class="b_left">POD</th>
-				</tr>
-				</thead>
-				<tbody>
-				{{#with cstInfo}}
-				<tr class="pname">
-					<!--<td class="b_left">1</td>-->
-					<td class="b_left">{{병실}}</td>
-					<td class="b_left">{{이름}}</td>
-					<td class="b_left">{{등록번호}}</td>
-					<td class="b_left">{{진단명}}</td>
-					<td class="b_left">{{수술명}}</td>
-					<td class="b_left">{{HOD}}</td>
-					<td class="b_left">{{POD}}</td>
-				</tr>
-				{{/with}}
-				</tbody>
-			</table>
-		</div>
-		<ul class="patient_x">
-			<li><img src="/images/round/patient/x_sample01.jpg" width="398" height="418" name="imgModal"/></li>
-			<li><img src="/images/round/patient/x_sample02.jpg" width="398" height="418" name="imgModal"/></li>
-		</ul>
-		<!-- 환자정보 끝 -->
-		<!-- 검사정보 시작 -->
-		<div class="round_p_list_box">
-			<h2>검사정보</h2>
-		</div>
 		<div class="checkup_info">
 			<div>
 				<ul class="tabs">
-					<li class="active" rel="tab1">혈액검사</li>
-					<li rel="tab2">세균배양검사</li>
-					<li rel="tab3">조직검사</li>
-					<li class="nU_btn">nU Board</li>
+					<li class="active" rel="tab1">입원초진</li>
+					<li rel="tab2">수술기록</li>
+					<li rel="tab3">경과기록</li>
+					<li class="nU_btn"><img src="/temp/voice_emr.png" style="margin-left: -15px; margin-top: -12px;"></li>
 				</ul>
 			</div>
 			<div class="tab_container">
 				<!-- 검사정보 리스트 -->
-				<div id="tab1" class="patient_list tab_contents">
-					<!-- 검사정보 리스트 넣어주세요. -->
-					<table>
-						<caption>검사정보</caption>
-						<col style="width:180px" />
-						<col style="" />
-						<col style="width:130px" />
-						<col style="width:80px" />
-						<col style="width:130px" />
-						<col style="width:150px" />
-						<thead>
-						<tr class="pname p_title">
-							<th scope="col" class="b_left">진단일</th>
-							<th scope="col" class="b_left">검사명</th>
-							<th scope="col" class="b_left">결과</th>
-							<th scope="col" class="b_left">판정</th>
-							<th scope="col" class="b_left">단위</th>
-							<th scope="col" class="b_left">참고치</th>
-						</tr>
-						</thead>
-						<tbody>
-						{{#each 검사 '혈액검사'}}
-						<tr class="pname">
-							<td class="b_left">{{진단일}}</td>
-							<td class="b_left">{{검사명}}</td>
-							<td class="b_left">{{결과}}</td>
-							<td class="b_left">{{판정}}</td>
-							<td class="b_left">{{단위}}</td>
-							<td class="b_left">{{참고치}}</td>
-						</tr>
-						{{/each}}
-						</tbody>
-					</table>
-
-				</div>
-
-				<div id="tab2" class="patient_list tab_contents">
-					<table>
-						<caption>검사정보</caption>
-						<col style="width:180px" />
-						<col style="" />
-						<col style="width:325px" />
-						<col style="width:180px" />
-						<thead>
-						<tr class="pname p_title">
-							<th scope="col" class="b_left">진단일</th>
-							<th scope="col" class="b_left">검사명</th>
-							<th scope="col" class="b_left">결과</th>
-							<th scope="col" class="b_left">보고일</th>
-						</tr>
-						</thead>
-						<tbody>
-						{{#each 검사 '세균배양검사'}}
-							<tr class="pname">
-								<td class="b_left">{{진단일}}</td>
-								<td class="b_left">{{검사명}}</td>
-								<td class="b_left">{{결과}}</td>
-								<td class="b_left">{{보고일}}</td>
-							</tr>
-						{{/each}}
-						</tbody>
-					</table>
-				</div>
-				<div id="tab3" class="patient_list tab_contents">
-					<table>
-						<caption>검사정보</caption>
-						<col style="width:180px" />
-						<col style="" />
-						<col style="width:250px" />
-						<col style="width:130px" />
-						<thead>
-						<tr class="pname p_title">
-							<th scope="col" class="b_left">진단일</th>
-							<th scope="col" class="b_left">검사명</th>
-							<th scope="col" class="b_left">세부검체</th>
-							<th scope="col" class="b_left">결과</th>
-						</tr>
-						</thead>
-						<tbody>
-						{{#each 검사 '조직검사'}}
-							<tr class="pname">
-								<td class="b_left">{{진단일}}</td>
-								<td class="b_left">{{검사명}}</td>
-								<td class="b_left">{{세부검체}}</td>
-								<td class="b_left" name="pop" data-content="{{결과}}">
-									<img src="/images/round/patient/btn_detail.png" alt="자세히보기" data-content="{{결과}}">
-								</td>
-							</tr>
-						{{/each}}
-						</tbody>
-					</table>
-				</div>
+				<img src="{{imageName}}" style="margin-top: 60px;s">
 				<!-- 페이지 끝 -->
 			</div>
 			<!-- 검사정보 끝 -->

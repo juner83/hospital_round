@@ -56,19 +56,7 @@
 			<div class="round_p_list_box">
 				<h2>Voice EMR 기록</h2>
 			</div>
-			<!-- Voice EMR 기록 버튼 -->
-			<div class="button_box">
-				<ul class="button_con02">
-					{{#each emrs}}
-					<li>
-						<a href="" class="btn_area02" data-id="{{_id}}" name="btnPastEMR">
-							<span class="btn_txt02" data-id="{{_id}}">{{yymmdd}}</span>
-						</a>
-					</li>
-					{{/each}}
-				</ul>
-			</div>
-			<!-- //Voice EMR 기록 버튼 -->
+
 			<!-- Voice EMR 테이블 -->
 			<div class="voiceemr_list">
 				{{#with curData}}
@@ -212,7 +200,7 @@
 						<li>
 							<ul class="radio_f">
 								<li>
-									<input type="radio" name="pop_emr" id="so" /><label for="so"></label><span class="va_m">S&nbsp;O</span>
+									<input type="radio" name="pop_emr" id="so" /><label for="so"><span class="va_m">S&O</span></label>
 								</li>
 								<li>
 									<input type="radio" name="pop_emr" id="a" /><label for="a"><span class="va_m">A</span></label>

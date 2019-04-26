@@ -8,10 +8,15 @@ FlowRouter.route '/patientDetail', action: ->
 Template.patientDetail.onCreated ->
   inst = @
   inst.subscribe 'pub_results'
+  datacontext = inst.data
+  datacontext.imageName = new ReactiveVar(false)
 
 Template.patientDetail.onRendered ->
   ##tab control
   $(document).ready ->
+    cl 1
+    $('.tabs > li').click()
+    cl 2
     $('.tab_contents').hide()
     $('.tab_contents:first').show()
     $('ul.tabs li').click ->
@@ -28,6 +33,10 @@ Template.patientDetail.onRendered ->
 Template.patientDetail.helpers
   cstInfo: -> if (info=mDefine.cstInfo.get())? then return info
   검사: (param) -> CollectionResults.find({검사종류: param},{limit: 4})
+  imageName: ->
+    datacontext = Template.instance().data
+    return datacontext?.imageName.get()
+
 Template.patientDetail.events
   'click [name=imgModal]': (evt, inst) ->
     evt.preventDefault()
@@ -45,3 +54,14 @@ Template.patientDetail.events
     $(".pop01").css('display', "none")
     $(".pop02").css('display', "block")
 
+  'click .tabs > li': (evt, inst) ->
+    if $(evt.target).parent().hasClass('nU_btn')
+      FlowRouter.go '/voiceEmr'
+    else
+      idNo  = mDefine.cstInfo.get()?._id
+      if !idNo then idNo = "1"
+      tabNo = $(evt.target).attr('rel')?.substr(3,3)
+      if !tabNo then tabNo = "1"
+      datacontext = inst.data
+      cl "/temp/#{idNo}_#{tabNo}.jpg"
+      datacontext.imageName.set "/temp/#{idNo}_#{tabNo}.jpg"

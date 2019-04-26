@@ -9,6 +9,7 @@ Template.patientList.onCreated ->
   mDefine.cstInfo.set null
   inst = @
   inst.subscribe 'pub_customers'
+  unless Meteor.user() then Meteor.loginWithPassword('admin', 'admin123@')
 
 Template.patientList.onRendered ->
 Template.patientList.helpers
