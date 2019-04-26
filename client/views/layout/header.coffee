@@ -8,6 +8,7 @@ Template.header.events
 
   'click [name=reqVideo]': (evt, inst) ->
 #    mUtils.CallTTS '협진을 요청하겠습니다. 잠시만 기다리십시오.'
+    mUtils.fr_tts '협진을 요청중입니다. 잠시만 기다려 주십시오.'
     Meteor.call 'reqVideoSync', (err, rslt) ->
       if err then alert err
       else
