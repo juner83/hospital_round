@@ -13,7 +13,12 @@
 			</div>
 			<div class="tab_container">
 				<!-- 검사정보 리스트 -->
-				<img src="{{imageName}}" style="margin-top: 60px;s">
+				<img src="{{imageName}}" usemap="#{{imageName}}" style="margin-top: 60px;">
+				<map name="{{imageName}}">
+					{{#each imageMapInfo imageName}}
+					<area shape="rect" coords="{{coords}}" href="#" onclick="imgPopup({{param}})">
+					{{/each}}
+				</map>
 				<!-- 페이지 끝 -->
 			</div>
 			<!-- 검사정보 끝 -->

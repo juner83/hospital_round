@@ -1,3 +1,6 @@
+@imgPopup = (_path) ->
+  alert '' + _path
+
 FlowRouter.route '/patientDetail', action: ->
   BlazeLayout.render 'main',
     content: 'patientDetail'
@@ -36,6 +39,22 @@ Template.patientDetail.helpers
   imageName: ->
     datacontext = Template.instance().data
     return datacontext?.imageName.get()
+  imageMapInfo: (mapName) ->
+    switch mapName
+      when '/temp/1_3.jpg' then return [
+        {
+          coords: '667,218,902,449'
+          param: '1' #팝업에 띄울 이미지 경로 + 이름
+        }
+        {
+          coords: '666,458,902,685'
+          param: '2' #팝업에 띄울 이미지 경로 + 이름
+        }
+      ]
+#      when '/temp/1_3.jpg' then return []
+#      when '/temp/1_3.jpg' then return []
+#      when '/temp/1_3.jpg' then return []
+
 
 Template.patientDetail.events
   'click [name=imgModal]': (evt, inst) ->
