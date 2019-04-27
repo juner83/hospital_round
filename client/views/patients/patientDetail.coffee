@@ -49,31 +49,31 @@ Template.patientDetail.helpers
       when '/temp1/1_3.jpg' then return [
         {
           coords: '693,228,935,463'
-          param: "'/temp1/배지웅_경과기록1.jpg'" #팝업에 띄울 이미지 경로 + 이름
+          param: "'/temp1/배_1.jpg'" #팝업에 띄울 이미지 경로 + 이름
         }
         {
           coords: '695,474,934,706'
-          param: "'/temp1/배지웅_경과기록2.jpg'" #팝업에 띄울 이미지 경로 + 이름
+          param: "'/temp1/배_2.jpg'" #팝업에 띄울 이미지 경로 + 이름
         }
         {
           coords: '696,718,933,898'
-          param: "'/temp1/배지웅_경과기록3.jpg'" #팝업에 띄울 이미지 경로 + 이름
+          param: "'/temp1/배_3.jpg'" #팝업에 띄울 이미지 경로 + 이름
         }
       ]
       when '/temp1/2_1.jpg' then return [
         {
           coords: '537,239,907,553'
-          param: "'/temp1/심재원_입원초진.jpg'" #팝업에 띄울 이미지 경로 + 이름
+          param: "'/temp1/심_1.jpg'" #팝업에 띄울 이미지 경로 + 이름
         }
       ]
       when '/temp1/2_3.jpg' then return [
         {
           coords: '604,216,913,447'
-          param: "'/temp1/심재원_경과기록_2.jpg'" #팝업에 띄울 이미지 경로 + 이름
+          param: "'/temp1/심_2.jpg'" #팝업에 띄울 이미지 경로 + 이름
         }
         {
           coords: '607,466,912,697'
-          param: "'/temp1/심재원_경과기록_1.jpg'" #팝업에 띄울 이미지 경로 + 이름
+          param: "'/temp1/심_3.jpg'" #팝업에 띄울 이미지 경로 + 이름
         }
       ]
 

@@ -106,7 +106,6 @@ a {text-decoration:none; color:#191919;}
 #popup .pop02 {z-index:220;}
 #popup .popzoom .zoom_detail {width:930px; height:1074px; background-color:#fff; padding:30px; box-sizing:border-box;}
 #popup .popzoom .zoom_detail .detail_txt {font-size:25px; overflow:hidden;}
-#popup .popzoom .zoom_detail .detail_txt li b {width:110px; }
 #popup .popzoom .zoom_detail .detail_txt li p {width:750px; line-height:1.3; margin-top:-3px; }
 #popup .popzoom .zoom_detail .detail_txt li > * {float:left;}
 #popup .popzoom .zoom_detail .detail_txt li + li {padding-top:50px;}
