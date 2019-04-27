@@ -180,13 +180,13 @@
 						</li>
 						<li class="imgswap">
 							<a name="insert_mic">
+							{{#if isRecording}}
+								<img src="/images/round/voice/bnt_voice_s.png" alt="음성입력" />
+								<img src="/images/round/voice/bnt_voice_h.png" alt="음성입력" />
+							{{else}}
 								<img src="/images/round/voice/bnt_voice.png" alt="음성입력" />
 								<img src="/images/round/voice/bnt_voice_h.png" alt="음성입력" />
-							</a>
-						</li>
-						<li class="selected" style="display:none;"><!-- 음성녹음시 활성화 -->
-							<a>
-								<img src="/images/round/voice/bnt_voice_s.png" alt="음성입력" />
+							{{/if}}
 							</a>
 						</li>
 						<li class="imgswap">
