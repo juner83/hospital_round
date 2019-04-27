@@ -101,7 +101,7 @@ Template.patientDetail.events
     else
       idNo  = mDefine.cstInfo.get()?._id
       if !idNo then idNo = "1"
-      if (parseInt(idNo) % 2) is 0 then idNo = "1" else idNo = "2"
+      if (parseInt(idNo) % 2) is 0 then idNo = "2" else idNo = "1"
       tabNo = $(evt.target).attr('rel')?.substr(3,3)
       if !tabNo then tabNo = "1"
       datacontext = inst.data
