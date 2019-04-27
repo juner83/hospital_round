@@ -8,12 +8,12 @@
 					<li class="active" rel="tab1">입원초진</li>
 					<li rel="tab2">수술기록</li>
 					<li rel="tab3">경과기록</li>
-					<li class="nU_btn"><img src="/temp/voice_emr.png" style="margin-left: -15px; margin-top: -12px;"></li>
+					<li class="nU_btn"><img src="/temp1/voice_emr.png" style="margin-left: -15px; margin-top: -12px;"></li>
 				</ul>
 			</div>
 			<div class="tab_container">
 				<!-- 검사정보 리스트 -->
-				<img src="{{imageName}}" usemap="#{{imageName}}" style="margin-top: 60px;">
+				<img src="{{imageName}}" usemap="#{{imageName}}" >
 				<map name="{{imageName}}">
 					{{#each imageMapInfo imageName}}
 					<area shape="rect" coords="{{coords}}" href="#" onclick="imgPopup({{param}})">
