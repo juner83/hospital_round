@@ -143,11 +143,19 @@ OnScreenKeyboard = (isEnable, languageCode) ->
   window.parent.postMessage msg, '*'
   return
 
+voiceCommand = (_msg) ->
+  parameterObj =
+    'type': 'voiceCommand'
+    'parameter': _msg
+  str = JSON.stringify(parameterObj)
+  window.parent.postMessage str, '*'
+
 @mUtils =
   fr_home: -> testHome()
   fr_tts: (_msg) -> testTTS(_msg)
   fr_keyOn: -> OnScreenKeyboard(true, "ko-kr")
   fr_keyOff: -> OnScreenKeyboard(false, "ko-kr")
+  fr_voiceCommand: (_msg) -> voiceCommand(_msg)
   getWeekday: (_yyyymmdd) ->
     date = new Date("#{_yyyymmdd.substring(0,4)}-#{_yyyymmdd.substring(4,6)}-#{_yyyymmdd.substring(6,8)}")
     switch date.getDay()

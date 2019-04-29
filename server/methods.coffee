@@ -31,3 +31,32 @@ Meteor.methods
       obj: {days: distinctData}
       arr: schedules
     }
+
+  getVoiceCommand: (_msg) ->
+    try
+      result = HTTP.call 'POST', 'http://localhost:64003/chat/message', {
+        data: {
+          "cid": "web_5c9c05de-f1ab-4a8f-ad58-850e571d6932",
+          "type": "text",
+          "msg": _msg
+        }
+      }
+      # cl result
+    catch e
+      throw new Meteor.Error '음성커맨드 서버 오류. #5001'
+    return result
+
+  # chatbot_voice_command: (_msg) ->
+  #   HTTP.call 'POST', 'http://localhost:64003/chat/message', {
+  #     data: {
+  #       "cid": "web_5c9c05de-f1ab-4a8f-ad58-850e571d6932",
+  #       "type": "text",
+  #       "msg": _msg
+  #     }
+  #   }, (err, rslt) ->
+  #     if err then cl err
+  #     else
+  #       cl '2222222222222222222222'
+  #       cl rslt
+  #       return rslt
+    

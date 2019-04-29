@@ -1,6 +1,11 @@
 <template name="header">
 	<div id="header">
 		<div class="header">
+				<audio id="myAudio">
+						<source src="/sounds/vrsound.wav" type="audio/wav">
+						<!--Your browser does not support the audio element.-->
+					</audio>
+			
 			<div class="h_patient">
 				<a href="/patientList"><img src="/images/common/h_patient.png" alt="환자" /></a>
 			</div>
@@ -13,7 +18,7 @@
 				<a href="" name="reqVideo"><img src="/images/common/h_doctor.png" alt="의사"  /></a>
 			</div>
 			<div class="h_mic">
-				<a href="">
+				<a href="" name="voiceCommand">
 					<img src="/images/common/h_mic.png" alt="마이크" />
 				</a>
 			</div>

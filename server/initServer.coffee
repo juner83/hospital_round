@@ -9,6 +9,18 @@ Meteor.startup ->
       이름: 'master'
     Accounts.createUser options
 
+  #  call = Meteor.wrapAsync Meteor.call, Meteor
+  # HTTP.call 'POST', 'http://localhost:64003/chat/message', {
+  #   data: {
+  #     "cid": "web_5c9c05de-f1ab-4a8f-ad58-850e571d6932",
+  #     "type": "text",
+  #     "msg": "환자리스트"
+  #   }
+  # }, (err, rslt) ->
+  #   if err then cl err
+  #   else cl rslt
+
+
 
   #  call = Meteor.wrapAsync Meteor.call, Meteor
   #  try
