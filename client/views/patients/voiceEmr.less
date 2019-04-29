@@ -15,7 +15,7 @@
   .contents .voiceemr_list .vt_title {height:70px; background-color:#737d91; color:#fff; font-size:25px; text-align:left;}
   .contents .voiceemr_list .vall {height:170px; background-color:#fff;}
   .contents .voiceemr_list .vall .vname {font-size:30px; font-weight:700; text-align:center;}
-  .contents .voiceemr_list .vall .vtxt {font-size:22px; text-align:left; line-height:1.5; padding:25px; vertical-align:top;}
+  .contents .voiceemr_list .vall .vtxt {font-size:30px; text-align:left; line-height:1.5; padding:25px; vertical-align:top;}
 
 
   /* 팝업 - Voice EMR 전체팝업 bg */
@@ -57,7 +57,7 @@
   #popup .pop03 .input_record .radio_box .radio_s > li {float:left; width:280px;}
 
   /*텍스트 영역*/
-  #popup .pop03 .input_record .noresize {resize:none; width:100%; height:550px; font-size:22px; line-height:1.3; padding:30px; margin-bottom:50px; box-sizing:border-box;}
+  #popup .pop03 .input_record .noresize {resize:none; width:100%; height:550px; font-size:30px; line-height:1.3; padding:30px; margin-bottom:50px; box-sizing:border-box;}
 
 
   /* 회진계속팝업 H1530 */
@@ -95,6 +95,15 @@
       }
     }
   }
+
+  input[type="radio"] {
+    width:30px; height:30px; vertical-align:middle;
+  }
+  input[type="radio"]:checked + label > span {
+    color: #005aff;
+  }
+  .text-right {text-align: right;}
+
 }
 
 //#voiceEmr {

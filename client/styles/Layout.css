@@ -27,7 +27,7 @@ a {text-decoration:none; color:#191919;}
 .wrap {width:1080px; height:1920px;}
 .header {width:1080px; height:160px; background-color:#204bb4; position:relative;}
 .contents {width:1080px;  height:1580px; background-color:#e7e7f1; box-sizing:border-box;/*font-size:0;*/}
-.footer {width:1080px; height:180px;  background-color:#696e82;}
+.footer {width:1080px; height:180px;  background-color:#f0f1f6;}
 /*.contents div {text-align:center; margin:0 auto;}*/
 .contents > * {text-align:center; margin:0 auto;}
 

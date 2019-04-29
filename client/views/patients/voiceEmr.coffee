@@ -142,6 +142,8 @@ Template.voiceEmr.onCreated ->
   datacontext = inst.data
   datacontext.selData = new ReactiveVar()
   datacontext.curData = new ReactiveVar({})
+  datacontext.isRecording = new ReactiveVar()
+  datacontext.isRecording.set false
 
 clickedFlag = false
 Template.voiceEmr.onRendered ->
@@ -175,6 +177,8 @@ Template.voiceEmr.helpers
   emrs: -> CollectionVoiceEMRs.find({}, {sort: yymmdd: 1})
   selData: -> Template.instance().data?.selData.get()
   curData: -> Template.instance().data?.curData.get()
+  isRecording: -> Template.instance().data?.isRecording.get()
+
 Template.voiceEmr.events
   'click [name=btnPastEMR]': (evt, inst) ->
     _id = $(evt.target).attr('data-id')
@@ -217,10 +221,15 @@ Template.voiceEmr.events
   'click [name=insert_mic]': (evt, inst) ->
     #버튼은 비활성화, 마이크 버튼 누르면 변경
 #    cl clickedFlag
+    field = $('[name=pop_emr]:checked').attr('id')
+    unless field?.length > 0 then return alert("입력항목을 선택해주세요.")
+    datacontext = inst.data
+
     if clickedFlag
       clickedFlag = false
       $('[name=insert_textarea]').focus()
 #      stopListening();
+      datacontext.isRecording.set false
       window.parent.postMessage 'stt_stop', '*'
     else
       x = document.getElementById("myAudio")
@@ -228,6 +237,7 @@ Template.voiceEmr.events
       clickedFlag = true
 #      custom_cancel(); #cancle()은 함수 충돌인지 호출시 오류가나서 이름을 변경함, 이걸 넣어줘야 멈췄다 재실행 할때 되더라(이유모름 내부적으로 그렇게 하길래)
 #      startListening();
+      datacontext.isRecording.set true
       window.parent.postMessage 'stt_start', '*'
 
   'click [name=insert_save]': (evt, inst) ->
@@ -238,6 +248,11 @@ Template.voiceEmr.events
     unless field?.length > 0 then return alert("입력항목을 선택해주세요.")
 #    stopListening();
 #    clearTranscription()  #음성저장내용삭
+    #stop을 안하고 저장하는 케이스가 있어 저장 누를시 stop 과정 추가 테스트 필요
+    datacontext = inst.data
+    datacontext.isRecording.set false
+    window.parent.postMessage 'stt_stop', '*'
+
     window.parent.postMessage 'stt_save', '*'
     datacontext = inst.data
     curData = datacontext.curData.get()
@@ -253,4 +268,9 @@ Template.voiceEmr.events
     curData = datacontext.curData.get()
 #    cl curData[field]
     $('[name=insert_textarea]').val(curData[field])
-  
+
+  'click [name=btn_del]': (evt, inst) ->
+    evt.preventDefault()
+    datacontext = inst.data
+#    if datacontext.isRecording.get()
+    $('[name=insert_textarea]').val('')

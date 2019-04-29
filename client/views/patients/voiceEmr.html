@@ -192,13 +192,13 @@
 						</li>
 						<li class="imgswap">
 							<a name="insert_mic">
-								<img src="/images/round/voice/bnt_voice.png" alt="음성입력" />
-								<img src="/images/round/voice/bnt_voice_h.png" alt="음성입력" />
-							</a>
-						</li>
-						<li class="selected" style="display:none;"><!-- 음성녹음시 활성화 -->
-							<a>
-								<img src="/images/round/voice/bnt_voice_s.png" alt="음성입력" />
+								{{#if isRecording}}
+									<img src="/images/round/voice/bnt_voice_s.png" alt="음성입력" />
+									<img src="/images/round/voice/bnt_voice_h.png" alt="음성입력" />
+								{{else}}
+									<img src="/images/round/voice/bnt_voice.png" alt="음성입력" />
+									<img src="/images/round/voice/bnt_voice_h.png" alt="음성입력" />
+								{{/if}}
 							</a>
 						</li>
 						<li class="imgswap">
@@ -212,7 +212,7 @@
 						<li>
 							<ul class="radio_f">
 								<li>
-									<input type="radio" name="pop_emr" id="so" /><label for="so"></label><span class="va_m">S&nbsp;O</span>
+									<input type="radio" name="pop_emr" id="so" checked/><label for="so"><span class="va_m">S&O</span></label>
 								</li>
 								<li>
 									<input type="radio" name="pop_emr" id="a" /><label for="a"><span class="va_m">A</span></label>
@@ -233,6 +233,9 @@
 							</ul>
 						</li>
 					</ul>
+					<div class="text-right">
+						<a href="#" name="btn_del"><img src="/images/round/voice/del_btn_na.png"></a>
+					</div>
 					<div>
 						<textarea id="round_trans_area" class="noresize" placeholder="내용을 작성해주세요." name="insert_textarea"></textarea>
 					</div>
