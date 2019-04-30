@@ -185,7 +185,8 @@ Template.header.onRendered ->
                 switch answer
                   when 'CANCEL_ROUNDS' then FlowRouter.go '/patientList'
                   when 'END_ROUNDS' then $('[name=btnRoundEnd]').click()
-
+              else mUtils.fr_tts("현재페이지에서는 사용할 수 있는 음성 명령어가 없습니다.")
+          else mUtils.fr_tts("음성명령어가 제대로 인식되지 않았습니다. 다시 이용 바랍니다.")
   addEvent window, 'message', messagesHandler, false
 
 clickedFlag = false
