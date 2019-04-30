@@ -127,7 +127,7 @@ showConfig = ->
   return
 
 Template.header.onCreated ->
-  init();
+#  init();
   inst = @
   datacontext = inst.data
   datacontext.isRecording = new ReactiveVar()
@@ -157,6 +157,9 @@ Template.header.onRendered ->
     if evt.data?.type is "stt_text"
       console.log(evt.data.value)
       $('#round_trans_area').val evt.data.value
+    else if evt.data?.type is "stt_command"
+      cl 'stt_command 응답 :::'
+      console.log(evt.data.value)
 
   addEvent window, 'message', messagesHandler, false
 
@@ -185,26 +188,32 @@ Template.header.events
     else FlowRouter.go '/voiceEmr'
 
   'click [name=voiceCommand]': (evt, inst) ->
-    datacontext = inst.data
-    cl clickedFlag
-    if clickedFlag
-      clickedFlag = false
-      $('[name=insert_textarea]').focus()
-      custom_cancel();
-      datacontext.isRecording.set false
-      window.parent.postMessage 'stt_stop', '*'
-      cl text = tt.toString()
-      Meteor.call 'getVoiceCommand', text, (err, rslt) ->
-        if err then alert err
-        else
-          #todo 페이지별 음성커맨드 동작 수행 
-          cl "@@@@@@@@@@@@"
-          cl rslt
+#    datacontext = inst.data
+    x = document.getElementById("myAudio")
+    x.play()
+#    startListening();
+#    datacontext.isRecording.set true
+    window.parent.postMessage 'stt_command', '*'
 
-    else
-      x = document.getElementById("myAudio")
-      x.play()
-      clickedFlag = true
-      startListening();
-      datacontext.isRecording.set true
-      window.parent.postMessage 'stt_start', '*'
+#    cl clickedFlag
+#    if clickedFlag
+#      clickedFlag = false
+#      $('[name=insert_textarea]').focus()
+##      custom_cancel();
+#      datacontext.isRecording.set false
+##      window.parent.postMessage 'stt_stop', '*'
+#      cl text = tt.toString()
+#      Meteor.call 'getVoiceCommand', text, (err, rslt) ->
+#        if err then alert err
+#        else
+#          #todo 페이지별 음성커맨드 동작 수행
+#          cl "@@@@@@@@@@@@"
+#          cl rslt
+#
+#    else
+#      x = document.getElementById("myAudio")
+#      x.play()
+#      clickedFlag = true
+##      startListening();
+#      datacontext.isRecording.set true
+#      window.parent.postMessage 'stt_command', '*'

@@ -120,14 +120,14 @@ Template.voiceEmr.events
     if clickedFlag
       clickedFlag = false
       $('[name=insert_textarea]').focus()
-      custom_cancel();
+#      custom_cancel();
       datacontext.isRecording.set false
       window.parent.postMessage 'stt_stop', '*'
     else
       x = document.getElementById("myAudio")
       x.play()
       clickedFlag = true
-      startListening();
+#      startListening();
       datacontext.isRecording.set true
       window.parent.postMessage 'stt_start', '*'
 
@@ -137,9 +137,9 @@ Template.voiceEmr.events
     field = $('[name=pop_emr]:checked').attr('id')
     value = $('[name=insert_textarea]').val()
     unless field?.length > 0 then return alert("입력항목을 선택해주세요.")
-    custom_cancel();
-    stopListening();
-    clearTranscription();  #음성저장내용삭
+#    custom_cancel();
+#    stopListening();
+#    clearTranscription();  #음성저장내용삭
     #stop을 안하고 저장하는 케이스가 있어 저장 누를시 stop 과정 추가 테스트 필요
     datacontext = inst.data
     datacontext.isRecording.set false
