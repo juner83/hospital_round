@@ -38,31 +38,31 @@ Template.voiceEmr.onCreated ->
 clickedFlag = false
 Template.voiceEmr.onRendered ->
   # init()  #STT init
-  window.parent.postMessage 'stt_init', '*'
+  # window.parent.postMessage 'stt_init', '*'
 
-  addEvent = (element, eventName, callback) ->
-    if element.addEventListener
-      element.addEventListener eventName, callback, false
-    return
+  # addEvent = (element, eventName, callback) ->
+  #   if element.addEventListener
+  #     element.addEventListener eventName, callback, false
+  #   return
 
-  addEvent document, 'keypress', (e) ->
-    e = e or window.event
-    # use e.keyCode
-    if e.keyCode is 43
-      $("[name=insert_mic]").click()
-      str = $('#round_trans_area').val().replace(/\+/gi, '')
-      $('#round_trans_area').val(str)
-    return
+  # addEvent document, 'keypress', (e) ->
+  #   e = e or window.event
+  #   # use e.keyCode
+  #   if e.keyCode is 43
+  #     $("[name=insert_mic]").click()
+  #     str = $('#round_trans_area').val().replace(/\+/gi, '')
+  #     $('#round_trans_area').val(str)
+  #   return
 
-  messagesHandler = (evt) ->
-    cl 'message is comming from parent'
-    #{type: "stt_text", value: "음성변환text"}
-    #{type: "stt_command", value: "음성변환text"}
-    if evt.data?.type is "stt_text"
-      console.log(evt.data.value)
-      $('#round_trans_area').val evt.data.value
+  # messagesHandler = (evt) ->
+  #   cl 'message is comming from parent'
+  #   #{type: "stt_text", value: "음성변환text"}
+  #   #{type: "stt_command", value: "음성변환text"}
+  #   if evt.data?.type is "stt_text"
+  #     console.log(evt.data.value)
+  #     $('#round_trans_area').val evt.data.value
 
-  addEvent window, 'message', messagesHandler, false
+  # addEvent window, 'message', messagesHandler, false
 
 Template.voiceEmr.helpers
   cstInfo: -> if (info=mDefine.cstInfo.get())? then return info

@@ -132,6 +132,34 @@ Template.header.onCreated ->
   datacontext = inst.data
   datacontext.isRecording = new ReactiveVar()
   datacontext.isRecording.set false
+
+Template.header.onRendered ->
+  window.parent.postMessage 'stt_init', '*'
+
+  addEvent = (element, eventName, callback) ->
+    if element.addEventListener
+      element.addEventListener eventName, callback, false
+    return
+
+  addEvent document, 'keypress', (e) ->
+    e = e or window.event
+    # use e.keyCode
+    if e.keyCode is 43
+      $("[name=insert_mic]").click()
+      str = $('#round_trans_area').val().replace(/\+/gi, '')
+      $('#round_trans_area').val(str)
+    return
+
+  messagesHandler = (evt) ->
+    cl 'message is comming from parent'
+    #{type: "stt_text", value: "음성변환text"}
+    #{type: "stt_command", value: "음성변환text"}
+    if evt.data?.type is "stt_text"
+      console.log(evt.data.value)
+      $('#round_trans_area').val evt.data.value
+
+  addEvent window, 'message', messagesHandler, false
+
 clickedFlag = false
 Template.header.events
   'click [name=btnRoundEnd]': (evt, inst) ->
