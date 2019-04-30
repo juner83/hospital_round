@@ -1,4 +1,4 @@
-FlowRouter.route '/roundEnd', action: ->
+FlowRouter.route '/roundEnd', name: '/roundEnd', action: ->
   BlazeLayout.render 'main',
     content: 'roundEnd',
     hasHeader: true

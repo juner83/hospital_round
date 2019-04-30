@@ -1,4 +1,4 @@
-FlowRouter.route '/patientDetail', action: ->
+FlowRouter.route '/patientDetail', name: '/patientDetail', action: ->
   BlazeLayout.render 'main',
     content: 'patientDetail'
     hasHeader: true

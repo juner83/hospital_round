@@ -82,8 +82,6 @@ __updateTranscript = (text) ->
       text_split[i] = text_split[i].toUpperCase()
     i++
   text = text_split.join(' ')
-  text = text.replace(/미리 그람/gi, 'mg').replace(/증상 에/gi, '증상에').replace(/전처치 로/gi, '전처치로').replace(/식 도/gi, '식도').replace(/오십/gi, '50').replace(/십\ /gi, '10 ').replace(/오/gi, '5').replace(/퍼센트/gi, '%')
-  text = text
   console.log text
   # $('#round_trans_area').val text
   return
@@ -160,6 +158,33 @@ Template.header.onRendered ->
     else if evt.data?.type is "stt_command"
       cl 'stt_command 응답 :::'
       console.log(evt.data.value)
+      Meteor.call 'getVoiceCommand', text, (err, rslt) ->
+        if err then alert err
+        else
+          cl answer = rslt?.data?.data?.answerInfo?.answer
+          qid_1 = rslt?.data?.data?.answerInfo?.qid_1
+          if qid_1?.length > 0 and (qid_1 is '회진')
+            switch FlowRouter.getRouteName()
+              when '/patientList'
+                switch answer
+                  when 'PAGE_PATIENT' then $('[name=move]').click()
+                  when 'PAGE_VOICEEMR' then $('[name=voiceEmr]').click()
+                  when 'PAGE_ROUNDS_START' then $('[name=move]').click()
+                  when 'PAGE_ROUNDS_END' then $('[name=end]').click()
+              when '/patientDetail'
+                switch answer
+                  when 'PAGE_PATIENTLIST' then FlowRouter.go '/patientList'
+                  when 'PAGE_VOICEEMR' then $('[name=voiceEmr]').click()
+                  when 'PAGE_ROUNDS_TEAM' then $('[name=reqVideo]').click()
+              when '/voiceEmr'
+                switch answer
+                  when 'PAGE_PATIENT' then $('[name=move]').click()
+                  when 'SAVE_VOICEEMR' then $('[name=voiceEmr]').click()
+                  when 'PAGE_ROUNDS_TEAM' then $('[name=reqVideo]').click()
+              when '/roundEnd'
+                switch answer
+                  when 'CANCEL_ROUNDS' then FlowRouter.go '/patientList'
+                  when 'END_ROUNDS' then $('[name=btnRoundEnd]').click()
 
   addEvent window, 'message', messagesHandler, false
 

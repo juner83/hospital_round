@@ -1,7 +1,7 @@
 @handlerRv = new ReactiveVar()
 streamer = new Meteor.Streamer('ep_sungmo') #은평성모
 
-FlowRouter.route '/moveToBed', action: ->
+FlowRouter.route '/moveToBed', name: '/moveToBed', action: ->
   BlazeLayout.render 'main',
     content: 'moveToBed'
   return

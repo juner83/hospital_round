@@ -1,4 +1,4 @@
-FlowRouter.route '/movedConfirm', action: ->
+FlowRouter.route '/movedConfirm', name: '/movedConfirm', action: ->
   BlazeLayout.render 'main',
     content: 'movedConfirm'
   return
