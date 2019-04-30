@@ -179,7 +179,7 @@ Template.header.onRendered ->
               when '/voiceEmr'
                 switch answer
                   when 'PAGE_PATIENT' then $('[name=move]').click()
-                  when 'SAVE_VOICEEMR' then $('[name=voiceEmr]').click()
+                  when 'SAVE_VOICEEMR' then $('[name=btnSaveCurData]').click()
                   when 'PAGE_ROUNDS_TEAM' then $('[name=reqVideo]').click()
               when '/roundEnd'
                 switch answer
