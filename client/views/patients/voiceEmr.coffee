@@ -114,6 +114,7 @@ Template.voiceEmr.events
     #버튼은 비활성화, 마이크 버튼 누르면 변경
 #    cl clickedFlag
     field = $('[name=pop_emr]:checked').attr('id')
+    value = $('[name=insert_textarea]').val()
     unless field?.length > 0 then return alert("입력항목을 선택해주세요.")
     datacontext = inst.data
 
@@ -123,6 +124,11 @@ Template.voiceEmr.events
 #      custom_cancel();
       datacontext.isRecording.set false
       window.parent.postMessage 'stt_stop', '*'
+      #음성정지때 현재 내용 저장(저장버튼으로 나가지 않아도 되게)
+      cl curData = datacontext.curData.get()
+      cl curData[field] = value
+      cl curData = datacontext.curData.get()
+      datacontext.curData.set curData
     else
       x = document.getElementById("myAudio")
       x.play()
@@ -143,7 +149,7 @@ Template.voiceEmr.events
     #stop을 안하고 저장하는 케이스가 있어 저장 누를시 stop 과정 추가 테스트 필요
     datacontext = inst.data
     datacontext.isRecording.set false
-    window.parent.postMessage 'stt_stop', '*'
+#    window.parent.postMessage 'stt_stop', '*'
 
     window.parent.postMessage 'stt_save', '*'
     datacontext = inst.data
