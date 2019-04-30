@@ -158,7 +158,7 @@ Template.header.onRendered ->
     else if evt.data?.type is "stt_command"
       cl 'stt_command 응답 :::'
       console.log(evt.data.value)
-      Meteor.call 'getVoiceCommand', text, (err, rslt) ->
+      Meteor.call 'getVoiceCommand', evt.data.value, (err, rslt) ->
         if err then alert err
         else
           cl answer = rslt?.data?.data?.answerInfo?.answer
