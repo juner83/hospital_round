@@ -215,7 +215,7 @@ Template.header.events
 
   'click [name=voiceCommand]': (evt, inst) ->
 #    datacontext = inst.data
-    mUtils.fr_tts(' ')
+    mUtils.fr_tts_stop()
     x = document.getElementById("myAudio")
     x.play()
 #    startListening();

@@ -153,6 +153,7 @@ voiceCommand = (_msg) ->
 @mUtils =
   fr_home: -> testHome()
   fr_tts: (_msg) -> testTTS(_msg)
+  fr_tts_stop: (_msg) -> window.parent.postMessage 'stt_stopspeech', '*'
   fr_keyOn: -> OnScreenKeyboard(true, "ko-kr")
   fr_keyOff: -> OnScreenKeyboard(false, "ko-kr")
   fr_voiceCommand: (_msg) -> voiceCommand(_msg)
