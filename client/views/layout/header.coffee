@@ -178,7 +178,7 @@ Template.header.onRendered ->
                   when 'PAGE_ROUNDS_TEAM' then $('[name=reqVideo]').click()
               when '/voiceEmr'
                 switch answer
-                  when 'PAGE_PATIENT' then $('[name=move]').click()
+                  when 'PAGE_PATIENT' then FlowRouter.go '/patientDetail'
                   when 'SAVE_VOICEEMR' then $('[name=btnSaveCurData]').click()
                   when 'PAGE_ROUNDS_TEAM' then $('[name=reqVideo]').click()
               when '/roundEnd'
@@ -215,6 +215,7 @@ Template.header.events
 
   'click [name=voiceCommand]': (evt, inst) ->
 #    datacontext = inst.data
+    mUtils.fr_tts(' ')
     x = document.getElementById("myAudio")
     x.play()
 #    startListening();
