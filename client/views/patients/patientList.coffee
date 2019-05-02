@@ -14,7 +14,9 @@ Template.patientList.onRendered ->
 Template.patientList.helpers
   lists: -> CollectionCustomers.find()
   번호: (index) -> return index+1
-
+  completed: -> if @isCompleted then return "round_completed"
+  총환자: -> CollectionCustomers.find().count()
+  완료환자: -> CollectionCustomers.find(isCompleted: true).count()
 
 Template.patientList.events
   'click [name=move]': (evt, inst) ->
@@ -42,3 +44,9 @@ Template.patientList.events
     Meteor.call 'dataBatch', (err, rslt) ->
       if err then alert err
       else cl rslt
+
+  'click [name=reset_isCompleted]': (evt, inst) ->
+    Meteor.call 'resetIsCompleted', (err, rslt) ->
+      if err then alert err
+      else
+        cl '회진여부 초기화 완료'

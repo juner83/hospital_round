@@ -8,7 +8,7 @@
 				</div>
 				<div class="doctor_info">
 					<ul class="info_list">
-						<li>회진일 : 2019-05-02 목요일</li>
+						<li>회진일 : 2019-05-03 금요일</li>
 						<li>진료과 : 정형외과</li>
 						<li>주치의 : 이주엽</li>
 					</ul>
@@ -26,8 +26,8 @@
 						</thead>
 						<tbody>
 						<tr class="name">
-							<td class="b_left">4명</td>
-							<td class="b_left">0명</td>
+							<td class="b_left">{{총환자}}명</td>
+							<td class="b_left">{{완료환자}}명</td>
 						</tr>
 						</tbody>
 					</table>
@@ -36,7 +36,7 @@
 			<!-- 의사정보 끝 -->
 			<!-- 회진환자 리스트 시작 -->
 			<div class="round_p_list_box">
-				<h2>회진환자 리스트</h2>
+				<h2 name="reset_isCompleted">회진환자 리스트</h2>
 				<table class="patient_table">
 					<thead>
 					<tr>
@@ -54,9 +54,9 @@
 					</thead>
 					<tbody>
 					{{#each lists}}
-					<tr>
+					<tr class="{{completed}}">
 						<td><input type="radio" name="radio_patientList" data-id="{{_id}}"/></td>
-						<td>{{번호 @index}}</td>
+						<td>{{침대번호}}</td>
 						<td>{{병실}}</td>
 						<td>{{이름}}</td>
 						<td>{{등록번호}}</td>

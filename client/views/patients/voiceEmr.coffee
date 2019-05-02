@@ -93,6 +93,9 @@ Template.voiceEmr.events
   'click [name=btnSaveCurData]': (evt, inst) ->
     $('.pop03').css('display', 'none')
     $('#dim').css('display', 'block')
+    Meteor.call 'saveVoiceEmr', mDefine.cstInfo.get()._id, (err, rslt) ->
+      if err then alert err
+      else cl '저장완료'
   'click [name=goToCstList]': ->
     FlowRouter.go '/patientList'
   'click [name=goToNextCst]': (evt, inst) ->
@@ -172,5 +175,5 @@ Template.voiceEmr.events
 #    if datacontext.isRecording.get()
     $('[name=insert_textarea]').val('')
 
-  'focusin #round_trans_area': (evt, inst) ->
-    mUtils.fr_keyOn()
+#  'focusin #round_trans_area': (evt, inst) ->
+#    mUtils.fr_keyOn()

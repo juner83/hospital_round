@@ -6,8 +6,13 @@ FlowRouter.route '/roundEnd', name: '/roundEnd', action: ->
   return
 
 Template.roundEnd.onCreated ->
+  inst = @
+  inst.subscribe 'pub_customers'
+
 Template.roundEnd.onRendered ->
 Template.roundEnd.helpers
+  총환자: -> CollectionCustomers.find().count()
+  완료환자: -> CollectionCustomers.find(isCompleted: true).count()
 Template.roundEnd.events
   'click [name=goDetail]': (evt, inst) ->
     FlowRouter.go '/patientDetail'

@@ -52,3 +52,6 @@ Template.moveToBed.events
   'click .fo_move>.right': (evt, inst) ->
     cl "robot speed 10% up"
     Meteor.call 'robot_speed', "up", (err, rslt) ->
+
+  'click .fo_move_ani': (evt, inst) ->
+    FlowRouter.go '/patientDetail'

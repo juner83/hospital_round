@@ -27,6 +27,7 @@
         수술명: ''
         HOD: ''
         POD: ''
+        isCompleted: false
 
     when 'pacs'
       rslt =
@@ -73,7 +74,7 @@
         createdAt: createdAt
         updatedAt: createdAt
         customer_id: '' #고객명, 환자번호 등 참조
-        병원기관기호: '012'  #012(서울성모)
+        병원기관기호: '015'  #012(서울성모)
         진료과코드: ''   #2050000000
         진료과명: ''    #[본관2층]정형외과
         doctor_id: '' # _id
