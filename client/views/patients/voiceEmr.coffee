@@ -171,3 +171,6 @@ Template.voiceEmr.events
     datacontext = inst.data
 #    if datacontext.isRecording.get()
     $('[name=insert_textarea]').val('')
+
+  'focusin #round_trans_area': (evt, inst) ->
+    mUtils.fr_keyOn()
