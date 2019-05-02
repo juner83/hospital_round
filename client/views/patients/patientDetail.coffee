@@ -28,6 +28,7 @@ Template.patientDetail.onRendered ->
 Template.patientDetail.helpers
   cstInfo: -> if (info=mDefine.cstInfo.get())? then return info
   검사: (param) -> CollectionResults.find({검사종류: param},{limit: 4})
+  보고일: -> @보고일.toString().substring(0, 8)
 Template.patientDetail.events
   'click [name=imgModal]': (evt, inst) ->
     evt.preventDefault()

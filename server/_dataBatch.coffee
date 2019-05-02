@@ -40,6 +40,9 @@ tempCode.fromdd = '20180101'
 # 유효시작일자
 Meteor.methods dataBatch: ->
   cl 'methods/dataBatch'
+  CollectionCustomers.remove({})
+  CollectionResults.remove({})
+  CollectionVoiceEMRs.remove({})
   try
 # 1. 의사ID 획득(하드코딩)
     doctorIds = [ 95610268 ]
@@ -95,11 +98,6 @@ dataModel =
           부서: _user.posdeptnm
           병원명: _user.posinstnm
     else
-      profile = dataSchema 'profile',
-        이름: _user.usernm
-        진료과: _user.dutplcenm
-        부서: _user.posdeptnm
-        병원명: _user.posinstnm
       options = {}
       options.username = _username
       options.password = _username
@@ -109,8 +107,7 @@ dataModel =
         부서: _user.posdeptnm
         병원명: _user.posinstnm
       Accounts.createUser options
-      return
-#    { 'doctor': tempData.ret.users }
+    return { 'doctor': tempData.ret.users }
   patient: (data, doctor_username) ->
 # 환자리스트 데이터 리모델링
     tempData = {}
@@ -131,16 +128,14 @@ dataModel =
     # 3. 환자별 경과 기록지
 
     reData.forEach (row, idx) ->
-      cl(row.등록번호)
+      unless row?.등록번호 then return
       param =
         'hospital_id': tempCode.hospital
         'submit_id': 'DRARC20001'
         'business_id': 'mr'
         'instcd': '015'
         'pid': row.등록번호
-      cl(1)
       tempResult = dataModel.result(commonAjaxGet(param))
-      cl(2)
       row.result = tempResult.result
       row.voiceEMR = tempResult.voiceEMR
       return
@@ -176,10 +171,8 @@ dataModel =
       customer: {}
       result: []
       voiceEMR: []
-    cl(3)
     if tempData.patinfo
       reData.customer = dataFormat.patient_pod(tempData.patinfo)
-    cl(4)
     if tempData.reclist
       if Array.isArray(tempData.reclist)
         tempData.reclist.forEach (row, idx) ->
@@ -187,7 +180,6 @@ dataModel =
           return
       else
         reData.voiceEMR.push dataFormat.retVoiceEMR(tempData.reclist, tempData.prcplist, tempData.patinfo.pid)
-    cl(5)
 
     if tempData.btlist
       if Array.isArray(tempData.btlist)
@@ -285,7 +277,6 @@ dataFormat =
     CollectionVoiceEMRs.insert tempData
     return tempData
   retResult: (type, data, cst_pid) ->
-    cl(cst_pid)
     tempData = dataSchema 'result'
     tempData.customer_id = cst_pid.toString()
     tempData.검사종류 = type
@@ -297,5 +288,6 @@ dataFormat =
     tempData.단위 = if data.rsltunit then data.rsltunit else ''
     tempData.참고치 = if data.refinfo then data.refinfo else ''
     tempData.세부검체 = if data.detlspcnm then data.detlspcnm else ''
+    if type is '조직검사' then tempData.진단일 = if data.testdd then data.testdd else ''
     CollectionResults.insert tempData
     return tempData

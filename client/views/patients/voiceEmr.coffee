@@ -28,7 +28,7 @@ FlowRouter.route '/voiceEmr', name: '/voiceEmr', action: ->
 
 Template.voiceEmr.onCreated ->
   inst = @
-  inst.subscribe 'pub_voiceEMRs', mDefine.cstInfo.get()?._id
+  inst.subscribe 'pub_voiceEMRs', mDefine.cstInfo.get()?.등록번호
   datacontext = inst.data
   datacontext.selData = new ReactiveVar()
   datacontext.curData = new ReactiveVar({})
@@ -37,45 +37,31 @@ Template.voiceEmr.onCreated ->
 
 clickedFlag = false
 Template.voiceEmr.onRendered ->
-  # init()  #STT init
-  # window.parent.postMessage 'stt_init', '*'
-
-  # addEvent = (element, eventName, callback) ->
-  #   if element.addEventListener
-  #     element.addEventListener eventName, callback, false
-  #   return
-
-  # addEvent document, 'keypress', (e) ->
-  #   e = e or window.event
-  #   # use e.keyCode
-  #   if e.keyCode is 43
-  #     $("[name=insert_mic]").click()
-  #     str = $('#round_trans_area').val().replace(/\+/gi, '')
-  #     $('#round_trans_area').val(str)
-  #   return
-
-  # messagesHandler = (evt) ->
-  #   cl 'message is comming from parent'
-  #   #{type: "stt_text", value: "음성변환text"}
-  #   #{type: "stt_command", value: "음성변환text"}
-  #   if evt.data?.type is "stt_text"
-  #     console.log(evt.data.value)
-  #     $('#round_trans_area').val evt.data.value
-
-  # addEvent window, 'message', messagesHandler, false
 
 Template.voiceEmr.helpers
   cstInfo: -> if (info=mDefine.cstInfo.get())? then return info
   emrs: -> CollectionVoiceEMRs.find({}, {sort: yymmdd: 1})
   selData: -> Template.instance().data?.selData.get()
   curData: -> Template.instance().data?.curData.get()
+
   isRecording: -> Template.instance().data?.isRecording.get()
 
 Template.voiceEmr.events
   'click [name=btnPastEMR]': (evt, inst) ->
     _id = $(evt.target).attr('data-id')
     datacontext = inst.data
-    datacontext.selData.set CollectionVoiceEMRs.findOne(_id: _id)
+    emr = CollectionVoiceEMRs.findOne(_id: _id)
+    datacontext.selData.set {
+      createdAt: emr.createdAt
+      updatedAt: emr.updatedAt
+      customer_id: emr.customer_id
+      yymmdd: emr.yymmdd
+      so: emr.so.substring(0, 100) + do -> if emr.so.length > 100 then return '...' else return ''
+      a: emr.a.substring(0, 100) + do -> if emr.a.length > 100 then return '...' else return ''
+      p: emr.p.substring(0, 100) + do -> if emr.p.length > 100 then return '...' else return ''
+      주사: emr.주사.substring(0, 100) + do -> if emr.약처방.length > 100 then return '...' else return ''
+      약처방: emr.약처방.substring(0, 100) + do -> if emr.주사.length > 100 then return '...' else return ''
+    }
     $('#popup').css('display', 'block')
     $('#emr_pop_1').css('display', 'block')
   'click [name=btnClosePastPopup]': (evt, inst) ->

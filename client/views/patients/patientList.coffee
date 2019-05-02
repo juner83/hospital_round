@@ -41,6 +41,7 @@ Template.patientList.events
     mUtils.fr_keyOff()
 
   'click .doctor_info_box': (evt, inst) ->
+    cl '123'
     Meteor.call 'dataBatch', (err, rslt) ->
       if err then alert err
       else cl rslt
