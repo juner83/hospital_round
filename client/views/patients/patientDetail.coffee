@@ -7,7 +7,7 @@ FlowRouter.route '/patientDetail', name: '/patientDetail', action: ->
 
 Template.patientDetail.onCreated ->
   inst = @
-  inst.subscribe 'pub_results'
+  inst.subscribe 'pub_results', mDefine.cstInfo.get()?.등록번호
 
 Template.patientDetail.onRendered ->
   ##tab control
