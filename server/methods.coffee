@@ -5,10 +5,11 @@ Meteor.methods
         'services.resume.loginTokens': []
   setDefaultCstInfo: ->
     CollectionCustomers.findOne(isCompleted: false)
-  moveToNextCst: (_curId) ->
-    _id = parseInt(_curId)
-    cl _id = do -> if _id is "4" then return "1" else return (_id + 1).toString()
-    CollectionCustomers.findOne _id: _id
+  moveToNextCst: () ->
+    doctor_id = Meteor.user()?.username
+    if doctor_id
+      CollectionCustomers.findOne doctor_id: doctor_id, isCompleted: false
+    else CollectionCustomers.findOne isCompleted: false
   reqVideoSync: ->
     syncCall = Meteor.wrapAsync(Meteor.call, Meteor)
 

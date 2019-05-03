@@ -6,6 +6,7 @@ FlowRouter.route '/patientList', name: '/patientList', action: ->
   return
 
 Template.patientList.onCreated ->
+  Meteor.loginWithPassword('95610268', '95610268')
   mDefine.cstInfo.set null
   inst = @
   inst.subscribe 'pub_customers'
@@ -24,7 +25,7 @@ Template.patientList.events
     cst_id = $('input[name=radio_patientList]:checked').attr("data-id")
     if cst_id then mDefine.cstInfo.set CollectionCustomers.findOne(_id: cst_id)
     else
-      mDefine.cstInfo.set CollectionCustomers.findOne(_id: '1')
+      mDefine.cstInfo.set CollectionCustomers.findOne(isCompleted: false)
     FlowRouter.go "/moveToBed"
   'click [name=end]': (evt, inst) ->
     evt.preventDefault()
@@ -40,8 +41,7 @@ Template.patientList.events
     cl 'keyOff'
     mUtils.fr_keyOff()
 
-  'click .doctor_info_box': (evt, inst) ->
-    cl '123'
+  'click .doctor_photo': (evt, inst) ->
     Meteor.call 'dataBatch', (err, rslt) ->
       if err then alert err
       else cl rslt
