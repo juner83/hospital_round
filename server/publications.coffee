@@ -4,7 +4,7 @@ Meteor.publish 'pub_customers', ->
 
 Meteor.publish 'pub_results', (_pid) ->
   cl 'pub_results'
-  return CollectionResults.find(등록번호: _pid)
+  return CollectionResults.find(customer_id: _pid)
 
 Meteor.publish 'pub_voiceEMRs', (_pid) ->
   cl 'pub_voiceEMRs ' + _pid

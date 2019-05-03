@@ -2,11 +2,12 @@
 
 Template.briefPopup.onRendered ->
   $(document).ready ->
-    $('.slider-container').ikSlider speed: 500
-    $('.slider-container').on 'changeSlide.ikSlider', (evt) ->
-      console.log evt.currentSlide
-      return
-
+    Meteor.setTimeout ->
+      $('.slider-container').ikSlider speed: 500
+      $('.slider-container').on 'changeSlide.ikSlider', (evt) ->
+        console.log evt.currentSlide
+        return
+    , 500
 
 Template.briefPopup.helpers
   팝업결과: ->
