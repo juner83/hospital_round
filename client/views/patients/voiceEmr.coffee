@@ -79,7 +79,9 @@ Template.voiceEmr.events
   'click [name=btnSaveCurData]': (evt, inst) ->
     $('.pop03').css('display', 'none')
     $('#dim').css('display', 'block')
-    Meteor.call 'saveVoiceEmr', mDefine.cstInfo.get()._id, (err, rslt) ->
+    datacontext = inst.data
+    cl datacontext.curData.get()
+    Meteor.call 'saveVoiceEmr', mDefine.cstInfo.get()._id, datacontext.curData.get(),  (err, rslt) ->
       if err then alert err
       else cl '저장완료'
   'click [name=goToCstList]': ->

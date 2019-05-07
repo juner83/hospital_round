@@ -168,6 +168,20 @@ voiceCommand = (_msg) ->
       when 6 then "토요일"
       when 0 then "일요일"
 
+  dateFormat: ->
+    date = new Date
+    year = date.getFullYear()
+    #yyyy
+    month = 1 + date.getMonth()
+    #M
+    month = if month >= 10 then month else '0' + month
+    # month 두자리로 저장
+    day = date.getDate()
+    #d
+    day = if day >= 10 then day else '0' + day
+    #day 두자리로 저장
+    year + '' + month + '' + day
+
   getGroup_ids: (userInfo) ->
     #admin / company / center 의 userInfo를 넘기면 하위의 gruop_ids를 찾아서 [] return
     unless userInfo then userInfo = Meteor.user() #파람 없으면 현재 로그인 정보로 치환

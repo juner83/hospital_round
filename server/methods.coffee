@@ -47,11 +47,22 @@ Meteor.methods
       throw new Meteor.Error '음성커맨드 서버 오류. #5001'
     return result
 
-  saveVoiceEmr: (_id) ->
+  saveVoiceEmr: (_id, _emr) ->
     cl 'methods/saveVoiceEmr'
     CollectionCustomers.update _id: _id,
       $set:
         isCompleted: true
+    cl _emr
+    curEmr = dataSchema 'voiceEMR',
+      customer_id: CollectionCustomers.findOne(_id: _id).등록번호
+      yymmdd: mUtils.dateFormat()
+      so: _emr.so
+      a: _emr.a
+      p: _emr.p
+      주사: _emr.주사
+      약처방: _emr.약처방
+    CollectionVoiceEMRs.insert curEmr
+
 
   resetIsCompleted: ->
     cl 'methods/resetIsCompleted'

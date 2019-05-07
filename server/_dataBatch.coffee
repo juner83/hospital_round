@@ -2,20 +2,6 @@ param = {}
 tempRes = undefined
 tempCode = {}
 
-dateFormat = ->
-  date = new Date
-  year = date.getFullYear()
-  #yyyy
-  month = 1 + date.getMonth()
-  #M
-  month = if month >= 10 then month else '0' + month
-  # month 두자리로 저장
-  day = date.getDate()
-  #d
-  day = if day >= 10 then day else '0' + day
-  #day 두자리로 저장
-  year + '' + month + '' + day
-
 commonAjaxGet = (param, cbFunc) ->
   commonAjax 'Get', param, cbFunc
 
@@ -67,7 +53,7 @@ Meteor.methods dataBatch: ->
         'instcd': '015'
         'userid': row
         'dutplcecd': tempCode.dutplcecd
-        'orddd': dateFormat()
+        'orddd': mUtils.dateFormat()
       tempRes = dataModel.patient(commonAjaxGet(param), row)
       cl 'patients Info'
       return

@@ -7,7 +7,7 @@ Template.briefPopup.onRendered ->
       $('.slider-container').on 'changeSlide.ikSlider', (evt) ->
         console.log evt.currentSlide
         return
-    , 500
+    , 1000
 
 Template.briefPopup.helpers
   팝업결과: ->
