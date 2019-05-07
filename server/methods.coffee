@@ -56,11 +56,11 @@ Meteor.methods
     curEmr = dataSchema 'voiceEMR',
       customer_id: CollectionCustomers.findOne(_id: _id).등록번호
       yymmdd: mUtils.dateFormat()
-      so: _emr.so
-      a: _emr.a
-      p: _emr.p
-      주사: _emr.주사
-      약처방: _emr.약처방
+      so: _emr.so or ""
+      a: _emr.a or ""
+      p: _emr.p or ""
+      주사: _emr.주사 or ""
+      약처방: _emr.약처방 or ""
     CollectionVoiceEMRs.insert curEmr
 
 

@@ -1,6 +1,8 @@
 # 오늘 년원일
 @mDefine =
   schedule_psize: 2 #나의스케쥴 페이자당 카드갯수
+  cst_psize: 7  #환자리스트 페이지당 환자명수
+  result_psize: 4  #결과리스트 페이지당 갯수
 #  server_id: Meteor.uuid()
   robot_socket: true  #로봇소켓연결시 true, 해제시 false
   tts_socket: false #tts_socket 연결시 true, 해제시 false
@@ -23,4 +25,3 @@
   timeFormatHM: 'HH:mm'
   timeFormatYMDHMS2: 'YYYYMMDDHHmmss'
   cstInfo: new ReactiveVar()  #환자정보 CollectionCustomers.findOne()
-  todayYYMMDD: ""   #오늘날짜 세팅

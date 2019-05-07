@@ -13,7 +13,7 @@ Template.schedule.onCreated ->
 #  datacontext.selectedDay = mDefine.todayYYMMDD
   datacontext.condition = new ReactiveVar {
     where: {
-      진료일자: mDefine.todayYYMMDD
+      진료일자: mUtils.dateFormat()
     }
     options: {
       sort:
@@ -75,7 +75,7 @@ Template.schedule.events
     datacontext = inst.data
     datacontext.selectedTab.set 'today'
     condition = datacontext.condition.get()
-    condition.where.진료일자 = mDefine.todayYYMMDD
+    condition.where.진료일자 = mUtils.dateFormat()
     condition.options.skip = 0
     datacontext.condition.set condition
 

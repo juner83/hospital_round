@@ -11,6 +11,9 @@ Template.roundEnd.onCreated ->
 
 Template.roundEnd.onRendered ->
 Template.roundEnd.helpers
+  회진일: -> mUtils.getStringYMDFromDate(new Date()) + " " + mUtils.getWeekday(mUtils.dateFormat())
+  진료과: -> Meteor.user()?.profile.진료과
+  주치의: -> Meteor.user()?.profile.이름
   총환자: -> CollectionCustomers.find().count()
   완료환자: -> CollectionCustomers.find(isCompleted: true).count()
 Template.roundEnd.events

@@ -1,6 +1,7 @@
-Meteor.publish 'pub_customers', ->
+Meteor.publish 'pub_customers', () ->
   cl 'pub_customers'
-  return CollectionCustomers.find({}, {limit: 8})
+  cl _doctor_id = Meteor.user().username
+  return CollectionCustomers.find({doctor_id: _doctor_id})
 
 Meteor.publish 'pub_results', (_pid) ->
   cl 'pub_results'
