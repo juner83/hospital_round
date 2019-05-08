@@ -45,10 +45,11 @@ Template.patientList.onRendered ->
 
 Template.patientList.helpers
   lists: ->
-    if Template.instance().subscriptionsReady()
-      datacontext = Template.instance().data
-      cond = datacontext.condition.get()
-      CollectionCustomers.find(cond.where, cond.options)
+
+#    if Template.instance().subscriptionsReady()
+    datacontext = Template.instance().data
+    cond = datacontext.condition.get()
+    CollectionCustomers.find(cond.where, cond.options)
   번호: (index) -> return index+1
   completed: -> if @isCompleted then return "round_completed"
   회진일: -> mUtils.getStringYMDFromDate(new Date()) + " " + mUtils.getWeekday(mUtils.dateFormat())
