@@ -2,6 +2,21 @@ param = {}
 tempRes = undefined
 tempCode = {}
 
+#Meteor.startup ->
+#  param = {
+#    "hospital_id" : "015"
+#  , "submit_id" : "DRBPA13001"
+#  , "business_id" : "mb"
+#  , "ex_interface" : "MOB|015"
+#  , "hospitalCd" : "015"
+#  , "patientId" : "1278458"
+#  , "jobCd" : "RES"
+#  }
+#  schedule = commonAjaxGet(param)
+#  cl schedule.data.root.list
+
+
+
 commonAjaxGet = (param, cbFunc) ->
   commonAjax 'Get', param, cbFunc
 
@@ -54,13 +69,15 @@ Meteor.methods dataBatch: ->
         'userid': row
         'dutplcecd': tempCode.dutplcecd
         'orddd': mUtils.dateFormat()
-      tempRes = dataModel.patient(commonAjaxGet(param), row)
+      patientLists = dataModel.patient(commonAjaxGet(param), row)
       cl 'patients Info'
       return
   catch e
     throw new (Meteor.Error)(e.message)
   try
 # 4. 나의스케쥴 리스트 획득 / 저장 - TODO 실시간
+
+
   catch e
     throw new (Meteor.Error)(e.message)
   'data batch complete'

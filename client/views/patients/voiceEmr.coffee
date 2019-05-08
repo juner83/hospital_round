@@ -76,6 +76,7 @@ Template.voiceEmr.events
   'click [name=btnInsertPopup]': (evt, inst) ->
     $('#popup').css('display', 'block')
     $('#emr_pop_2').css('display', 'block')
+    $("[name=pop_emr]")[0].click()
   'click [name=btnSaveCurData]': (evt, inst) ->
     $('.pop03').css('display', 'none')
     $('#dim').css('display', 'block')
@@ -83,7 +84,10 @@ Template.voiceEmr.events
     cl datacontext.curData.get()
     Meteor.call 'saveVoiceEmr', mDefine.cstInfo.get()._id, datacontext.curData.get(),  (err, rslt) ->
       if err then alert err
-      else cl '저장완료'
+      else
+        mUtils.fr_keyOff()
+        cl '저장완료'
+
   'click [name=goToCstList]': ->
     FlowRouter.go '/patientList'
   'click [name=goToNextCst]': (evt, inst) ->

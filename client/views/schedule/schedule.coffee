@@ -1,4 +1,5 @@
-FlowRouter.route '/schedule', action: ->
+FlowRouter.route '/schedule', action: (params, queryParams)->
+#  cl queryParams
   BlazeLayout.render 'schedule',
     content: 'schedule',
     hasHeader: true
@@ -6,8 +7,8 @@ FlowRouter.route '/schedule', action: ->
   return
 
 Template.schedule.onCreated ->
+#  cl FlowRouter.getQueryParam("regNo")
   inst = @
-#  inst.subscribe 'pub_voiceEMRs', mDefine.cstInfo.get()?._id
   datacontext = inst.data
   datacontext.selectedTab = new ReactiveVar('today')  #today/nextday
 #  datacontext.selectedDay = mDefine.todayYYMMDD
@@ -25,8 +26,11 @@ Template.schedule.onCreated ->
   }
   datacontext.curData = new ReactiveVar({})
   datacontext.CollectionNull = new Mongo.Collection null
-  Meteor.call 'getMySchedule', mDefine.cstInfo.get()?._id, (err, rslt) ->
-    if err then alert err
+#  Meteor.call 'getMySchedule', mDefine.cstInfo.get()?._id, (err, rslt) ->
+  Meteor.call 'getMyScheduleByNo', FlowRouter.getQueryParam("regNo"), (err, rslt) ->
+    if err
+      mUtils.fr_home()
+      alert err
     else
       datacontext.curData.set rslt  #rslt = {obj:{}, arr:[]}
       rslt.arr.forEach (_obj) ->
@@ -85,8 +89,9 @@ Template.schedule.events
     datacontext = inst.data
     datacontext.selectedTab.set 'nextday'
     Meteor.setTimeout ->
-      $("[name=dateTab]")[1].click()
-    , 100
+      if $("[name=dateTab]").length > 0
+        $("[name=dateTab]")[0].click()
+    , 200
 
   'click [name=dateTab]': (evt, inst) ->
     selDate = $(evt.target).attr('data-day')
