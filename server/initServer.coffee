@@ -1,13 +1,38 @@
 Meteor.startup ->
-  unless Meteor.users.findOne(username: 'admin')
-    cl 'initServer/make admin'
-    options = {}
-    options.username = 'admin'
-    options.password = 'admin123@'
-    options.profile = dataSchema 'profile',
-      authority: 'master'
-      이름: 'master'
-    Accounts.createUser options
+  getNextBatchTime = ->
+    now = new Date()
+    time = now.getHours()
+    if time > 4
+      ymd = mUtils.getStringYMDFromDate(now.addDates(1))
+    else
+      ymd = mUtils.getStringYMDFromDate(now)
+    target = new Date("#{ymd} 04:00:00")
+    diff = target.getTime() - now.getTime()
+    return diff
+
+  dataBatch = ->
+    Meteor.setInterval ->
+#      cl "setInterval : #{new Date()}"
+      Meteor.call 'dataBatch', (err, rslt) ->
+        if err then cl "data batch error : #{mUtils.getStringYMDHMSFromDate(new Date())}"
+        else cl "data batch success : #{mUtils.getStringYMDHMSFromDate(new Date())}"
+#    , 1000
+    , 1000 * 60 * 60 * 24
+
+  Meteor.setTimeout ->
+    dataBatch()
+  , getNextBatchTime()
+
+
+#  unless Meteor.users.findOne(username: 'admin')
+#    cl 'initServer/make admin'
+#    options = {}
+#    options.username = 'admin'
+#    options.password = 'admin123@'
+#    options.profile = dataSchema 'profile',
+#      authority: 'master'
+#      이름: 'master'
+#    Accounts.createUser options
 
   #  call = Meteor.wrapAsync Meteor.call, Meteor
   # HTTP.call 'POST', 'http://localhost:64003/chat/message', {
@@ -523,34 +548,34 @@ Meteor.startup ->
 #        }
 #        CollectionVoiceEMRs.insert data
 
-  진료과 = [
-    {code: 2050000000, name: '[본관2층]정형외과', doctor: '나정형'}
-    {code: 2010000000, name: '[본관1층]수납처', doctor: '김안내'}
-    {code: 2020000000, name: '[본관GF층]신경외과', doctor: '한신경'}
-    {code: 2030000000, name: '[본관3층]소아청소년과', doctor: '윤소아'}
-    {code: 2040000000, name: '[본관1층]외래검사실', doctor: '진외래'}
-    {code: 2060000000, name: '[본관2층]재활의학과', doctor: '정재활'}
-    {code: 2070000000, name: '[본관2층]신경외과', doctor: '이신경'}
-    {code: 2080000000, name: '[본관2층]마취통증의학과', doctor: '우마취'}
-  ]
-  일정종류 = ['진료', '수납', '검사예약', '주사', '약', '검사']
-  상태 = ['접수', '대기', '완료', '보류']
-  수납여부 = ['수납', '미수납']
-  진료일자 = [23, 24, 25, 26, 27, 28]
-  진료시간 = ['09', 10, 11, 12, 13, 14, 15, 16, 17, 18]
-  진료분 = ['00', 10, 20, 30, 40, 50]
-  unless CollectionSchedules.findOne()
-    for i in [1.. 100]
-      c1 = Random.choice 진료과
-      obj = dataSchema 'schedule',
-        customer_id: (i%4 + 1).toString()
-        진료과코드: c1.code
-        진료과명: c1.name
-        의사명: c1.doctor
-        진료일자: "201904" + Random.choice 진료일자
-        진료시간: "#{Random.choice(진료시간).toString()}#{Random.choice(진료분).toString()}"
-        일정종류: Random.choice 일정종류
-        상태메시지: Random.choice 상태
-        수납여부: Random.choice 수납여부
-        가셔야할곳: Random.choice(진료과).name
-      CollectionSchedules.insert obj
+#  진료과 = [
+#    {code: 2050000000, name: '[본관2층]정형외과', doctor: '나정형'}
+#    {code: 2010000000, name: '[본관1층]수납처', doctor: '김안내'}
+#    {code: 2020000000, name: '[본관GF층]신경외과', doctor: '한신경'}
+#    {code: 2030000000, name: '[본관3층]소아청소년과', doctor: '윤소아'}
+#    {code: 2040000000, name: '[본관1층]외래검사실', doctor: '진외래'}
+#    {code: 2060000000, name: '[본관2층]재활의학과', doctor: '정재활'}
+#    {code: 2070000000, name: '[본관2층]신경외과', doctor: '이신경'}
+#    {code: 2080000000, name: '[본관2층]마취통증의학과', doctor: '우마취'}
+#  ]
+#  일정종류 = ['진료', '수납', '검사예약', '주사', '약', '검사']
+#  상태 = ['접수', '대기', '완료', '보류']
+#  수납여부 = ['수납', '미수납']
+#  진료일자 = [23, 24, 25, 26, 27, 28]
+#  진료시간 = ['09', 10, 11, 12, 13, 14, 15, 16, 17, 18]
+#  진료분 = ['00', 10, 20, 30, 40, 50]
+#  unless CollectionSchedules.findOne()
+#    for i in [1.. 100]
+#      c1 = Random.choice 진료과
+#      obj = dataSchema 'schedule',
+#        customer_id: (i%4 + 1).toString()
+#        진료과코드: c1.code
+#        진료과명: c1.name
+#        의사명: c1.doctor
+#        진료일자: "201904" + Random.choice 진료일자
+#        진료시간: "#{Random.choice(진료시간).toString()}#{Random.choice(진료분).toString()}"
+#        일정종류: Random.choice 일정종류
+#        상태메시지: Random.choice 상태
+#        수납여부: Random.choice 수납여부
+#        가셔야할곳: Random.choice(진료과).name
+#      CollectionSchedules.insert obj
