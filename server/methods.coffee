@@ -73,3 +73,8 @@ Meteor.methods
         multi: true
       }
 
+  saveBedNo: (cst_id, _bedNo) ->
+    cl 'methods/saveBedNo'
+    CollectionCustomers.update _id: cst_id,
+      $set:
+        침대번호: _bedNo

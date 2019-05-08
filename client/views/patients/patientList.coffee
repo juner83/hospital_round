@@ -5,6 +5,13 @@ FlowRouter.route '/patientList', name: '/patientList', action: ->
     hasFooter: true
   return
 
+FlowRouter.route '/temp', name: '/temp', action: ->
+  BlazeLayout.render 'main',
+    content: 'patientList',
+    hasHeader: true
+    hasFooter: true
+  return
+
 Template.patientList.onCreated ->
   Meteor.loginWithPassword('95610268', '95610268')
   mDefine.cstInfo.set null
@@ -47,6 +54,7 @@ Template.patientList.helpers
   회진일: -> mUtils.getStringYMDFromDate(new Date()) + " " + mUtils.getWeekday(mUtils.dateFormat())
   진료과: -> Meteor.user()?.profile.진료과
   주치의: -> Meteor.user()?.profile.이름
+  isTemp: -> FlowRouter.getRouteName() is '/temp'
 
 
   #페이징
@@ -97,7 +105,6 @@ Template.patientList.events
       else
         cl '회진여부 초기화 완료'
 
-
 #  페이징
   'click .page_num': (evt, inst) ->
     pageNo = $(evt.target).attr('data-val')
@@ -108,3 +115,11 @@ Template.patientList.events
     pageInfo = datacontext.pageInfo.get()
     pageInfo.curPage = parseInt pageNo
     datacontext.pageInfo.set pageInfo
+
+  'keyup [name="inpBedNo"]': (evt, inst) ->
+    cl value = $(evt.target).val()
+    cl _id = $(evt.target).attr('data-id')
+    if evt.keyCode is 13
+      Meteor.call 'saveBedNo', _id, value, (err, rslt) ->
+        if err then alert err
+        else cl '저장되었습니다.'

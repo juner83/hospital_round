@@ -48,8 +48,12 @@
 						<!--<th width="203px">진단명</th>-->
 						<th>진단명</th>
 						<th width="203px">수술명</th>
+						{{#if isTemp}}
+						<th>침대입력</th>
+						{{else}}
 						<th width="50px">HOD</th>
 						<th width="50px">POD</th>
+						{{/if}}
 					</tr>
 					</thead>
 					<tbody>
@@ -62,8 +66,12 @@
 						<td>{{등록번호}}</td>
 						<td class="t_left_10">{{진단명}}</td>
 						<td>{{수술명}}</td>
+						{{#if isTemp}}
+						<td><input name="inpBedNo" data-id="{{_id}}"></td>
+						{{else}}
 						<td>{{HOD}}</td>
 						<td>{{POD}}</td>
+						{{/if}}
 					</tr>
 					{{/each}}
 					</tbody>
