@@ -126,6 +126,7 @@ Meteor.methods
       p: _emr.p or ""
       주사: _emr.주사 or ""
       약처방: _emr.약처방 or ""
+      signature: do -> if _emr.signature?.length > 0 then return _emr.signature else return ""
     CollectionVoiceEMRs.insert curEmr
 
 

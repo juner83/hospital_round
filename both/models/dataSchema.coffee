@@ -60,6 +60,7 @@
         p: ''
         주사: ''
         약처방: ''
+        signature: ''
     when 'bed_coordination' #참조없이 변경되면 변경하는 코드성 데이터
       rslt =
         createdAt: createdAt

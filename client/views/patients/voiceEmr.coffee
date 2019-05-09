@@ -1,3 +1,11 @@
+@Web3 = require 'web3'
+
+account =
+  privateKey: "0x81dd07b6faf2991ce1aace8ca17db7c00068da032f51fd37d205b265f243e1e9"
+  publickKey: "c6388b4fa7c1fd1b11b43187775b4b910c3975ff9f8e488935576f3703ed2da81cccfe479cd44403bb3de3f5c8ee99dcdf986b61332920ed696dc46aea106c24"
+  address: "0x74F6666a23E5496dca9cD5D1cffBa3900C2c0851"
+
+
 clearTranscription = ->
   tt = new Transcription
   $('#round_trans_area').val ''
@@ -34,6 +42,8 @@ Template.voiceEmr.onCreated ->
   datacontext.curData = new ReactiveVar({})
   datacontext.isRecording = new ReactiveVar()
   datacontext.isRecording.set false
+  if mDefine.isSignUsing
+    inst.web3 = new Web3(new Web3.providers.HttpProvider("https://mainnet.infura.io/"));
 
 clickedFlag = false
 Template.voiceEmr.onRendered ->
@@ -82,7 +92,12 @@ Template.voiceEmr.events
     $('#dim').css('display', 'block')
     datacontext = inst.data
     cl datacontext.curData.get()
-    Meteor.call 'saveVoiceEmr', mDefine.cstInfo.get()._id, datacontext.curData.get(),  (err, rslt) ->
+    emrObj = datacontext.curData.get()
+    if mDefine.isSignUsing
+      web3 = inst.web3
+      cl signResult = web3.eth.accounts.sign(emrObj.toString(), account.privateKey)
+      emrObj.signature = signResult.signature
+    Meteor.call 'saveVoiceEmr', mDefine.cstInfo.get()._id, emrObj,  (err, rslt) ->
       if err then alert err
       else
         mUtils.fr_keyOff()

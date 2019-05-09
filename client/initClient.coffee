@@ -5,7 +5,7 @@ Meteor.startup ->
       if err then alert err
       else
         mDefine.cstInfo.set(rslt)
-
+  cl process.env.isSignUsing
 
 #  @CollectionMessagesTmp = new Mongo.Collection null
 #  @streamer = new Meteor.Streamer('chat')
