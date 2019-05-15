@@ -50,6 +50,7 @@
 						<th width="203px">수술명</th>
 						{{#if isTemp}}
 						<th>침대입력</th>
+						<th>이미지</th>
 						{{else}}
 						<th width="50px">HOD</th>
 						<th width="50px">POD</th>
@@ -68,6 +69,7 @@
 						<td>{{수술명}}</td>
 						{{#if isTemp}}
 						<td><input name="inpBedNo" data-id="{{_id}}"></td>
+						<td><input name="inpImages" data-regNo="{{등록번호}}" type="file" multiple></td>
 						{{else}}
 						<td>{{HOD}}</td>
 						<td>{{POD}}</td>

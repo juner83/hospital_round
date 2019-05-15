@@ -143,3 +143,8 @@ Meteor.methods
     CollectionCustomers.update _id: cst_id,
       $set:
         침대번호: _bedNo
+
+  saveImage: (image) ->
+    cl 'save/image'
+    image.src = Images.findOne(_id: image.image_id)?.link()
+    CollectionPacs.insert image

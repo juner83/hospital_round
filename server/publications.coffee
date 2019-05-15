@@ -12,4 +12,8 @@ Meteor.publish 'pub_voiceEMRs', (_pid) ->
 #  unless _customer_id then _customer_id = '1'
   return CollectionVoiceEMRs.find({customer_id: _pid}, {sort: {yymmdd: -1}, limit:5})
 
+Meteor.publish 'pub_pacs', (_pid) ->
+  cl 'pub_pacs'
+  cl _pid
+  return CollectionPacs.find(customer_id: _pid)
 

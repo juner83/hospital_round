@@ -34,7 +34,9 @@
         createdAt: createdAt
         updatedAt: createdAt
         customer_id: ''
-        imageLink: ''
+        image_id: ''
+        src: ''
+        alt: ''
     when 'result'
       rslt =
         createdAt: createdAt

@@ -17,6 +17,7 @@ Template.patientList.onCreated ->
   mDefine.cstInfo.set null
   inst = @
   datacontext = inst.data
+  datacontext.img = new ReactiveVar()
   datacontext.condition = new ReactiveVar({
     where: {},
     options: {
@@ -123,3 +124,35 @@ Template.patientList.events
       Meteor.call 'saveBedNo', _id, value, (err, rslt) ->
         if err then alert err
         else cl '저장되었습니다.'
+
+  'change [name=inpImages]': (evt, inst) ->
+    files = evt.currentTarget?.files
+    if !files then return
+    regNo = $(evt.target).attr('data-regNo')
+    datacontext = inst.data
+    keys = Object.keys files
+    keys.forEach (idx)->
+      file = files[idx]
+      upIns = Images.insert
+        file: file
+        streams: 'dynamic'
+        chunkSize: 'dynamic'
+      , false
+
+      upIns.on 'start', -> datacontext.img.set this
+      upIns.on 'end', (err,rslt)->
+        if err then alert err.reason
+        else
+          # 컨디션 세팅
+          paramObj = dataSchema 'pacs',
+            customer_id: regNo
+            image_id: rslt._id
+            alt: rslt.name
+
+          # 메세지 전송
+          Meteor.call 'saveImage', paramObj, (err, rslt) ->
+            if err then alert err.reason
+            else
+        datacontext.img.set false
+
+      upIns.start()

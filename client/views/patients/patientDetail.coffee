@@ -18,6 +18,7 @@ Template.patientDetail.onCreated ->
     }
   })
 
+  inst.subscribe 'pub_pacs', mDefine.cstInfo.get()?.등록번호
   inst.subscribe 'pub_results', mDefine.cstInfo.get()?.등록번호, ->
     datacontext.pageInfo = new ReactiveVar({
       total: CollectionResults.find().count()
@@ -74,6 +75,10 @@ Template.patientDetail.helpers
       data = Template.instance().data
       CollectionResults.find({검사종류: param}, data.condition.get().options)
   보고일: -> @보고일.toString().substring(0, 8)
+  pacsImages: ->
+    cursor = CollectionPacs.find({}, {limit:2})
+    cl cursor.fetch()
+    return cursor
 
 #페이징
   page: ->

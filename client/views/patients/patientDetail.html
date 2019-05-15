@@ -46,8 +46,10 @@
 			</table>
 		</div>
 		<ul class="patient_x">
-			<li><img src="/images/round/patient/x_sample01.jpg" width="398" height="418" name="imgModal"/></li>
-			<li><img src="/images/round/patient/x_sample02.jpg" width="398" height="418" name="imgModal"/></li>
+			{{#each pacsImages}}
+			<li><img src="{{src}}" alt="{{alt}}" width="398" height="418" name="imgModal"/></li>
+			{{/each}}
+			<!--<li><img src="/images/round/patient/x_sample02.jpg" width="398" height="418" name="imgModal"/></li>-->
 		</ul>
 		<!-- 환자정보 끝 -->
 		<!-- 검사정보 시작 -->
