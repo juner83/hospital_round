@@ -17,8 +17,21 @@ Template.patientDetail.onCreated ->
         진단일: -1
     }
   })
+  datacontext.pacs =  new ReactiveVar()
 
-  inst.subscribe 'pub_pacs', mDefine.cstInfo.get()?.등록번호
+  inst.subscribe 'pub_pacs', mDefine.cstInfo.get()?.등록번호, ->
+    if CollectionPacs.find().count() > 0
+      datacontext.pacs.set(CollectionPacs.find().fetch())
+    else
+      datacontext.pacs.set [
+        {
+          src: '/images/round/patient/x_sample01.jpg'
+        }
+        {
+          src: '/images/round/patient/x_sample02.jpg'
+        }
+      ]
+#    cl datacontext.pacs.get()
   inst.subscribe 'pub_results', mDefine.cstInfo.get()?.등록번호, ->
     datacontext.pageInfo = new ReactiveVar({
       total: CollectionResults.find().count()
@@ -77,8 +90,15 @@ Template.patientDetail.helpers
   보고일: -> @보고일.toString().substring(0, 8)
   pacsImages: ->
     cursor = CollectionPacs.find({}, {limit:2})
-    cl cursor.fetch()
-    return cursor
+    if cursor.count() > 0 then return cursor
+    else return [
+      {
+        src: '/images/round/patient/x_sample01.jpg'
+      }
+      {
+        src: '/images/round/patient/x_sample02.jpg'
+      }
+    ]
 
 #페이징
   page: ->

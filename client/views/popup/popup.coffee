@@ -12,6 +12,9 @@ Template.briefPopup.onRendered ->
 Template.briefPopup.helpers
   팝업결과: ->
     if tempRv.get()? then tempRv.get()
+  pacs: ->
+    pacs = Template.instance().data?.pacs.get()
+    return pacs
 Template.briefPopup.events
   'click .close > img': (evt, inst) ->
     evt.preventDefault()

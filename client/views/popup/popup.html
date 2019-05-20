@@ -10,18 +10,20 @@
 
 				<div class="slider-container">
 					<div class="slider">
+						{{#each pacs}}
 						<div class="slider__item">
-							<img src="/images/round/patient/x_sample01.jpg" alt="">
+							<img src="{{src}}" alt="{{alt}}">
 							<span class="slider__caption">Lorem ipsum dolor sit amet, consectetur adipisicing elit.<a href="">Далее >></a> </span>
 						</div>
-						<div class="slider__item">
-							<img src="/images/round/patient/x_sample01.jpg" alt="">
-							<span class="slider__caption">2 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa, facilis.</span>
-						</div>
-						<div class="slider__item">
-							<img src="/images/round/patient/x_sample01.jpg" alt="">
-							<span class="slider__caption">3 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit, culpa!</span>
-						</div>
+						{{/each}}
+						<!--<div class="slider__item">-->
+							<!--<img src="/images/round/patient/x_sample01.jpg" alt="">-->
+							<!--<span class="slider__caption">2 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa, facilis.</span>-->
+						<!--</div>-->
+						<!--<div class="slider__item">-->
+							<!--<img src="/images/round/patient/x_sample01.jpg" alt="">-->
+							<!--<span class="slider__caption">3 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit, culpa!</span>-->
+						<!--</div>-->
 					</div>
 					<div class="slider__switch slider__switch--prev" data-ikslider-dir="prev">
 						<span><svg xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 20 20"><path d="M13.89 17.418c.27.272.27.71 0 .98s-.7.27-.968 0l-7.83-7.91c-.268-.27-.268-.706 0-.978l7.83-7.908c.268-.27.7-.27.97 0s.267.71 0 .98L6.75 10l7.14 7.418z"/></svg></span>
