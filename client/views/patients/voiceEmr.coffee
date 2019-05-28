@@ -27,6 +27,7 @@ FlowRouter.route '/voiceEmr', name: '/voiceEmr', action: ->
   return
 
 Template.voiceEmr.onCreated ->
+#  web3 = new Web3(new Web3.providers.HttpProvider("https://mainnet.infura.io/"));
   inst = @
   inst.subscribe 'pub_voiceEMRs', mDefine.cstInfo.get()?.등록번호
   datacontext = inst.data
@@ -81,8 +82,11 @@ Template.voiceEmr.events
     $('.pop03').css('display', 'none')
     $('#dim').css('display', 'block')
     datacontext = inst.data
-    cl datacontext.curData.get()
-    Meteor.call 'saveVoiceEmr', mDefine.cstInfo.get()._id, datacontext.curData.get(),  (err, rslt) ->
+    emr = datacontext.curData.get()
+    signResult = web3.eth.accounts.sign(JSON.stringify(emr), '0x81dd07b6faf2991ce1aace8ca17db7c00068da032f51fd37d205b265f243e1e9')
+    emr.signature = signResult.signature
+    cl emr
+    Meteor.call 'saveVoiceEmr', mDefine.cstInfo.get()._id, emr,  (err, rslt) ->
       if err then alert err
       else
         mUtils.fr_keyOff()
