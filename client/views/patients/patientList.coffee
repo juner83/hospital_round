@@ -13,7 +13,8 @@ FlowRouter.route '/temp', name: '/temp', action: ->
   return
 
 Template.patientList.onCreated ->
-  Meteor.loginWithPassword('95610268', '95610268')
+#  Meteor.loginWithPassword('95610268', '95610268')
+  Meteor.loginWithPassword('10702786', '10702786')
   mDefine.cstInfo.set null
   inst = @
   datacontext = inst.data
