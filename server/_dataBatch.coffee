@@ -46,7 +46,7 @@ Meteor.methods dataBatch: ->
   CollectionVoiceEMRs.remove({})
   try
 # 1. 의사ID 획득(하드코딩)
-    doctorIds = [ 95610268, 10702786 ]
+    doctorIds = [ 95610268, 10702786, 93015504 ]
     # 1-1. 의사정보 획득
     doctorIds.forEach (row, idx) ->
       param =
