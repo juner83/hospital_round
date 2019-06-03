@@ -37,7 +37,7 @@ tempCode.hospital = '015'
 # 기관코드
 tempCode.dutplcecd = '2050000000'
 # 근무지부서코드
-tempCode.fromdd = '20180101'
+tempCode.fromdd = '20190401'
 # 유효시작일자
 Meteor.methods dataBatch: ->
   cl 'methods/dataBatch'
@@ -46,7 +46,7 @@ Meteor.methods dataBatch: ->
   CollectionVoiceEMRs.remove({})
   try
 # 1. 의사ID 획득(하드코딩)
-    doctorIds = [ 95610268, 10702786, 93015504 ]
+    doctorIds = [ 95610268, 10702786, 93015504 ]  #이주엽, 김승찬, 권순용
     # 1-1. 의사정보 획득
     doctorIds.forEach (row, idx) ->
       param =

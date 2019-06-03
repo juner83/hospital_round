@@ -1,6 +1,9 @@
 Meteor.publish 'pub_customers', () ->
   cl 'pub_customers'
-  cl _doctor_id = Meteor.user().username
+  if Meteor.user()?.username?
+    _doctor_id = Meteor.user().username
+  else
+    _doctor_id = '107027861'
   return CollectionCustomers.find({doctor_id: _doctor_id})
 
 Meteor.publish 'pub_results', (_pid) ->

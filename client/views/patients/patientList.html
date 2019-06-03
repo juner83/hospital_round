@@ -32,10 +32,18 @@
 						</tbody>
 					</table>
 				</div>
+
 			</div>
 			<!-- 의사정보 끝 -->
 			<!-- 회진환자 리스트 시작 -->
+
 			<div class="round_p_list_box">
+				{{#each tempUsers}}
+					<button class="tempUsers" data-username="{{username}}">
+						{{profile.이름}}
+					</button>
+				{{/each}}
+
 				<h2 name="reset_isCompleted">회진환자 리스트</h2>
 				<table class="patient_table">
 					<thead>
@@ -46,35 +54,35 @@
 						<th width="100px">성명</th>
 						<th width="105px">등록번호</th>
 						<!--<th width="203px">진단명</th>-->
-						<th>진단명</th>
-						<th width="203px">수술명</th>
 						{{#if isTemp}}
-						<th>침대입력</th>
-						<th>이미지</th>
+							<th width="60px">침대입력</th>
+							<th width="120px">이미지</th>
 						{{else}}
-						<th width="50px">HOD</th>
-						<th width="50px">POD</th>
+							<th>진단명</th>
+							<th width="203px">수술명</th>
+							<th width="50px">HOD</th>
+							<th width="50px">POD</th>
 						{{/if}}
 					</tr>
 					</thead>
 					<tbody>
 					{{#each lists}}
-					<tr class="{{completed}}">
-						<td><input type="radio" name="radio_patientList" data-id="{{_id}}"/></td>
-						<td>{{침대번호}}</td>
-						<td>{{병실}}</td>
-						<td>{{이름}}</td>
-						<td>{{등록번호}}</td>
-						<td class="t_left_10">{{진단명}}</td>
-						<td>{{수술명}}</td>
-						{{#if isTemp}}
-						<td><input name="inpBedNo" data-id="{{_id}}"></td>
-						<td><input name="inpImages" data-regNo="{{등록번호}}" type="file" multiple></td>
-						{{else}}
-						<td>{{HOD}}</td>
-						<td>{{POD}}</td>
-						{{/if}}
-					</tr>
+						<tr class="{{completed}}">
+							<td><input type="radio" name="radio_patientList" data-id="{{_id}}"/></td>
+							<td>{{침대번호}}</td>
+							<td>{{병실}}</td>
+							<td>{{이름}}</td>
+							<td>{{등록번호}}</td>
+							{{#if isTemp}}
+								<td><input name="inpBedNo" data-id="{{_id}}"></td>
+								<td><input name="inpImages" data-regNo="{{등록번호}}" type="file" multiple></td>
+							{{else}}
+								<td class="t_left_10">{{진단명}}</td>
+								<td>{{수술명}}</td>
+								<td>{{HOD}}</td>
+								<td>{{POD}}</td>
+							{{/if}}
+						</tr>
 					{{/each}}
 					</tbody>
 				</table>
@@ -86,11 +94,11 @@
 			<div class="page_wrap">
 				<ul class="page_box">
 					{{#each page}}
-					<li>
-						<a href="" class="page_num {{selected this}}" data-val="{{this}}">
-							<span data-val="{{this}}">{{this}}</span>
-						</a>
-					</li>
+						<li>
+							<a href="" class="page_num {{selected this}}" data-val="{{this}}">
+								<span data-val="{{this}}">{{this}}</span>
+							</a>
+						</li>
 					{{/each}}
 				</ul>
 			</div>

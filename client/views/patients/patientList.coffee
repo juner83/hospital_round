@@ -13,13 +13,22 @@ FlowRouter.route '/temp', name: '/temp', action: ->
   return
 
 Template.patientList.onCreated ->
-  Meteor.loginWithPassword('95610268', '95610268') #이주엽교수
+  regNo = FlowRouter.getQueryParam("regNo");
+  Meteor.call 'usernoFromRegno', regNo, (err, rslt) ->
+    if err then alert err
+    else
+      cl rslt
+      Meteor.loginWithPassword(rslt, rslt)
+
+
+#  Meteor.loginWithPassword('95610268', '95610268') #이주엽교수
 #  Meteor.loginWithPassword('10702786', '10702786') #김승찬교수
 #  Meteor.loginWithPassword('93015504', '93015504') #권순영교수
   mDefine.cstInfo.set null
   inst = @
   datacontext = inst.data
   datacontext.img = new ReactiveVar()
+  datacontext.tempUsers = new ReactiveVar()
   datacontext.condition = new ReactiveVar({
     where: {},
     options: {
@@ -29,6 +38,14 @@ Template.patientList.onCreated ->
         병실: 1
     }
   })
+
+  if FlowRouter.getRouteName() is '/temp'
+    Meteor.call 'getTempUsers', (err, rslt) ->
+      if err then alert err
+      else
+        cl rslt
+        datacontext.tempUsers.set rslt
+
 
   inst.subscribe 'pub_customers', ->
     datacontext.pageInfo = new ReactiveVar({
@@ -47,6 +64,9 @@ Template.patientList.onCreated ->
 Template.patientList.onRendered ->
 
 Template.patientList.helpers
+  tempUsers: ->
+    cl 'a'
+    Template.instance().data?.tempUsers?.get()
   lists: ->
     if Template.instance().subscriptionsReady()
       datacontext = Template.instance().data
@@ -76,6 +96,9 @@ Template.patientList.helpers
   완료환자: -> CollectionCustomers.find(isCompleted: true).count()
 
 Template.patientList.events
+  'click .tempUsers': (evt, inst) ->
+    username = $(evt.target).attr("data-username")
+    Meteor.loginWithPassword(username, username)
   'click [name=move]': (evt, inst) ->
     evt.preventDefault()
     cst_id = $('input[name=radio_patientList]:checked').attr("data-id")
