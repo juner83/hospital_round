@@ -113,14 +113,10 @@ Meteor.methods
     return result
 
   usernoFromRegno: (_regNo) ->
-    parser = require('xml2json')
     try
-#      cl _regNo
       result = HTTP.call 'GET', 'http://erp001.cmcnu.or.kr/cmcnu/webapps/mi/rp_humtrafactmngtweb/.live?submit_id=DRRPB90055&business_id=mi&csn=' + _regNo
-      cl json = parser.toJson(result.content)
-      #있는 번호일경우 그 번호로 로그인, 없는 번호의 경우 김승찬 조교수 아이디로 로그인
-      if json.smbinfolist? then return json.smbinfolist.emplno
-      else return "10702786"
+      cl xml = result.content
+      return xml
     catch e
       throw new Meteor.Error 'usernoFromRegno 서버 오류. #5001'
 

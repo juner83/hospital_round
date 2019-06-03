@@ -14,11 +14,21 @@ FlowRouter.route '/temp', name: '/temp', action: ->
 
 Template.patientList.onCreated ->
   regNo = FlowRouter.getQueryParam("regNo");
+  cl "RFID:: #{regNo}"
+  parseString = require('xml2js').parseString
   Meteor.call 'usernoFromRegno', regNo, (err, rslt) ->
     if err then alert err
     else
-      cl rslt
-      Meteor.loginWithPassword(rslt, rslt)
+#      cl rslt
+      parseString rslt, (err, result) ->
+#        cl result
+        json = result.root
+        cl json.smbinfolist?.emplno
+        #있는 번호일경우 그 번호로 로그인, 없는 번호의 경우 김승찬 조교수 아이디로 로그인
+        if json.smbinfolist? then username = json.smbinfolist.emplno
+        else username = "10702786"
+
+      Meteor.loginWithPassword(username, username)
 
 
 #  Meteor.loginWithPassword('95610268', '95610268') #이주엽교수
