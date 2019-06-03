@@ -19,16 +19,16 @@ Template.patientList.onCreated ->
   Meteor.call 'usernoFromRegno', regNo, (err, rslt) ->
     if err then alert err
     else
-#      cl rslt
+      #cl rslt
       parseString rslt, (err, result) ->
-#        cl result
+        #cl result
         json = result.root
-        cl json.smbinfolist?.emplno
+        #cl json.smbinfolist?[0]?.emplno[0]
         #있는 번호일경우 그 번호로 로그인, 없는 번호의 경우 김승찬 조교수 아이디로 로그인
-        if json.smbinfolist? then username = json.smbinfolist.emplno
+        if json.smbinfolist? then username = json.smbinfolist[0].emplno[0]
         else username = "10702786"
-
-      Meteor.loginWithPassword(username, username)
+        cl username
+        Meteor.loginWithPassword(username, username)
 
 
 #  Meteor.loginWithPassword('95610268', '95610268') #이주엽교수
