@@ -214,6 +214,8 @@ Template.header.events
     else FlowRouter.go '/voiceEmr'
 
   'click [name=brief]': (evt, inst) ->
+    cst_id = $('input[name=radio_patientList]:checked').attr("data-id")
+    mDefine.cstInfo.set CollectionCustomers.findOne(_id: cst_id)
     cl cstInfo = mDefine.cstInfo.get()
     unless cstInfo then Meteor.call 'setDefaultCstInfo', (err, rslt) ->
       mDefine.cstInfo.set rslt
