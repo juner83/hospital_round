@@ -24,6 +24,7 @@ FlowRouter.route '/voiceEmr', name: '/voiceEmr', action: ->
     content: 'voiceEmr'
     hasHeader: true
     hasFooter: true
+    isBrief: true
   return
 
 Template.voiceEmr.onCreated ->

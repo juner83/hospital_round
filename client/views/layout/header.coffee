@@ -213,6 +213,13 @@ Template.header.events
       FlowRouter.go '/voiceEmr'
     else FlowRouter.go '/voiceEmr'
 
+  'click [name=brief]': (evt, inst) ->
+    cl cstInfo = mDefine.cstInfo.get()
+    unless cstInfo then Meteor.call 'setDefaultCstInfo', (err, rslt) ->
+      mDefine.cstInfo.set rslt
+      FlowRouter.go '/patientDetail'
+    else FlowRouter.go '/patientDetail'
+
   'click [name=voiceCommand]': (evt, inst) ->
 #    datacontext = inst.data
     mUtils.fr_tts_stop()

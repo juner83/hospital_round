@@ -1,19 +1,27 @@
 <template name="header">
 	<div id="header">
 		<div class="header">
-				<audio id="myAudio">
-						<source src="/sounds/vrsound.wav" type="audio/wav">
-						<!--Your browser does not support the audio element.-->
-					</audio>
-			
+			<audio id="myAudio">
+				<source src="/sounds/vrsound.wav" type="audio/wav">
+				<!--Your browser does not support the audio element.-->
+			</audio>
+
 			<div class="h_patient">
 				<a href="/patientList"><img src="/images/common/h_patient.png" alt="환자" /></a>
 			</div>
-			<div class="h_voice">
-				<a href="" name="voiceEmr">
-					<img src="/images/common/h_voice.png" alt="음성검색" id="mic_image_tag" />
-				</a>
-			</div>
+			{{#if isBrief}}
+				<div class="h_brief">
+					<a href="" name="brief">
+						<img src="/images/common/h_brief.png" alt="음성검색" />
+					</a>
+				</div>
+			{{else}}
+				<div class="h_voice">
+					<a href="" name="voiceEmr">
+						<img src="/images/common/h_voice.png" alt="음성검색" id="mic_image_tag" />
+					</a>
+				</div>
+			{{/if}}
 			<div class="h_doctor">
 				<a href="" name="reqVideo"><img src="/images/common/h_doctor.png" alt="의사"  /></a>
 			</div>

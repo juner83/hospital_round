@@ -35,7 +35,7 @@ a {text-decoration:none; color:#191919;}
 /*=== [header] ===*/
 .h_camera {position:absolute; top:35px; left:30px; width:80px; height:80px;}
 .h_patient {position:absolute; top:35px; left:30px; width:80px; height:80px;}
-.h_voice {position:absolute; top:35px; left:120px; width:80px; height:80px;}
+.h_voice, .h_brief {position:absolute; top:35px; left:120px; width:80px; height:80px;}
 .h_doctor {position:absolute; top:35px; left:210px; width:80px; height:80px;}
 .h_mic {position:absolute; top:0; left:50%; margin-left:-123px; width:246px; height:220px; z-index:100;}
 .h_home {position:absolute; top:35px; right:30px; width:80px; height:80px;}

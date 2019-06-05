@@ -3,6 +3,7 @@ FlowRouter.route '/patientList', name: '/patientList', action: ->
     content: 'patientList',
     hasHeader: true
     hasFooter: true
+    isBrief: true
   return
 
 FlowRouter.route '/temp', name: '/temp', action: ->
