@@ -46,6 +46,7 @@ Template.patientList.onCreated ->
       limit: mDefine.cst_psize
       sort:
         병실: 1
+        침대번호: 1
     }
   })
 
@@ -114,7 +115,7 @@ Template.patientList.events
     cst_id = $('input[name=radio_patientList]:checked').attr("data-id")
     if cst_id then mDefine.cstInfo.set CollectionCustomers.findOne(_id: cst_id)
     else
-      mDefine.cstInfo.set CollectionCustomers.findOne(isCompleted: false)
+      mDefine.cstInfo.set CollectionCustomers.findOne({isCompleted: false},{sort:{병실:1, 침대번호:1}})
     FlowRouter.go "/moveToBed"
   'click [name=end]': (evt, inst) ->
     evt.preventDefault()

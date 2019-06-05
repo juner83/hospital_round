@@ -4,12 +4,15 @@ Meteor.methods
       $set:
         'services.resume.loginTokens': []
   setDefaultCstInfo: ->
-    CollectionCustomers.findOne(isCompleted: false)
+    doctor_id = Meteor.user()?.username
+    if doctor_id
+      CollectionCustomers.findOne {doctor_id: doctor_id, isCompleted: false}, {sort:{병실:1, 침대번호:1}}
+    else CollectionCustomers.findOne {isCompleted: false}, {sort:{병실:1, 침대번호:1}}
   moveToNextCst: () ->
     doctor_id = Meteor.user()?.username
     if doctor_id
-      CollectionCustomers.findOne doctor_id: doctor_id, isCompleted: false
-    else CollectionCustomers.findOne isCompleted: false
+      CollectionCustomers.findOne {doctor_id: doctor_id, isCompleted: false}, {sort:{병실:1, 침대번호:1}}
+    else CollectionCustomers.findOne {isCompleted: false}, {sort:{병실:1, 침대번호:1}}
   reqVideoSync: ->
     syncCall = Meteor.wrapAsync(Meteor.call, Meteor)
 
