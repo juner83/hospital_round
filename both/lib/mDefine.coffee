@@ -4,7 +4,7 @@
   cst_psize: 7  #환자리스트 페이지당 환자명수
   result_psize: 4  #결과리스트 페이지당 갯수
 #  server_id: Meteor.uuid()
-  robot_socket: false  #로봇소켓연결시 true, 해제시 false
+  robot_socket: true  #로봇소켓연결시 true, 해제시 false
   tts_socket: false #tts_socket 연결시 true, 해제시 false
   stt_uri: 'puzzle-ai.com:9223'
   # stt_uri: '121.135.148.170:9223'
