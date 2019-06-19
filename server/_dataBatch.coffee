@@ -27,7 +27,7 @@ commonAjax = (method, param) ->
   e = undefined
   result = undefined
   try
-    result = HTTP.call('POST', 'http://121.135.148.170:29000/' + 'bridge' + method, data: param)
+    result = HTTP.call('POST', "#{mDefine.bridgeUrl}" + '/bridge' + method, data: param)
   catch _error
     e = _error
     throw new (Meteor.Error)('Data API. #Bridge')

@@ -82,10 +82,10 @@ Meteor.methods
         "hospitalCd" : "015"
         "patientId" : _regNo
         "jobCd" : "TOD"
-      result1 = HTTP.call('POST', 'http://121.135.148.170:29000/bridgeGet', data: param)
+      result1 = HTTP.call('POST', "#{mDefine.bridgeUrl}/bridgeGet", data: param)
       Meteor.wrapAsync(pushMan(result1.data.root.list))
       param.jobCd = "RES"
-      result2 = HTTP.call('POST', 'http://121.135.148.170:29000/bridgeGet', data: param)
+      result2 = HTTP.call('POST', "#{mDefine.bridgeUrl}/bridgeGet", data: param)
       Meteor.wrapAsync(pushMan(result2.data.root.list))
 
     catch e

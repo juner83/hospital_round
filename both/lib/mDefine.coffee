@@ -8,7 +8,7 @@
   tts_socket: false #tts_socket 연결시 true, 해제시 false
   stt_uri: 'puzzle-ai.com:9223'
   # stt_uri: '121.135.148.170:9223'
-  bridgeUrl: "https://IP:PORT"
+  bridgeUrl: "https://wisecaresmr01.com:29000"
   gateWayUrl: process.env.GATEWAY_URL
   monstroUrl: process.env.MONSTRO_URL
   passPhrase: '36365dc82aa463782466'
