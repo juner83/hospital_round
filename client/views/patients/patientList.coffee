@@ -28,7 +28,7 @@ Template.patientList.onCreated ->
           #cl json.smbinfolist?[0]?.emplno[0]
           #있는 번호일경우 그 번호로 로그인, 없는 번호의 경우 김승찬 조교수 아이디로 로그인
           if json.smbinfolist? then username = json.smbinfolist[0].emplno[0]
-          else username = "93015504"
+          else username = "10702786"
           cl username
           Meteor.loginWithPassword(username, username)
 
