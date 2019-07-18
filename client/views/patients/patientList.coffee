@@ -17,7 +17,8 @@ Template.patientList.onCreated ->
   regNo = FlowRouter.getQueryParam("regNo");
   cl "RFID:: #{regNo}"
   parseString = require('xml2js').parseString
-  unless Meteor.user()
+  if !!Meteor.user() then Meteor.logout()
+  if !!regNo
     Meteor.call 'usernoFromRegno', regNo, (err, rslt) ->
       if err then alert err
       else
