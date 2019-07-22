@@ -119,6 +119,14 @@ Meteor.methods
     try
       result = HTTP.call 'GET', 'http://erp001.cmcnu.or.kr/cmcnu/webapps/mi/rp_humtrafactmngtweb/.live?submit_id=DRRPB90055&business_id=mi&csn=' + _regNo
       cl xml = result.content
+#      xml = "
+#<root>
+#<smbinfolist>
+#  <instcd>015</instcd>
+#  <emplno>21902120</emplno>
+#</smbinfolist>
+#</root>
+#"
       return xml
     catch e
       throw new Meteor.Error 'usernoFromRegno 서버 오류. #5001'

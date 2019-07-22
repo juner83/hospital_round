@@ -26,12 +26,17 @@ Template.patientList.onCreated ->
         parseString rslt, (err, result) ->
           #cl result
           json = result.root
-          #cl json.smbinfolist?[0]?.emplno[0]
           #있는 번호일경우 그 번호로 로그인, 없는 번호의 경우 김승찬 조교수 아이디로 로그인
-          if json.smbinfolist? then username = json.smbinfolist[0].emplno[0]
-          else username = "10702786"
-          cl username
-          Meteor.loginWithPassword(username, username)
+          if json.smbinfolist?
+            username = json.smbinfolist[0].emplno[0]
+            cl '검출된사번: ' + username
+            Meteor.loginWithPassword username, username, (_err, _rslt) ->
+              if _err
+                alert "#{username}, 로그인 권한 없음"
+                mUtils.fr_home()
+          else
+            username = "10702786"
+            Meteor.loginWithPassword(username, username)
 
 
 #  Meteor.loginWithPassword('95610268', '95610268') #이주엽교수
@@ -79,7 +84,6 @@ Template.patientList.onRendered ->
 
 Template.patientList.helpers
   tempUsers: ->
-    cl 'a'
     Template.instance().data?.tempUsers?.get()
   lists: ->
     if Template.instance().subscriptionsReady()

@@ -46,14 +46,28 @@ Meteor.methods dataBatch: ->
   CollectionVoiceEMRs.remove({})
   try
 # 1. 의사ID 획득(하드코딩)
-    doctorIds = [ 95610268, 10702786, 93015504 ]  #이주엽, 김승찬, 권순용
+    doctorIds = [
+      95610268, #이주엽
+      10702786, #김승찬
+      93015504, #권순용
+      94610159, #송현석
+      10000158, #이준석
+      10001274, #고인준
+      21200364, #박형열
+      21700679, #손수인
+      94620345, #홍재택
+      10402907, #허정우
+      92670067, #윤종현
+      21100238, #김형석
+      21902685  #서현석
+    ]
     # 1-1. 의사정보 획득
     doctorIds.forEach (row, idx) ->
       param =
         'hospital_id': tempCode.hospital
         'submit_id': 'DRZUM00499'
         'business_id': 'sz'
-        'dutplceinstcd': '015'
+        'dutplceinstcd': tempCode.hospital
         'userid': row
         'dutplcecd': tempCode.dutplcecd
         'fromdd': tempCode.fromdd
@@ -96,10 +110,10 @@ dataModel =
     if Meteor.users.find(username: _username).count() > 0
       Meteor.users.update username: _user.userid.toString(),
         $set:
-          이름: _user.usernm
-          진료과: _user.dutplcenm
-          부서: _user.posdeptnm
-          병원명: _user.posinstnm
+          'profile.이름': _user.usernm
+          'profile.진료과': _user.dutplcenm
+          'profile.부서': _user.posdeptnm
+          'profile.병원명': _user.posinstnm
     else
       options = {}
       options.username = _username
