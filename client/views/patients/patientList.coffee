@@ -35,9 +35,14 @@ Template.patientList.onCreated ->
                 alert "#{username}, 로그인 권한 없음"
                 mUtils.fr_home()
           else
-            username = "10702786"
-            Meteor.loginWithPassword(username, username)
-
+            if regNo is '076F4319' then Meteor.loginWithPassword('95610268', '95610268')
+            else if regNo is '719870D7' then Meteor.loginWithPassword('10702786', '10702786')
+            else if regNo is '310ED2E6' then Meteor.loginWithPassword('10702786', '10702786')
+            else
+#            username = "10702786"
+#            Meteor.loginWithPassword(username, username)
+                alert "로그인 권한 없음"
+                mUtils.fr_home()
 
 #  Meteor.loginWithPassword('95610268', '95610268') #이주엽교수
 #  Meteor.loginWithPassword('10702786', '10702786') #김승찬교수
